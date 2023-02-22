@@ -112,23 +112,49 @@
     	float : right;
     }
 
-	#store{
+
 	
-	 font-size: 20px;
-	 
-	}
-	
-	.snack{
+	.card{
 		font-size: 20px;
 		font-weight: bold;
 	}
 	
 	#text1{
 	
-		font-size: 30px;
+		font-size: 35px;
 		font-weight: bold;
 	}
 	
+	.menu{
+	     border: solid 1px red;
+	     border : hidden;
+	     position: relative;
+	     text-align: center;
+	     display: inline-block;
+	     width: 300px;
+	     height: 300px;
+     
+    }
+    
+    .card_image{
+    	filter: brightness(1);
+    }
+    
+    .card_image:hover{
+    
+        filter: brightness(0.7);
+	}
+	
+	.card_name{
+		font-size: 20px;
+		font-weight:bold;
+	}
+	
+	.card_price{
+		font-size: 20px;
+		font-weight: normal;
+	}
+    
 	
 </style>
 
@@ -145,7 +171,7 @@
             <li><a href="#">예매</a></li>
             <li><a href="#">극장</a></li>
             <a class="logo" href="#home">로고</a>
-            <li id = "store"><a href="/HumanCinema/store_page/store.jsp">스토어</a></li>
+            <li id = "store"><a href="/HumanCinema/menu/store.do">스토어</a></li>
             <li><a href="#">고객센터</a></li>
             <li><a href="#">로그인</a></li>
         </ul>
@@ -155,9 +181,9 @@
  	 <div class = "title">	
 	    <div id = "bar1">
 	        <ul>
-	            <li class = "snack"><a href="/HumanCinema/menu/snack.do?menu_type=10">스낵</a></li>
-	            <li><a href="#">음료</a></li>
-	            <li><a href="#">영화관람권</a></li>
+	            <li><a href="/HumanCinema/menu/snack.do?menu_type=10">스낵</a></li>
+	            <li><a href="/HumanCinema/menu/drink.do?menu_type=20">음료</a></li>
+	            <li class = "card"><a href="/HumanCinema/menu/card.do?menu_type=30">영화관람권</a></li>
 	            
 	        </ul>
 	        
@@ -171,8 +197,8 @@
 			
 		
 		<div>	  
-		<span id = "text1">스낵</span>
-		출출할땐 다양한 스낵이 정답이죠
+		<span id = "text1">영화관람권</span>
+		영화, 모두에게 즐거운 경험
 		</div>		
 		
 		<hr>	
@@ -180,17 +206,15 @@
 		
 		
 
-		<c:forEach var = "snack" items = "${snack_list }">
-
-			        <tr align = "center">
-			          <td><img src="${snack.image }" width="200px" height= "200px";></td>
-			          <td>${snack.name }</td>
-			          <td>${snack.price}</td>
-			          <td>${menu.menu_type }</td>
-			          
-			        </tr>
-			      
-       		  </c:forEach>
+		<c:forEach var = "card" items = "${card_list }">
+			<div class = "menu">
+			         <div class = "card_image"><a href = "/HumanCinema/menu/info_page.do?menu_id=${card.menu_id }"><img src="${card.image }" width="300px" height= "300px";></a></div> 
+			         <div class = "card_name">${card.name }</div> 
+			         <div class = "card_price"> ${card.price}</div> 
+			        
+			        
+			 </div>
+       	 </c:forEach>
 		
 		
 		  

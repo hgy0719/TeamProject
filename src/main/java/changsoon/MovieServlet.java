@@ -65,8 +65,15 @@ public class MovieServlet extends HttpServlet {
 			request.setAttribute("movieList2", movieService.list2());
 			nextPage="/changsoon/영화탭/movieTab.jsp";
 			
+		} else if(action==null || action.equals("/main.do")) {
+			request.setAttribute("movieList", movieService.list1());
+			request.setAttribute("movieList2", movieService.list2());
+			nextPage="/changsoon/메인탭/main.jsp";
+		}
+		
+		
+		else if(action.equals("/movieInfo.do") ) {
 //		영화 상세창 출력
-		}  else if(action.equals("/movieInfo.do") ) {
 			
 //			movieTab에서 articleNO 전달 후 articleNO에 맞는 테이블 포워딩
 			String articleNO = request.getParameter("articleNO");

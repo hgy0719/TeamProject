@@ -18,7 +18,7 @@ public class MenuDAO {
 	private static Connection conn;
 	private static PreparedStatement pstmt;
 	
-	
+	// DB 연결
 	public MenuDAO() {
 		try {
 			Context ctx = new InitialContext();
@@ -217,7 +217,7 @@ public class MenuDAO {
 		
 		try {
 			conn = dataFactory.getConnection();
-			String query = "SELECT NAME , price, IMAGE  from store2 where MENU_TYPE = ?";
+			String query = "SELECT NAME , price, IMAGE,menu_id  from store2 where MENU_TYPE = ?";
 			System.out.println(query);
 			
 			pstmt = conn.prepareStatement(query);
@@ -228,13 +228,10 @@ public class MenuDAO {
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
 				String image = rs.getString("image");
-				snack_list.add(new MenuVO(name,price,image));
+				String menu_id = rs.getString("menu_id");
+				snack_list.add(new MenuVO(name,price,image,menu_id));
 				
 			}
-			
-			
-		
-		
 
 //			snack_list = (List<MenuVO>) new MenuVO(name,price,image);
 			
@@ -242,27 +239,215 @@ public class MenuDAO {
 			rs.close();
 			pstmt.close();
 			conn.close();
-
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-		
-		
-		
 		return snack_list;
-		
-		
 		
 	}
 			
+	// 스토어 -> 음료창 (menu_type = 20)
+	
+	public static List<MenuVO> store_drink(int menu_type_) {
+		
+		List<MenuVO> drink_list = new ArrayList<MenuVO>();
+		
+		try {
+			conn = dataFactory.getConnection();
+			String query = "SELECT NAME , price, IMAGE, menu_id  from store2 where MENU_TYPE = ?";
+			System.out.println(query);
 			
-	
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, menu_type_);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String name = rs.getString("name");
+				int price = rs.getInt("price");
+				String image = rs.getString("image");
+				String menu_id = rs.getString("menu_id");
+				drink_list.add(new MenuVO(name,price,image,menu_id));
+				
+			}
 		
-		
-		
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		  return drink_list;	
+	
+	}		
+	
+		// 스토어 -> 음료 메뉴 3개만
+//	public static List<MenuVO> store_drink3(int menu_type_) {
+//		
+//		List<MenuVO> drink_list3 = new ArrayList<MenuVO>();
+//		
+//		try {
+//			conn = dataFactory.getConnection();
+//			String query = "SELECT NAME , price, IMAGE, menu_id  from store2 where MENU_TYPE = ?";
+//			System.out.println(query);
+//			
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setInt(1, menu_type_);
+//			ResultSet rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				String name = rs.getString("name");
+//				int price = rs.getInt("price");
+//				String image = rs.getString("image");
+//				String menu_id = rs.getString("menu_id");
+//				drink_list3.add(new MenuVO(name,price,image,menu_id));
+//				
+//			}
+//		
+//			rs.close();
+//			pstmt.close();
+//			conn.close();
+//			
+//		} catch (SQLException e) {
+//			
+//			e.printStackTrace();
+//		}
+//		  return drink_list3;	
+//	
+//	}	
+//	
+	
+		// 스토어 -> 영화관람권창 (menu_type = 30)
+	
+			public static List<MenuVO> store_card(int menu_type_) {
+				
+				List<MenuVO> card_list = new ArrayList<MenuVO>();
+				
+				try {
+					conn = dataFactory.getConnection();
+					String query = "SELECT NAME , price, IMAGE,menu_id from store2 where MENU_TYPE = ?";
+					System.out.println(query);
+					
+					pstmt = conn.prepareStatement(query);
+					pstmt.setInt(1, menu_type_);
+					ResultSet rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						String name = rs.getString("name");
+						int price = rs.getInt("price");
+						String image = rs.getString("image");
+						String menu_id = rs.getString("menu_id");
+						card_list.add(new MenuVO(name,price,image,menu_id));
+						
+					}
+				
+					rs.close();
+					pstmt.close();
+					conn.close();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+				
+				  return card_list;	
+			}
+			
+			
+			// 제품 클릭 -> 정보 페이지
+			
+			public static List<MenuVO> info_page(String menu_id) {
+				
+				List<MenuVO> info_list = new ArrayList<MenuVO>();
+				
+				try {
+					conn = dataFactory.getConnection();
+					String query = "SELECT NAME , price, IMAGE  from store2 where MENU_ID = ?";
+					System.out.println(query);
+					
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, menu_id);
+					ResultSet rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						String name = rs.getString("name");
+						int price = rs.getInt("price");
+						String image = rs.getString("image");
+				
+						info_list.add(new MenuVO(name,price,image,menu_id));
+						
+					}
+				
+					rs.close();
+					pstmt.close();
+					conn.close();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+				
+				  return info_list;	
+			}
+			
+
+			
+			
+			
+			
+			
+			
+			// 장바구니
+	public static List<MenuVO> cart_list (String menu_id) {
+				
+				List<MenuVO> cart_list = new ArrayList<MenuVO>();
+				
+				try {
+					conn = dataFactory.getConnection();
+					String query = "SELECT NAME , price, IMAGE  from store2 where MENU_ID = ?";
+					System.out.println(query);
+					
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, menu_id);
+					ResultSet rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						String name = rs.getString("name");
+						int price = rs.getInt("price");
+						String image = rs.getString("image");
+				
+						cart_list.add(new MenuVO(name,price,image,menu_id));
+						
+					}
+				
+					rs.close();
+					pstmt.close();
+					conn.close();
+					
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+				
+				  return cart_list;	
+			}
+	
+	// 스토어창
+//	public static List<MenuVO> store_list() {
+//	
+//		List<MenuVO> store_list = new ArrayList<MenuVO>();
+//		
+//		
+//		return store_list;
+//		
+//		
+//	}
 	
 	
 	
+	
+			
 }

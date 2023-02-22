@@ -105,6 +105,52 @@ public class MenuController extends HttpServlet {
 			nextpage = "/menu/manager2.do";
 			
 			
+		// 스토어 페이지
+		} else if (action.equals("/store.do")) {
+			
+			
+			
+			
+			
+			for (int menu_type = 10; menu_type <= 30; menu_type += 10 ) {
+				
+	
+				if(menu_type == 10) {
+					
+					List<MenuVO> store_list_snack = menuDAO.store_snack(menu_type);
+					System.out.println(store_list_snack.size());
+					
+		
+					request.setAttribute("store_list_snack", store_list_snack);
+					
+	
+						
+				} else if (menu_type == 20) {
+					
+					List<MenuVO> store_list_drink = menuDAO.store_drink(menu_type);
+					System.out.println(store_list_drink.size());
+					request.setAttribute("store_list_drink", store_list_drink);
+					
+				
+				} else if (menu_type == 30) {
+					
+					List<MenuVO> store_list_card = menuDAO.store_card(menu_type);
+					System.out.println(store_list_card.size());
+					request.setAttribute("store_list_card", store_list_card);
+					
+		
+				}
+				
+			}
+			
+			
+			
+			nextpage = "/store_page/store.jsp";
+			
+			
+			
+			
+			
 			// 스토어 -> 스낵창
 		} else if (action.equals("/snack.do")) {
 		
@@ -118,14 +164,55 @@ public class MenuController extends HttpServlet {
 			
 			nextpage = "/store_page/snack.jsp";
 			
+		 // 스토어 -> 음료창
+		} else if (action.equals("/drink.do")) {
+			
+			int menu_type = Integer.parseInt(request.getParameter("menu_type"));
+			System.out.println(menu_type);
+			List<MenuVO> drink_list = (List<MenuVO>) menuDAO.store_drink(menu_type);
 			
 			
+			request.setAttribute("drink_list", drink_list );
 			
+			
+			nextpage = "/store_page/drink.jsp";
+		
+			// 스토어 -> 영화관람권창 
+		} else if (action.equals("/card.do")) {
+			
+			int menu_type = Integer.parseInt(request.getParameter("menu_type"));
+			System.out.println(menu_type);
+			List<MenuVO> card_list = (List<MenuVO>) menuDAO.store_card(menu_type);
+			
+			
+			request.setAttribute("card_list", card_list );
+			
+			
+			nextpage = "/store_page/card.jsp";
+		
+			// 제품 선택 -> 정보창
+		} else if (action.equals("/info_page.do")) {
+			
+			String menu_id = request.getParameter("menu_id");
+			System.out.println(menu_id);
+			List<MenuVO> info_list = (List<MenuVO>) menuDAO.info_page(menu_id);
+			
+			request.setAttribute("info_list", info_list);
+			
+			nextpage = "/store_page/infoPage.jsp";
+		
+			// 장바구니
+		} else if (action.equals("/cart.do")) {
+			
+			String menu_id = request.getParameter("menu_id");
+			System.out.println(menu_id);
+			List<MenuVO> cart_list = (List<MenuVO>) menuDAO.cart_list(menu_id);
+			
+			request.setAttribute("cart_list", cart_list);
+			
+			nextpage = "/store_page/cart.jsp";
 			
 		}
-		
-		
-		
 	
 		
 		

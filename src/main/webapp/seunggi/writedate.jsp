@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdfasdf
+<table>
+	<tr>
+		<td>
+			${selectWriteDate }
+		</td>
+	</tr>
+</table>
 </body>
 </html>

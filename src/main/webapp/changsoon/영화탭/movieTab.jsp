@@ -45,8 +45,8 @@
 		.show1, .show2 {
 			width: 240px;
 		    height: 550px;
-		    margin-left : 50px;
-		    margin-right : 50px;
+		    margin-left : 35px;
+		    margin-right : 35px;
 		    
 		}
 		

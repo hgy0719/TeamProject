@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지(회원정보)</title>
-
 <style>
   * {margin: 0; padding: 0; box-sizing: border-box;}
 
@@ -150,6 +149,65 @@
     </div>
 
       <section>
+<<<<<<< HEAD
+        <article class="UserInformation">
+          <table><h1>회원정보</h1></table>
+         
+           <form action=".do" method="dohandle" name="frm">
+	        <table>
+	            <tr>
+	              <th rowspan="8"><img src="" alt="프로필사진"></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">아이디</td>
+	              <td></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">비밀번호</td>
+	              <td><input id="inputSet2" name="changePwd" typle="password"  size="40"></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">비밀번호 확인</td>
+	              <td><input id="inputSet2" name="changePwd2" typle="password" size="40"></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">이름</td>
+	              <td><input id="inputSet2" name="changeName"></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">전화번호</td>
+	              <td><input id="inputSet2" name="number"></td>
+	            </tr>
+	            <tr>
+	              <td id="inputset1">이메일</td>
+	              <td><input id="inputSet2" name="email"></td>
+	            </tr>
+	            <tr>
+	              <td colspan="2">
+	                <input class="button" type="button" value="수정하기"/>
+	                <input class="button" type="reset" value="다시쓰기"/>
+	              </td>
+	            </tr>
+	          </table>
+	          </form>
+	          
+	          	<form action="mypage.do">
+					<br />
+					<table>
+					<tr>
+					<td colspan="2">회원탈퇴</td>
+					</tr>
+					<tr>
+						<td><input type="password" name="pwd"></td>
+						<td ><input class="button" type="submit" value="입력"></td>
+					</tr>			
+					<input type="hidden" name="co_id" value="${loginUser}">
+					</tr>
+					</table>
+				</form>
+        </article>
+        </section>
+=======
         <article class="a-History">
           <table>
             <h1>회원정보</h1>
@@ -188,6 +246,7 @@
             </tr>
           </table>
         </article>
+>>>>>>> 3d6966bc0028e0d9943b421064c81327b6c8b836
     </form>
 </body>
 </html>

@@ -200,13 +200,87 @@
 }
 
 .comment_wrap1{
-	border:1px solid red;
 	
 }
 
+.comment_wrap1 div {
+
+}
 
 .no-uline{text-decoration:none;}
 .sel-page{text-decoration:none; color:red;}
+
+.c_total{
+	font-size:20px;
+	font-weight:600;
+	margin-bottom:20px;
+}
+
+
+.comment_wrap1{
+	margin-bottom:20px;
+}
+
+.comment_wrap1 div{
+	display:inline-block;
+	vertical-align:top;
+}
+
+.a{
+	width:100px;
+	height:105px;
+}
+.b{
+	width:800px;
+	height:100px;
+}
+.c{	
+	width:150px;
+	height:100px;
+
+}
+#comment_btn{
+	width:100px;
+	height:105px;
+}
+.qq{
+	border-bottom:1px solid black;
+}
+
+.qq > div{
+	display:inline-block;
+	height:100px;
+	vertical-align:top;
+	text-align:center;
+	margin:0 auto;
+}
+.d{
+	width:100px;
+	height:105px;
+	line-height: 100px;
+}
+.e{
+	width:800px;
+	height:100px;
+	line-height: 100px;
+}
+.f{	
+	width:150px;
+	height:100px;
+	line-height: 100px;
+
+}
+.g{
+	width:100px;
+	height:50px;
+}
+.h{
+	width:100px;
+	height:50px;
+}
+.i{
+	width:100px;
+}
 
 
 </style>
@@ -290,22 +364,30 @@
         	
         <!-- 댓글영역 -->
   				<div id="comment">
-            	<div>${movie.title}에 대한 ${totArticles }개의 이야기가 있어요!</div>
+            	<div class="c_total">${movie.title}에 대한 ${totArticles }개의 이야기가 있어요!</div>
 	            <div class="comment_wrap1">
+	            	<h3>관람평쓰기</h3>
 					<form method="post" action="../movie/reply.do">
 						<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						<div><input type="text" name="comment_id" placeholder="아이디입력"></div>
-						<div><input type="text" name = "comment_text" placeholder="관람평입력"></div>
-						<div><input type="text" name = "comment_rate" placeholder="평점입력"></div>
+						<div><input class="a" type="button" name="comment_id" value="로그인"></div>
+						<div><input class="b" type="text" name = "comment_text" placeholder="  관람평을 입력해주세요"></div>
+						<div><input class="c" type="number" min="0" max="10" name = "comment_rate" placeholder="  평점입력(0~10)"></div>
 						<div><input id="comment_btn" type="submit" value="관람평쓰기"></div>
 					</form>
 				</div>
 				<c:forEach var="comment" items="${articlesList }">
 		            <div class="comment_wrap2" style="border:1px solid black">
-		            	아이디: ${comment.comment_id }<br>
-		            	댓글번호: ${comment.commentNO}<br>
-		            	댓글: ${comment.comment_text}<br>
-		            	평점: ${comment.comment_rate}<br>
+		            	<div class="qq">
+			            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
+			            	<div class="d">${comment.comment_id }</div>
+							<div class="e">${comment.comment_text}</div>
+							<div class="f">평점: ${comment.comment_rate}</div>
+							<div class="i">
+								<input class="g" type="button" value="수정">
+								<input class="h" type="button" value="삭제">
+							</div>
+							
+						</div>
 		            	<br>
 		            	<br>
 		            	대댓글

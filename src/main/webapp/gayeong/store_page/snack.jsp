@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "java.util.*,gayeong.*"
-    isELIgnored = "false"
-  %>
+  	import = "java.util.*,gayeong.*"
+   	isELIgnored = "false"
+%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +68,7 @@
         width: 100%;
         height: 50px;
         outline: 1px dotted red;
+        margin-bottom : 5%;
     }
     #bar1 ul li{
         float: left;
@@ -108,17 +112,53 @@
     	float : right;
     }
 
-	#store{
-	
-	 font-size: 20px;
-	 
+	.snack{
+		font-size: 20px;
+		font-weight: bold;
 	}
+	
+	#text1{
+	
+		font-size: 35px;
+		font-weight: bold;
+	}
+	
+	.menu{
+	     border: solid 1px red;
+	     border : hidden;
+	     position: relative;
+	     text-align: center;
+	     display: inline-block;
+	     width: 300px;
+	     height: 300px;
+     
+    }
+    
+    .snack_image{
+    	filter: brightness(1);
+    }
+    .snack_image:hover{
+    	filter: brightness(0.7);
+    }
+    
+    .snack_name{
+    	font-size: 20px;
+		font-weight:bold;
+    }
+    
+     .snack_price{
+    	font-size: 20px;
+		font-weight:nomal;
+    }
 	
 </style>
 
 
-<body>
 
+       
+         
+         
+<body>
  <header>
         <nav id="nav">
         <ul class="nav-items">
@@ -126,59 +166,53 @@
             <li><a href="#">예매</a></li>
             <li><a href="#">극장</a></li>
             <a class="logo" href="#home">로고</a>
-            <li id = "store"><a href="/HumanCinema/store_page/store.jsp">스토어</a></li>
+            <li id = "store"><a href="/HumanCinema/menu/store.do">스토어</a></li>
             <li><a href="#">고객센터</a></li>
             <li><a href="#">로그인</a></li>
-        </ul></nav>
-    </header></div>
+        </ul>
+        </nav>
+ </header>
 
-	<c:forEach var = "menu" items = "${menu_list }">
-		  <div class = "title">	
-			    <div id = "bar1">
-			        <ul>
-			            <li><a href="/HumanCinema/menu/snack.do?menu_type=10">스낵</a></li>
-			            <li><a href="#">음료</a></li>
-			            <li><a href="#">영화관람권</a></li>
-			            
-			        </ul>
-			        
-				    <div id = "bar2"> 
-				    	<ul>
-				    		<li><a href= "#">장바구니</a></li>
-				      	</ul>
-				    </div>
-				</div>
-			
-			
-			<div id = "menu1">
-				<h3>영화관람권</h3>
-			<input id = "bt1" type = "button" value = "+"><br> <!-- 버튼 누르면 해당페이지로 이동 -->
-				<hr>
-				 <div class="menu">
-			            <div class="img"><img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg" width="200px" height= "200px">
-			            <div class="name">Human영화관람권</div> 
-			            <div class = "price">12,000원</div> 
-			     </div>  
+ 	 <div class = "title">	
+	    <div id = "bar1">
+	        <ul>
+	            <li class = "snack"><a href="/HumanCinema/menu/snack.do?menu_type=10">스낵</a></li>
+	            <li><a href="/HumanCinema/menu/drink.do?menu_type=20">음료</a></li>
+	            <li><a href="/HumanCinema/menu/card.do?menu_type=30">영화관람권</a></li>
+	            
+	        </ul>
+	        
+		    <div id = "bar2"> 
+		    	<ul>
+		    		<li><a href= "/HumanCinema/menu/cart.do">장바구니</a></li>
+		      	</ul>
 		    </div>
-		 	<div id = "menu2">
-				<h3>스낵</h3>
-				<hr>
-				 <div class="menu">
-			            <div class="img"><img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16751302789660.jpg" width="200px" height= "200px";>
-			            <div class="name">칠리치즈나쵸<div> 
-			            <div class = "price">4,900원</div>  
-			     </div>  
-		     </div>
-		     	<div id = "menu3">
-				<h3>음료</h3>
-				<hr>
-				 <div class="menu">
-			            <div class="img"><img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16680718728370.jpg" width="200px" height= "200px";>
-			            <div class="name">탄산음료(M)<div> 
-			            <div class = "price">2,500원</div>  
-			     </div>  
-		     </div>
-		</div>
-	</c:forEach>
+		 </div>
+			
+			
+		
+		<div>	  
+		<span id = "text1">스낵</span>
+		출출할땐 다양한 스낵이 정답이죠
+		</div>		
+		
+		<hr>	
+		
+		
+		
+
+		<c:forEach var = "snack" items = "${snack_list }">
+			<div class = "menu">
+			         <div class = "snack_image"><a href = "/HumanCinema/menu/info_page.do?menu_id=${snack.menu_id }"><img src="${snack.image }" width="300px" height= "300px";></a></div> 
+			         <div class = "snack_name">${snack.name }</div> 
+			         <div class = "snack_price"> ${snack.price}</div> 
+			          
+			 </div>
+       	 </c:forEach>
+		
+		
+		  
+	</div>
+	
 </body>
 </html>

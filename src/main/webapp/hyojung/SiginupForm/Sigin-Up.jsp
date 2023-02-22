@@ -8,54 +8,6 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
-    * {top: 0; margin: 0; box-sizing: border-box;}
-    a { text-decoration: none; }
-    li { list-style: none; }
-    /* h1, h2, h3, h4, h5, h6, p {margin: 10px 5px;} */
-    /* h1 { font-size: 1.8em; } */
-
-    body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #58666e;
-        background-color: #f0f3f4;
-        -webkit-font-smoothing: antialiased;
-        /* iphone font size 변경 방지 */
-        -webkit-text-size-adjus: 100%;  
-    }
-
-    .wrap {
-        width: 100%; 
-        margin-top: 80px;
-        position:relative;
-        /* background:url() no-repeat center; */
-    }
-    header {
-        width: 100%;
-        height: 80px;
-        z-index: 2000;
-        position: fixed;/*z-index 값으로 fixed*/
-        background-color: #fff;
-        /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05),
-                       0 1px 0 rgba(0, 0, 0, 0.05); */
-    }
-    .logo {
-      display: inline-block;
-      height: 5px;
-      margin: 12px 0 12px 25px;}
-    .logo > img { height: 50px;}
-    nav {
-    	display: flex;
-        justify-content: space-around;
-        }
-    .nav-items {margin-right: 20px;}
-    .nav-items > li {display: inline-block;}
-    .nav-items > li > a {
-      /* for Vertical Centering */
-      line-height: 80px;
-      padding: 0 30px;
-      color: rgb(0, 0, 0);}
-    .nav-items > li > a:hover {color: gold;}
-
     .login {
         height: 100vh;
         width: 100%;
@@ -95,17 +47,29 @@
         text-align: center; 
         margin-bottom: 50px;
     }
-    .right_login input {
+     .right_login input {
         border: none;
-        border-bottom: 1px solid darkred;
-        margin: 10px 0px;
-        padding: 10px 10px;
-        width: 100%;
-        overflow: hidden;
-        background: transparent;
-        font-weight: 550;
-        font-size: 16px;
+        outline: none;
     }
+    .inputSet{
+        font-size: 15px;
+        font-weight: 500;
+        align-items: center;
+        margin: 10px 0px;
+        padding: 10px;
+        padding-left: 20px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        text-align: left;
+    }
+    .check{
+        font-size: 12px;
+        border-radius: 50%;
+        border: none;
+        color: #fff;
+        background: darkred;
+    }
+
     .right{background: linear-gradient(-45deg, #dcd7e0, #fff);}
 
     .submit {
@@ -153,8 +117,38 @@
             };
             setInterval(fnSlide, 3000);
         }
+        
+         function fn_process(){
+             var _id=$("#inputId").val();
+             if(_id==''){
+            	 return;
+             }
+             $.ajax({
+                type:"post",
+                async:true,  
+                url:"http://localhost:8080/HumanStudy/user",
+                dataType:"text",
+                data: {id:_id},
+                success:function (data,textStatus){
+             	   //alert(data);
+             	   
+                   if(data=='usable'){
+                	   $('#message').text("사용할 수 있는 ID입니다.");
+                	   $('#check').prop("disabled", true);
+                   }else{
+                	   $('#message').text("사용할 수 없는 ID입니다.");
+                   }
+                },
+                error:function(data,textStatus){
+                   alert("에러가 발생했습니다.");ㅣ
+                },
+                complete:function(data,textStatus){
+                   //alert("작업을완료 했습니다");
+                }
+             });  //end ajax	 
+          }	
 
-        function fn_joinMember() {
+        function fn_process() {
                 var inputId = document.getElementById("inputId").value;
                 var inputPwd1 = document.getElementById("inputPwd1").value;
                 var inputPwd2 = document.getElementById("inputPwd2").value;
@@ -185,23 +179,14 @@
                     alert("회원가입을 환영합니다.");
                     document.submit.submit(); 
                 }
-            };   
+            }
+        
+        	
+        
     </script>
 </head>
 <body>
-<div class="wrap">
-    <header>
-        <nav id="nav">
-        <ul class="nav-items">
-            <li><a href="#">영화</a></li>
-            <li><a href="#">예매</a></li>
-            <li><a href="#">극장</a></li>
-            <a class="logo" href="#home">로고</a>
-            <li><a href="#">스토어</a></li>
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">로그인</a></li>
-        </ul></nav>
-    </header></div>
+<jsp:include page="/SiginupForm/Header.jsp"></jsp:include>
     <section class="login">
         <div class="login_box">
             <div class="left_img">
@@ -222,17 +207,20 @@
             <div class="right_login">
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
-                <form action=""  method="get" >
-                    <div class="join_login">
-                            <input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
-                            <input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" >
-                            <input id="inputPwd2" type="password" name="pwd2" placeholder="비밀번호를 한번 더 입력하세요" maxlength="20" >
-                            <input id="inputName" type="text" name="name" placeholder="이름을 입력하세요">
-                            <input id="inputName" type="text" name="phoneNumber" placeholder="전화번호를 입력하세요">
-                        </div>
-                        <button class="submit" onclick="fn_joinMember()">회원가입</button><br>
-                        <div class="footer_link"><a href="http://localhost:8080/HomePage/Sign-In.jsp">바로 로그인 하기 &#128153;</a></div>
-                    </div>
+                <form method="post" action="/HumanStudy/SiginupForm/UserAction.jsp">
+                  <div class="join_login">
+                     <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
+                     <button class="check">&#128504;</button></div>
+                     <div id="message"></div>
+                     <div class="inputSet"><input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
+                     <div class="inputSet"><input id="inputPwd2" type="password" name="pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
+                     <div class="inputSet"><input id="inputName" type="text" name="name" placeholder="이름을 입력하세요"></div>
+                     <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일를 입력하세요"></div>
+                 </div>
+                 <button class="submit" onclick="fn_process()">회원가입</button><br>
+                 <div class="footer_link"><a href="#">바로 로그인 하기 &#128153;</a></div>
+                 </form>
+               </div>
             </div>
         </div>
     </section>       

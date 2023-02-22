@@ -7,6 +7,8 @@ public class MenuVO {
 	private int price;
 	private String image;
 	private int menu_type;
+	private int amount;
+	private int total;
 	
 	
 	
@@ -14,11 +16,21 @@ public class MenuVO {
 		System.out.println("MenuVO 생성자 호출"); 
 	}
 	
-	public MenuVO(String name,int price,String image) {
+	public MenuVO(String name,int price,String image, String menu_id) {
 		
 		this.name = name;
 		this.price = price;
 		this.image = image;
+		this.menu_id = menu_id;
+	}
+	public MenuVO(String name,int price,String image, String menu_id, int amount, int total) {
+		
+		this.name = name;
+		this.price = price;
+		this.image = image;
+		this.menu_id = menu_id;
+		this.amount = amount;
+		this.total = total;
 	}
 
 	
@@ -69,6 +81,21 @@ public class MenuVO {
 
 	public void setMenu_type(int menu_type) {
 		this.menu_type = menu_type;
+	}
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 }

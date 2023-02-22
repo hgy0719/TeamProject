@@ -25,6 +25,7 @@
 	    배우 : <input type="text" name="actor"> <br>
 	    포스터(배경) : <input type="text" name="poster_back"> <br>
 	    포스터(메인) : <input type="text" name="poster_main"> <br>
+
 	    <input type="hidden" name="command" value="add">
 	    <input type="submit">
 	    <input type="reset">
