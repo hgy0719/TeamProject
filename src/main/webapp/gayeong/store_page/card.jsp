@@ -201,7 +201,7 @@
 		영화, 모두에게 즐거운 경험
 		</div>		
 		
-		<hr>	
+		<hr style="border: solid 1px black;">	
 		
 		
 		

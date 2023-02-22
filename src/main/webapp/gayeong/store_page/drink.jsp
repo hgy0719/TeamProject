@@ -194,7 +194,7 @@
 		탄산부터 에이드까지, 마시는 즐거움!
 		</div>		
 		
-		<hr>	
+		<hr style="border: solid 1px black;">	
 		
 		
 		

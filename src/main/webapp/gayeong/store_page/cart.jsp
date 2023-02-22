@@ -244,8 +244,8 @@
 
 		</c:forEach>
 	
-		<input class = "bt1" type = "submit" value = "결제하기">
-
+		<input class = "bt1" type = "submit" value = "결제하기"> 
+		
 </div>	
 </body>
 </html>

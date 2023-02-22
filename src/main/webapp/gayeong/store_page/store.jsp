@@ -197,7 +197,7 @@
 		<div class = "main">
 			
 				<h2>영화관람권</h2>
-				<hr>
+				<hr style="border: solid 1px black;">
 			<div id = "menu1">
 				<c:forEach 	var = "card" items = "${store_list_card }">
 				 	<div class="menu">
@@ -212,7 +212,7 @@
 		 
 		 	<div id = "menu2">
 				<h2>스낵</h2>
-				<hr>
+				<hr style="border: solid 1px black;">
 			
 				<c:forEach 	var = "snack" items = "${store_list_snack }" end = "2"> 
 				
@@ -229,7 +229,7 @@
 		    
 		     	<div id = "menu3">
 				<h2>음료</h2>
-				<hr>
+				<hr style="border: solid 1px black;">
 				<c:forEach 	var = "drink" items = "${store_list_drink }" end = "2">
 				 	<div class="menu">
 			            <div class="img"><a href="/HumanCinema/menu/info_page.do?menu_id=${drink.menu_id }"><img src="${drink.image }" width="250px" height= "250px"></a></div>

@@ -196,7 +196,7 @@
 		출출할땐 다양한 스낵이 정답이죠
 		</div>		
 		
-		<hr>	
+		<hr style="border: solid 1px black;">	
 		
 		
 		
