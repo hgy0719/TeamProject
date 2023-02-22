@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-@WebServlet("/movie/*")
+@WebServlet("/movie1/*")
 public class MovieServlet extends HttpServlet {
 
 	MovieService movieService;
