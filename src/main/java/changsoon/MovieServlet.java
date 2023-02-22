@@ -31,15 +31,19 @@ public class MovieServlet extends HttpServlet {
 		doHandle(request, response);
 	}
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String nextPage = null;
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String action = request.getPathInfo();
+		System.out.println("action : " + action);
 		// 좋아요 서블릿
 		String command1 = request.getParameter("command");
-		String a = request.getParameter("like_num");
-		if(a != null) {
-			int like_num = Integer.parseInt(a);
+		String articleNO1 = request.getParameter("articleNO1");
+		if(articleNO1 != null) {
+			int articleNO = Integer.parseInt(articleNO1);
 			if(command1 == null || command1.equals("like_it")) {
-				movieService.uplike(like_num);
-				int like = movieService.selike(like_num+1);
+				movieService.uplike(articleNO);
+				int like = movieService.selike(articleNO);
 				System.out.println(like);
 				request.setAttribute("like", like);
 				JSONObject obj = new JSONObject();
@@ -52,11 +56,7 @@ public class MovieServlet extends HttpServlet {
 		
 		
 		
-		String nextPage = null;
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		String action = request.getPathInfo();
-		System.out.println("action : " + action);
+		
 		
 		
 //		영화 출력
@@ -93,7 +93,7 @@ public class MovieServlet extends HttpServlet {
 			Map<String, Integer> pagingMap = new HashMap<String, Integer>();
 			pagingMap.put("section", section);
 			pagingMap.put("pageNum", pageNum);
-			Map articlesMap = movieService.list4(pagingMap);
+			Map articlesMap = movieService.list4(pagingMap, Integer.parseInt(articleNO));
 			articlesMap.put("section", section);
 			articlesMap.put("pageNum", pageNum);
 			request.setAttribute("articlesMap", articlesMap);
@@ -178,7 +178,7 @@ public class MovieServlet extends HttpServlet {
 			String comment_text = request.getParameter("comment_text");
 			String comment_id = request.getParameter("comment_id");
 			String comment_rate = request.getParameter("comment_rate");
-			movieService.upComment(comment_id, comment_text, comment_rate);
+			movieService.upComment(Integer.parseInt(articleNO), comment_id, comment_text, comment_rate);
 			
 			String _section = request.getParameter("section");
 			String _pageNum = request.getParameter("pageNum");
@@ -187,7 +187,7 @@ public class MovieServlet extends HttpServlet {
 			Map<String, Integer> pagingMap = new HashMap<String, Integer>();
 			pagingMap.put("section", section);
 			pagingMap.put("pageNum", pageNum);
-			Map articlesMap = movieService.list4(pagingMap);
+			Map articlesMap = movieService.list4(pagingMap, Integer.parseInt(articleNO));
 			articlesMap.put("section", section);
 			articlesMap.put("pageNum", pageNum);
 			request.setAttribute("articlesMap", articlesMap);
@@ -208,7 +208,7 @@ public class MovieServlet extends HttpServlet {
 			int commentNO = Integer.parseInt(request.getParameter("commentNO"));
 			String comment_text = request.getParameter("recomment_text");
 			String comment_id = request.getParameter("recomment_id");
-			movieService.upComment2(commentNO, comment_id, comment_text);
+			movieService.upComment2(Integer.parseInt(articleNO), commentNO, comment_id, comment_text);
 			
 			String _section = request.getParameter("section");
 			String _pageNum = request.getParameter("pageNum");
@@ -217,7 +217,7 @@ public class MovieServlet extends HttpServlet {
 			Map<String, Integer> pagingMap = new HashMap<String, Integer>();
 			pagingMap.put("section", section);
 			pagingMap.put("pageNum", pageNum);
-			Map articlesMap = movieService.list4(pagingMap);
+			Map articlesMap = movieService.list4(pagingMap, Integer.parseInt(articleNO));
 			articlesMap.put("section", section);
 			articlesMap.put("pageNum", pageNum);
 			request.setAttribute("articlesMap", articlesMap);

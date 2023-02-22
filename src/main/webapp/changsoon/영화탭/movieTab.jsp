@@ -231,31 +231,30 @@
 		            }
 		        })
 		    }
-		   	for(let i=1; i<20; i++){
-		    	document.querySelector("#like_btn").addEventListener("click", function(){
+		    
+		    
+		    for (let k = 1; k < 5; k++) {
+		    	document.querySelector("#like_btn"+k).addEventListener("click", function(){
 		       	 $.ajax({
-		    		    url: "../movie",
+		    		    url: "../movie1",
 		    		    type: "POST",
 		    		    dataType: "html",
 		    		   	data:{
 		    	            command : $('#command').val(),
-		    	            like_num : $('#like_num').val()
+		    	            articleNO1 : $('#articleNO1'+k).val()
 		    	        },
 		    		    success:function(data){      					
 		    		    	let a = JSON.parse(data).like;
 		    		    	console.log(a);
-		    		    	alert("좋아요가 반영되었습니다!");
 		    		    	 /* 화면에 표시하는 방법  */
-		    		    	$("#like_btn").val("좋아요 "+a);
+		    		    	$("#like_btn"+k).val("좋아요 "+a);
 		    		    },   
 		    		    error: 
 		    		    function (request, status, error){  
-		    		      alert("ajax실패")                  
 		    		    }
 		    		  });
 		       })
 		    }
-		    
 		    
 		    /* document.querySelector("#search_btn").addEventListener("click", function(){
 		    	 $.ajax({
@@ -337,6 +336,7 @@
 	</div>
 	<div class="a1">
 		<c:forEach var="movie" items="${movieList }" varStatus="status">
+		<input id="count_value" type="hidden" value="1">
 			<c:if test="${movie.opendate < 20230217 }">
 				<div class="show1">
 				    <div class="image">
@@ -359,8 +359,9 @@
 					<div class="btn1">
 					  <form id="like_form">
 					  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+					  	<input id="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
 					  	<input id="command" type="hidden" name="command" value="like_it">
-					  	<input id="like_btn" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
+					  	<input id="like_btn${status.count }" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
 					  	<a href="changsoon/영화탭/예매탭.jsp"><input id="btn2"  type="button" value="예매"></a>
 					  </form>
 					     <!-- 예매버튼을 눌렀을때 각 영화의 값을 예매탭으로 전달해서 예매탭에서 getparameter할 수 있게만들기 -->

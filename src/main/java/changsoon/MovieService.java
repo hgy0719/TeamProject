@@ -28,9 +28,9 @@ public class MovieService {
 	
 	
 //	페이징 기능
-	public Map list4(Map pagingMap) {
+	public Map list4(Map pagingMap, int articleNO) {
 		Map articlesMap = new HashMap();
-		List<MovieVO> articlesList = movieDAO.listMovies(pagingMap);
+		List<MovieVO> articlesList = movieDAO.listMovies(pagingMap, articleNO);
 		int totArticles = movieDAO.selectTotArticles();
 		articlesMap.put("articlesList", articlesList);
 		articlesMap.put("totArticles", totArticles);
@@ -57,11 +57,11 @@ public class MovieService {
 		movieDAO.delMovie(title);
 	}
 	
-	public void uplike(int like_num) {
-		movieDAO.update_Like(like_num);
+	public void uplike(int articleNO) {
+		movieDAO.update_Like(articleNO);
 	}
-	public int selike(int like_num) {
-		int like = movieDAO.select_Like(like_num);
+	public int selike(int articleNO) {
+		int like = movieDAO.select_Like(articleNO);
 		return like;
 	}
 	
@@ -72,12 +72,12 @@ public class MovieService {
 	}
 	
 	
-	public void upComment(String comment_id, String comment_text, String comment_rate) {
-		movieDAO.upComment(comment_id, comment_text, comment_rate);
+	public void upComment(int articleNO, String comment_id, String comment_text, String comment_rate) {
+		movieDAO.upComment(articleNO, comment_id, comment_text, comment_rate);
 	}
 	
-	public void upComment2(int upComment2, String comment_id, String comment_text) {
-		movieDAO.upComment2(upComment2, comment_id, comment_text);
+	public void upComment2(int articleNO, int upComment2, String comment_id, String comment_text) {
+		movieDAO.upComment2(articleNO, upComment2, comment_id, comment_text);
 	}
 	
 	

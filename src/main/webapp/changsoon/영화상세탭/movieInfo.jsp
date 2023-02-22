@@ -12,11 +12,16 @@
 <c:set var = "total" value = "0" />
 <c:forEach var="result" items="${articlesList}" varStatus="status">     
 <c:set var= "total" value="${total + result.comment_rate}"/>
+
 </c:forEach>
 
+<c:set var = "total1" value = "0" />
+<c:forEach var="count1" items="${articlesList }" varStatus="status">
+<c:set var= "total1" value="${status.count }"/>
+</c:forEach>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +32,6 @@
 #wrap {
     width: 1300px;
     height: 2000px;
-    border: 1px solid black;
     margin : 0 auto
     
 }
@@ -107,13 +111,11 @@
 }
 
 #info2{
-    border: 1px solid black;
     height: 300px;
     padding: 40px;
 }
 
 #comment{
-    border: 1px solid black;
     padding: 40px;
     height: 700px;
 }
@@ -207,8 +209,20 @@
 
 }
 
-.no-uline{text-decoration:none;}
-.sel-page{text-decoration:none; color:red;}
+.no-uline{text-decoration:none;
+display:inline-block;
+}
+
+
+.sel-page{text-decoration:none; color:red;
+display:inline-block;
+}
+
+#paging{
+	text-align:center;
+}
+
+
 
 .c_total{
 	font-size:20px;
@@ -226,9 +240,16 @@
 	vertical-align:top;
 }
 
+.comment_wrap2{
+	background-color:rgb(227, 227, 227);
+	margin-bottom: 20px;
+	
+}
+
+
 .a{
-	width:100px;
-	height:105px;
+	width:132px;
+	height:100px;
 }
 .b{
 	width:800px;
@@ -244,7 +265,6 @@
 	height:105px;
 }
 .qq{
-	border-bottom:1px solid black;
 }
 
 .qq > div{
@@ -255,7 +275,7 @@
 	margin:0 auto;
 }
 .d{
-	width:100px;
+	width:140px;
 	height:105px;
 	line-height: 100px;
 }
@@ -280,6 +300,7 @@
 }
 .i{
 	width:100px;
+	float:right;
 }
 
 
@@ -304,6 +325,31 @@
 		        }
 		    });
 		});
+		
+		
+		for (let k = 1; k < 5; k++) {
+	    	document.querySelector("#like_btn"+k).addEventListener("click", function(){
+	       	 $.ajax({
+	    		    url: "../movie1",
+	    		    type: "POST",
+	    		    dataType: "html",
+	    		   	data:{
+	    	            command : $('#command').val(),
+	    	            articleNO1 : $('#articleNO1'+k).val()
+	    	        },
+	    		    success:function(data){      					
+	    		    	let a = JSON.parse(data).like;
+	    		    	console.log(a);
+	    		    	 /* 화면에 표시하는 방법  */
+	    		    	$("#like_btn"+k).val("좋아요 "+a);
+	    		    },   
+	    		    error: 
+	    		    function (request, status, error){  
+	    		    }
+	    		  });
+	       })
+	    }
+		
 	}
 </script>
 </head>
@@ -328,14 +374,21 @@
 	    </form>
 	    
         <!-- 영화이미지 div -->
-        <c:forEach var="movie" items="${movieList }">
+        <c:forEach var="movie" items="${movieList }" varStatus="status">
         	
 	        <div id="info">
 	        	<div id="back"><img src="${movie.poster_back }"></div>
 	            <div id="left">
 	                <div id="title1">${movie.title}</div>
 	                <div id="title2">${movie.title_en}</div>
-	                <input class="btn0" type="button" value="좋아요">
+	                
+	                <form id="like_form">
+					  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+					  	<input id="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+					  	<input id="command" type="hidden" name="command" value="like_it">
+					  	<input id="like_btn${status.count }" class="btn0" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
+				  	</form>
+				  	
 	                <div class="rate">평점 : ${String.format("%.1f", (total / totArticles))}</div>
 	            </div>
 	            <div id="right">
@@ -364,50 +417,50 @@
         	
         <!-- 댓글영역 -->
   				<div id="comment">
-            	<div class="c_total">${movie.title}에 대한 ${totArticles }개의 이야기가 있어요!</div>
+            	<div class="c_total">${movie.title}에 대한 ${total1 }개의 이야기가 있어요!</div>
 	            <div class="comment_wrap1">
 	            	<h3>관람평쓰기</h3>
-					<form method="post" action="../movie/reply.do">
+					<form method="post" action="../movie1/reply.do">
 						<input type="hidden" name="articleNO" value="${movie.articleNO }">
-						<div><input class="a" type="button" name="comment_id" value="로그인"></div>
-						<div><input class="b" type="text" name = "comment_text" placeholder="  관람평을 입력해주세요"></div>
+						<div><input class="a" type="text" name="comment_text" placeholder="       아이디 입력"></div>
+						<div><input class="b" type="text" name = "comment_id" placeholder="  관람평을 입력해주세요"></div>
 						<div><input class="c" type="number" min="0" max="10" name = "comment_rate" placeholder="  평점입력(0~10)"></div>
 						<div><input id="comment_btn" type="submit" value="관람평쓰기"></div>
 					</form>
 				</div>
+				<br>
+				<h3>댓글목록</h3>
 				<c:forEach var="comment" items="${articlesList }">
-		            <div class="comment_wrap2" style="border:1px solid black">
-		            	<div class="qq">
-			            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
-			            	<div class="d">${comment.comment_id }</div>
-							<div class="e">${comment.comment_text}</div>
-							<div class="f">평점: ${comment.comment_rate}</div>
-							<div class="i">
-								<input class="g" type="button" value="수정">
-								<input class="h" type="button" value="삭제">
+		            
+			            <div class="comment_wrap2">
+			            	<div class="qq">
+				            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
+				            	<div class="d">${comment.comment_id }</div>
+								<div class="e">${comment.comment_text}</div>
+								<div class="f">평점: ${comment.comment_rate}</div>
+								<div class="i">
+									<input class="g" type="button" value="수정">
+									<input class="h" type="button" value="삭제">
+								</div>
+								
 							</div>
-							
-						</div>
-		            	<br>
-		            	<br>
-		            	대댓글
-		            	<div>
-	        				<form method="post" action="../movie/reply2.do">
-								유저이름 : (db에서 유저id불러오기)
-								<input type="hidden" name="articleNO" value="${movie.articleNO }">
-								<input type="hidden" name="commentNO" value="${comment.commentNO }">
-								<div><input type="text" name="recomment_id" placeholder="아이디입력"></div>
-								<div><input type="text" name = "recomment_text" placeholder="대댓글입력"></div>
-								<div><input id="recomment_btn" type="submit" value="대댓글입력"></div>
-							</form>
-		            	</div>
-		            </div>
+			            	대댓글 작성
+			            	<div>
+		        				<form method="post" action="../movie1/reply2.do">
+									<input type="hidden" name="articleNO" value="${movie.articleNO }">
+									<input type="hidden" name="commentNO" value="${comment.commentNO }">
+									<div><input type="text" name="recomment_id" placeholder="아이디입력"></div>
+									<div><input type="text" name = "recomment_text" placeholder="대댓글입력"></div>
+									<div><input id="recomment_btn" type="submit" value="대댓글입력"></div>
+								</form>
+			            	</div>
+			            </div>
             	</c:forEach>
             	
             	
             	
 		            	<!-- 페이징 -->
-		        	<div style="height:100px">
+		        	<div id="paging" style="height:100px">
 			        	<c:if test="${totArticles != null }">
 			        		<c:choose>
 			        			<c:when test="${totArticles > 100 }">
