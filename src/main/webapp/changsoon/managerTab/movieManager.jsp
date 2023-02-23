@@ -9,16 +9,17 @@ contentType="text/html; charset=UTF-8"
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지(메인)</title>
-   	<script  type="text/javascript">
+   	<script>
 	    window.onload = () => {
 	    	document.querySelector("#add").addEventListener("click",function(){
-	            location.href="../changsoon/관리자탭/movieAdd.jsp"
+	            
+	    		location.href="../changsoon/managerTab/movieAdd.jsp"
 	        })
 	    }
 	</script>
@@ -48,7 +49,7 @@ contentType="text/html; charset=UTF-8"
     %>
     	<hr>
 	    <div><%=getTitle%></div>
-		<form name=updateForm action="../changsoon/관리자탭/movieUpdate.jsp" method="post">
+		<form name=updateForm action="../changsoon/managerTab/movieUpdate.jsp" method="post">
 	   		<input type="hidden" value="<%=getTitle%>" name="title">
 	   		<input type="hidden" value="<%=getTitle_en%>" name="title_en">
 	   		<input type="hidden" value="<%=getOpendate%>" name="opendate">
@@ -61,7 +62,7 @@ contentType="text/html; charset=UTF-8"
 	   		<input type="hidden" value="<%=getPoster_main%>" name="poster_main">
 	   		<input type="submit" value="수정">		
 		</form>
-		<form name=deleteForm action="../movie/movieManager.do" method="post">
+		<form name=deleteForm action="../movie1/movieManager.do" method="post">
 			<input type="hidden" value="<%=getTitle%>" name="title">
 			<input type="hidden" name="command" value="del">
 			<input type="submit" value="삭제">
