@@ -1,5 +1,7 @@
 package UserPage;
 
+import java.util.List;
+
 public class UserService {
 	
 	//회원가입(mvc pattern2)
@@ -9,11 +11,12 @@ public class UserService {
 		actSigin.listUser();
 	}
 	//회원리스트 생성
-	public void serList() {
+	public List<UserVO>  serList() {
 		System.out.println("serList가 VO를 다녀왔습니다");
 		UserDAO addlist = new UserDAO();
-		addlist.addUser(null);
-
+		List<UserVO>  list = addlist.listUser();
+		
+		return list;
 	}
 	
 	//로그인(mvc patter2)

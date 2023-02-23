@@ -1,6 +1,5 @@
 package UserPage;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,7 +10,6 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 	
 	public class UserDAO {
@@ -51,6 +49,7 @@ import javax.sql.DataSource;
                con.close();
                rs.close();
             } catch (SQLException e) {
+            	System.out.println("UserDAO의");
                e.printStackTrace();
             }
             return result;
@@ -61,7 +60,7 @@ import javax.sql.DataSource;
 			try {
 				Connection con = dataFactory.getConnection();
 				String id = m.getId();
-				String pwd = m.getPwd();
+				String pwd = m.getPwd1();
 				String name = m.getName();
 				String email = m.getEmail();
 				String query = "insert into t_user";
@@ -81,12 +80,12 @@ import javax.sql.DataSource;
 			}
 		}
 		//회원가입 정보를 가지고 UserList 생성(UserAction.jsp)
-		public List<UserVO> listUser() {
+		public List<UserVO> listUser( ) {
 			System.out.println("UserDAO의 listUser를 실행함");
 			List<UserVO> list = new ArrayList<UserVO>();
 			try {
 				Connection con = dataFactory.getConnection();
-				String query = "select * from t_user order by joinDate desc ";
+				String query = "select * from t_user order by name desc";
 				System.out.println("prepareStatememt: " + query);
 				pstmt = con.prepareStatement(query);
 				ResultSet rs = pstmt.executeQuery();
@@ -95,13 +94,11 @@ import javax.sql.DataSource;
 					String pwd = rs.getString("pwd");
 					String name = rs.getString("name");
 					String email = rs.getString("email");
-					Date joinDate = rs.getDate("joinDate");
 					UserVO vo = new UserVO();
 					vo.setId(id);
 					vo.setPwd(pwd);
 					vo.setName(name);
 					vo.setEmail(email);
-					vo.setJoinDate(joinDate);
 					list.add(vo);
 				}
 				rs.close();
@@ -115,25 +112,25 @@ import javax.sql.DataSource;
 		}
 		
 		//회원가입 중복확인
-		public boolean overlappedID(String id){
-			boolean result = false;
-			try {
-				con = dataFactory.getConnection();
-				String query = "select decode(count(*),1,'true','false') as result from t_user";
-				query += " where id=?";
-				System.out.println("prepareStatememt: " + query);
-				pstmt = con.prepareStatement(query);
-				pstmt.setString(1, id);
-				ResultSet rs = pstmt.executeQuery();
-				rs.next();
-				result = Boolean.parseBoolean(rs.getString("result"));
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			return result;
-		}
+//		public boolean overlappedID(String id){
+//			boolean result = false;
+//			try {
+//				con = dataFactory.getConnection();
+//				String query = "select decode(count(*),1,'true','false') as result from t_user";
+//				query += " where id=?";
+//				System.out.println("prepareStatememt: " + query);
+//				pstmt = con.prepareStatement(query);
+//				pstmt.setString(1, id);
+//				ResultSet rs = pstmt.executeQuery();
+//				rs.next();
+//				result = Boolean.parseBoolean(rs.getString("result"));
+//				pstmt.close();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//			return result;
+//		}
 
 
 
