@@ -1,4 +1,4 @@
-package UserPage;
+package hyojeong;
 
 import java.util.List;
 
@@ -18,7 +18,6 @@ public class UserService {
 		
 		return list;
 	}
-	
 	//로그인(mvc patter2)
 	public boolean servlog(String id, String pwd) {
 		System.out.println("id, pwd 값을 들고 왔는지 확인");
@@ -27,7 +26,12 @@ public class UserService {
 		
 		return result;
 	}
-	
+	//마이페이지
+//		public void serPage(String pwd, String name, String email) {
+//			System.out.println("serPage이 VO를 다녀왔습니다");
+//			MypageDAO actpage= new MypageDAO();
+//			String result = actpage.
+//		}
 	
 	
 }

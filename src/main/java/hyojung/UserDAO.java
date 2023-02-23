@@ -1,4 +1,4 @@
-package UserPage;
+package hyojeong;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -49,7 +49,7 @@ import javax.sql.DataSource;
                con.close();
                rs.close();
             } catch (SQLException e) {
-            	System.out.println("UserDAO의");
+            	System.out.println("UserDAO의 로그인이 안되는데?");
                e.printStackTrace();
             }
             return result;
@@ -109,6 +109,42 @@ import javax.sql.DataSource;
 				e.printStackTrace();
 			}
 			return list;
+		}
+		
+		public void update(UserVO userVO) {
+			String id = userVO.getId();
+			String pwd = userVO.getPwd();
+			String name = userVO.getName();
+			String email = userVO.getEmail();
+			try {
+				con = dataFactory.getConnection();
+				String query = "update t_user SET pwd=?, name=?, email=? where id=?";
+				System.out.println("update 결과 값:" + query);
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1,pwd);
+				pstmt.setString(2,name);
+				pstmt.setString(3,email);
+				pstmt.setString(4,id);
+				pstmt.executeUpdate();
+				pstmt.close();
+				con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
+		//회원 삭제
+		public void delete(String id) {
+			try {
+				con = dataFactory.getConnection();
+				String query = "delete from t_user where id=?";
+				System.out.println(query);
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//회원가입 중복확인

@@ -1,4 +1,4 @@
-package hyojeong.UserPage;
+package UserPage;
 
 import java.sql.Date;
 
