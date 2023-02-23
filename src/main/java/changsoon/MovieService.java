@@ -16,6 +16,12 @@ public class MovieService {
 		List<MovieVO> movieList = movieDAO.listMovies();
 		return movieList;
 	}
+	
+	public List<MovieVO> listTheater() {
+		List<MovieVO> listTheater = movieDAO.listTheater();
+		return listTheater;
+	}
+	
 	public List<MovieVO> list0(int articleNO) {
 		List<MovieVO> movieList0 = movieDAO.listMovies2(articleNO);
 		return movieList0;

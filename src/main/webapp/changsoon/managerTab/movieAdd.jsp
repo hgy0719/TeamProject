@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <h1>관리자 페이지(추가)</h1>
     <h1>영화추가</h1>
     <form action="../../movie/movieManager.do" method="post">
+    	영화번호 : <input type="text" name="title"> <br>
 	    타이틀 : <input type="text" name="title"> <br>
 	    타이틀(영문) : <input type="text" name="title_en"> <br>
 	    관람연령 : <input type="text" name="age"> <br>

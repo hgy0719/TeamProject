@@ -2,7 +2,6 @@ package changsoon;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
@@ -31,6 +31,41 @@ public class MovieServlet extends HttpServlet {
 		doHandle(request, response);
 	}
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+//		로그인 세션
+		HttpSession session = request.getSession();
+//		request.getParameter("")에 id 전달하는 name값
+		String id = request.getParameter("");
+//		request.getParameter("")에 pwd 전달하는 name값
+		String pwd = request.getParameter("");
+		
+		if(session.isNew()) {
+			if(id != null) {
+				session.setAttribute("id", pwd);
+			} else {
+				session.invalidate();
+			}
+		} else {
+			id = (String) session.getAttribute("");
+			if(id != null && id.length() != 0) {
+				System.out.println("로그인성공");
+			} else {
+				session.invalidate();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		String nextPage = null;
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -162,7 +197,7 @@ public class MovieServlet extends HttpServlet {
 			} else if(command != null && command.equals("sel")) {
 				
 			}
-			nextPage="/changsoon/관리자탭/movieManager.jsp";
+			nextPage="/changsoon/managerTab/movieManager.jsp";
 		}
 		
 		
@@ -230,6 +265,13 @@ public class MovieServlet extends HttpServlet {
 			nextPage="/changsoon/영화상세탭/movieInfo.jsp";
 		}
 		
+		
+		if(action.equals("/ticket.do")) {
+			request.setAttribute("movieList", movieService.list1());
+			request.setAttribute("movieList2", movieService.list2());
+			request.setAttribute("listTheater", movieService.listTheater());
+			nextPage="/changsoon/예매탭/ticket.jsp";
+		}
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);

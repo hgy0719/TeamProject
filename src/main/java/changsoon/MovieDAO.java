@@ -78,6 +78,30 @@ public class MovieDAO {
 		return list;
 	}
 	
+	
+//	극장테이블 출력
+	public List<MovieVO> listTheater(){
+		List<MovieVO> list = new ArrayList<MovieVO>();
+		try {
+			con = dataFactory.getConnection();
+			String query = "select * from theater";
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String theater_name = rs.getString("theater_name");
+				MovieVO vo = new MovieVO();
+				vo.setTheater_name(theater_name);
+				list.add(vo);
+			}
+			con.close();
+			rs.close();
+			pstmt.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 //	articleNO별 테이블 출력
 	public List<MovieVO> listMovies2(int articleNO0){
 		List<MovieVO> list = new ArrayList<MovieVO>();
@@ -526,7 +550,9 @@ public class MovieDAO {
 				int comment_rate = rs.getInt("comment_rate");
 				
 				MovieVO vo = new MovieVO();
-				vo.setCommentNO(articleNO);
+				
+				vo.setLevel(level);
+				vo.setArticleNO(articleNO);
 				vo.setCommentNO(commentNO);
 				vo.setParentNO(parentNO);
 				vo.setComment_text(comment_text);

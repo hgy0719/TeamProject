@@ -122,50 +122,57 @@
 
 
 
- li { list-style: none; }
-    a { text-decoration: none; }
-
-    #wrap2 {
-      width: 100%;
-      /* margin-top = header height */
-      margin-top: 80px; /*상단 탭이랑 사이즈 잘 맞춰야함*/
-    }
-
-    /* Navigation bar */
-    header {
-      /* for sticky header */
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height: 80px;
-      z-index: 2000;
-      background-color: #fff;
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
-    }
-    .logo {
-      display: inline-block;
-      height: 5px;
-      margin: 12px 0 12px 25px;
-    }
-    .logo > img { height: 50px; }
-    nav {
-      display: flex;
-      justify-content: space-around;
-    }
-    .nav-items {margin-right: 20px;
-    }
-    /* nav-items 가로정렬 */
-    .nav-items > li {display: inline-block;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-    .nav-items > li > a {
-      /* for Vertical Centering */
-      line-height: 80px;
-      padding: 0 30px;
-      color: rgba(0, 0, 0, 0.4);
-    }
-    .nav-items > li > a:hover {color: rgba(0, 0, 0, 0.8);}
+/* 상단바 */
+	
+        header{
+            color: white;
+            margin-top: 30px;
+        }
+        .header_list {
+            background-color: black;
+            
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            height: 100px;
+        }
+        .header_list >div{
+            width: 100px;
+            line-height: 100px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .header_list a {
+        	text-decoration:none;
+        	color: white;
+        }
+        #logo_human{
+            width: 150px;
+            height: 100px;
+        }
+        #logo_human img{
+            width: 150px;
+            height: 100px;
+        }
+        
+        .login_signup {
+        	
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            color: white;
+                       
+        }
+        .login_signup div{
+            margin-left: 20px;
+            font-weight: 600;
+            
+        }
+        .login_signup a{
+            text-decoration:none;
+            color: white;
+            
+        }
 
 
 
@@ -264,8 +271,6 @@ display:inline-block;
 	width:100px;
 	height:105px;
 }
-.qq{
-}
 
 .qq > div{
 	display:inline-block;
@@ -302,6 +307,70 @@ display:inline-block;
 	width:100px;
 	float:right;
 }
+
+
+/* 대댓글 폼 */
+.recomment div {
+display:inline-block;
+}
+.recomment{
+	margin-top:20px;
+}
+
+.recomment_l{
+	margin-left:40px;
+}
+
+.recomment_id{
+	width:100px;
+	height:50px;
+}
+
+.recomment_text{
+	width:900px;
+	height:50px;
+}
+
+.recomment_btn{
+	width:100px;
+	height:55px;
+}
+
+
+/* 대댓글 출력 */
+
+/* <div class="comment_wrap22">
+	<div class="qqq">
+       	<div class="recomment_ll">ㄴ[답글]</div>
+       	<div class="dd">${comment.comment_id }</div>
+		<div class="ee">${comment.comment_text}</div>
+		<div class="ii">
+			<input class="gg" type="button" value="수정">
+			<input class="hh" type="button" value="삭제">
+		</div>
+	</div>
+</div> */
+
+.comment_wrap22 {
+	background-color: lightslategrey;
+	margin-left:40px;
+	margin-bottom:10px;
+}
+.qqq div{
+	display:inline-block;
+	line-height:60px;
+	margin-left : 10px;
+	font-size:20px;
+}
+.qqq{
+	height:60px;
+}
+.recomment_ll{
+	font-weight:600;
+	font-size:20px;
+}
+
+
 
 
 </style>
@@ -355,23 +424,42 @@ display:inline-block;
 </head>
 <body>
     <div id="wrap">
-        <form>
-	        <div id="wrap2">
-	            <header>
-	            	<nav id="nav">
-		                <ul class="nav-items">
-		                  <li><a href="#home">영화</a></li>
-		                  <li><a href="#news">예매</a></li>
-		                  <li><a href="#news">극장</a></li>
-		                  <a class="logo" href="#home">로고</a>
-		                  <li><a href="#contact">스토어</a></li>
-		                  <li><a href="#about">고객센터</a></li>
-		                  <li><a href="#about">로그인</a></li>
-		                </ul>
-	               	</nav>
-	        	</header>
-	        </div>
-	    </form>
+    
+        <header>
+		       <div class="header_list">
+		           <div>
+		               <a href="../movie1/movieTab.do">영화</a>
+		           </div>
+		           <div>
+		               <a href="">예매</a>
+		           </div>
+		           <div>
+		               <a href="">극장</a>
+		           </div>
+		           <div id="logo_human">
+		           		<a href="../movie1/main.do">
+		               		<img src="../changsoon/image/logo.png">
+		               </a>
+		           </div>
+		           <div>
+		               <a href="">스토어</a>
+		           </div>
+		           <div>
+		               <a href="">이벤트</a>
+		           </div>
+		           <div>
+		               <a href="">고객센터</a>
+		           </div>
+		       </div>
+		       <div class="login_signup">
+		           <div>
+		               <a href="">로그인</a>
+		           </div>
+		           <div>
+		               <a href="">회원가입</a>
+		           </div>
+		       </div>
+		   </header>
 	    
         <!-- 영화이미지 div -->
         <c:forEach var="movie" items="${movieList }" varStatus="status">
@@ -431,30 +519,47 @@ display:inline-block;
 				<br>
 				<h3>댓글목록</h3>
 				<c:forEach var="comment" items="${articlesList }">
-		            
-			            <div class="comment_wrap2">
-			            	<div class="qq">
-				            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
-				            	<div class="d">${comment.comment_id }</div>
-								<div class="e">${comment.comment_text}</div>
-								<div class="f">평점: ${comment.comment_rate}</div>
-								<div class="i">
-									<input class="g" type="button" value="수정">
-									<input class="h" type="button" value="삭제">
+		            <c:choose>
+		            	<c:when test="${comment.level == 1}">
+				            <div class="comment_wrap2">
+				            	<div class="qq">
+					            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
+					            	<div class="d">${comment.comment_id }</div>
+									<div class="e">${comment.comment_text}</div>
+									<div class="f">평점: ${comment.comment_rate}</div>
+									<div class="i">
+										<input class="g" type="button" value="수정">
+										<input class="h" type="button" value="삭제">
+									</div>
 								</div>
-								
-							</div>
-			            	대댓글 작성
-			            	<div>
-		        				<form method="post" action="../movie1/reply2.do">
-									<input type="hidden" name="articleNO" value="${movie.articleNO }">
-									<input type="hidden" name="commentNO" value="${comment.commentNO }">
-									<div><input type="text" name="recomment_id" placeholder="아이디입력"></div>
-									<div><input type="text" name = "recomment_text" placeholder="대댓글입력"></div>
-									<div><input id="recomment_btn" type="submit" value="대댓글입력"></div>
-								</form>
-			            	</div>
-			            </div>
+				            	
+				            	<div class="recomment">
+			        				<form method="post" action="../movie1/reply2.do">
+			        					<div class="recomment_l"><h3>ㄴ</h3></div>
+										<input type="hidden" name="articleNO" value="${movie.articleNO }">
+										<input type="hidden" name="commentNO" value="${comment.commentNO }">
+										<div><input class="recomment_id" type="text" name="recomment_text" placeholder="아이디입력"></div>
+										<div><input class="recomment_text" type="text" name = "recomment_id" placeholder="대댓글입력"></div>
+										<div><input class="recomment_btn" type="submit" value="대댓글입력"></div>
+									</form>
+				            	</div>
+				            </div>
+			            </c:when>
+			            <c:when test="${comment.level > 1}">
+				            <div class="comment_wrap22">
+				            	<div class="qqq">
+					            	<%-- <div>댓글번호: ${comment.commentNO}</div> --%>
+					            	<div class="recomment_ll">ㄴ </div>
+					            	<div class="dd">${comment.comment_id }님의 답글:</div>
+									<div class="ee">${comment.comment_text}</div>
+									<!-- <div class="ii">
+										<input class="gg" type="button" value="수정">
+										<input class="hh" type="button" value="삭제">
+									</div> -->
+								</div>
+				            </div>
+			            </c:when>
+		            </c:choose>
             	</c:forEach>
             	
             	

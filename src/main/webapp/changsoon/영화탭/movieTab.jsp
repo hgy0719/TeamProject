@@ -4,6 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% request.setCharacterEncoding("utf-8"); %>
+<c:set var = "total" value = "0" />
+<c:forEach var="result" items="${movieList}" varStatus="status">     
+<c:set var= "total" value="${total + 1}"/>
+</c:forEach>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,64 +114,75 @@
 		    
 		}
 		
+		
+		
+		
+		
+		
+		
 		/* 상단바 */
-		li { 
-			list-style: none; 
-		}
-		 
-		a { 
-			text-decoration: none; 
-		}
+	
+        header{
+            color: white;
+            margin-top: 30px;
+        }
+        .header_list {
+            background-color: black;
+            
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            height: 100px;
+        }
+        .header_list >div{
+            width: 100px;
+            line-height: 100px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .header_list a {
+        	text-decoration:none;
+        	color: white;
+        }
+        #logo_human{
+            width: 150px;
+            height: 100px;
+        }
+        #logo_human img{
+            width: 150px;
+            height: 100px;
+        }
+        
+        .login_signup {
+        	
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            color: white;
+                       
+        }
+        .login_signup div{
+            margin-left: 20px;
+            font-weight: 600;
+            
+        }
+        .login_signup a{
+            text-decoration:none;
+            color: white;
+            
+        }
 		
-		#wrap2 {
-			width: 100%;
-			margin-top: 80px;
-		}
-		 
-		header {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			height: 80px;
-			z-index: 2000;
-			background-color: #fff;
-			box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
-		}
-		 
-		.logo {
-			display: inline-block;
-			height: 5px;
-			margin: 12px 0 12px 25px;
-		}
-		 
-		.logo > img { 
-			height: 50px; 
-		}
 		
-		nav {
-			display: flex;
-			justify-content: space-around;
-		}
 		
-		.nav-items {
-			margin-right: 20px;
-		}
 		
-		.nav-items > li {
-			display: inline-block;
-			margin-left: 40px;
-			margin-right: 40px;
-		}
-		.nav-items > li > a {
-			line-height: 80px;
-			padding: 0 30px;
-			color: rgba(0, 0, 0, 0.4);
-		}
-		.nav-items > li > a:hover {
-			color: rgba(0, 0, 0, 0.8);
-		}
-			
-		#detail{
+		
+		
+		
+		
+		
+		
+		
+#detail{
 			font-size : 20px;
 		}
 		.title_long{
@@ -174,6 +190,12 @@
 			overflow: hidden;  
 			text-overflow: ellipsis;
 		}
+
+
+
+
+
+		
 		/* 더보기 */
 .article{
 	display:none;
@@ -233,8 +255,8 @@
 		    }
 		    
 		    
-		    for (let k = 1; k < 5; k++) {
-		    	document.querySelector("#like_btn"+k).addEventListener("click", function(){
+		    for (let k = 1; k <= ${total}; k++) {
+		    	document.querySelector("#like_btn"+k).addEventListener("click", () => {
 		       	 $.ajax({
 		    		    url: "../movie1",
 		    		    type: "POST",
@@ -246,7 +268,7 @@
 		    		    success:function(data){      					
 		    		    	let a = JSON.parse(data).like;
 		    		    	console.log(a);
-		    		    	 /* 화면에 표시하는 방법  */
+		    		  
 		    		    	$("#like_btn"+k).val("좋아요 "+a);
 		    		    },   
 		    		    error: 
@@ -303,23 +325,45 @@
 </head>
 <body>
 	<div id="wrap">
-		<form>
-			<div id="wrap2">
-				<header>
-					<nav id="nav">
-						<ul class="nav-items">
-							<li><a href="#home">영화</a></li>
-							<li><a href="#news">예매</a></li>
-							<li><a href="#news">극장</a></li>
-							<a class="logo" href="#home">로고</a>
-							<li><a href="#contact">스토어</a></li>
-							<li><a href="#about">고객센터</a></li>
-							<li><a href="#about">로그인</a></li>
-						</ul>
-					</nav>
-		        </header>
-		   	</div>
-		</form>
+		
+		<header>
+		       <div class="header_list">
+		           <div>
+		               <a href="../movie1/movieTab.do">영화</a>
+		           </div>
+		           <div>
+		               <a href="">예매</a>
+		           </div>
+		           <div>
+		               <a href="">극장</a>
+		           </div>
+		           <div id="logo_human">
+		           		<a href="../movie1/main.do">
+		               		<img src="../changsoon/image/logo.png">
+		               </a>
+		           </div>
+		           <div>
+		               <a href="">스토어</a>
+		           </div>
+		           <div>
+		               <a href="">이벤트</a>
+		           </div>
+		           <div>
+		               <a href="">고객센터</a>
+		           </div>
+		       </div>
+		       <div class="login_signup">
+		           <div>
+		               <a href="">로그인</a>
+		           </div>
+		           <div>
+		               <a href="">회원가입</a>
+		           </div>
+		       </div>
+		   </header>
+		</div>
+		
+		
 		<h1>전체영화</h1>
 		<c:forEach var="movie" items="${movieList2 }">
 			<div>${movie.count }개의 영화가 검색되었습니다.</div>
@@ -333,7 +377,7 @@
 				<input id="search_text" type="text" placeholder="검색어 입력" name="search_text">
 				<input id="search_btn" type="submit" value="검색">
 			</form> -->
-	</div>
+	
 	<div class="a1">
 		<c:forEach var="movie" items="${movieList }" varStatus="status">
 		<input id="count_value" type="hidden" value="1">
@@ -373,7 +417,8 @@
 	</div>	
 	
 	<div class="a2">
-		<c:forEach var="movie" items="${movieList }">
+	
+		<c:forEach var="movie" items="${movieList }" varStatus="status">
 			<c:if test="${movie.opendate > 20230216 }">
 				<div class="show2">
 					<div class="image">
@@ -394,13 +439,25 @@
 					  	</div>
 				 	</div>
 				 	<div class="btn1">
-					    <input id="like_btn" type="button" value="좋아요 ${movie.like_num }">
+				 	
+				 	
+				 	<form id="like_form">
+					  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+					  	<input id="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+					  	<input id="command" type="hidden" name="command" value="like_it">
+					  	<input id="like_btn${status.count }" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
+					  	<a href="changsoon/영화탭/예매탭.jsp"><input id="btn2"  type="button" value="예매"></a>
+					  </form>
+				 	
+				 	
+					   <%--  <input id="like_btn" type="button" value="좋아요 ${movie.like_num }">
 					    <!-- 예매버튼을 눌렀을때 각 영화의 값을 예매탭으로 전달해서 예매탭에서 getparameter할 수 있게만들기 -->
-					    <a href="changsoon/영화탭/예매탭.jsp"><input type="button" value="예매"></a>
+					    <a href="changsoon/영화탭/예매탭.jsp"><input type="button" value="예매"></a> --%>
 				    </div>
 				</div>
 			</c:if>
 		</c:forEach>
+		<div class="more"><a href="#" id="load">더보기 ▽ </a></div>
 	</div>
 </body>
 </html>
