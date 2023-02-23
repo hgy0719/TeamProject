@@ -159,7 +159,7 @@
                  </div>
                  <button class="submit" onclick="fn_process()">회원가입</button><br>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                 <div class="footer_link"><a href="/HumanCinema/Hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
+                 <div class="footer_link"><a href="/HumanCinema/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
                  </form>
                </div>
             </div>
