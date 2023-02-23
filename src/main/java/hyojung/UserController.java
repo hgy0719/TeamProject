@@ -32,7 +32,7 @@ public class UserController extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		String page = "/UserForm/Login.jsp"; 
+		String page = "/hyojung/Login.jsp"; 
 		//다음에 내가 가야할 곳으로 보냄
 		String action = request.getPathInfo();
 		// /user/* 상단 들어온 주소 값을 결정함? '/*' 해당하는 action값
@@ -42,7 +42,7 @@ public class UserController extends HttpServlet {
 			UserService actSigin = new UserService();
 			actSigin.serSigin();
 			System.out.println("회원가입 출력");
-			page = "/UserForm/SiginUp.jsp";
+			page = "/hyojung/SiginUp.jsp";
 			
 		//회원리스트 생성
 		} else if (action.equals("/UserList")) {
@@ -51,7 +51,7 @@ public class UserController extends HttpServlet {
 			List<UserVO> UserList = actList.serList();//회원정보 조회할 때 사용할 수 있음
 			request.setAttribute("UserList", UserList);//조회한 정보를 request에 바인딩
 			System.out.println("회원리스트 생성 출력");
-			page ="/UserForm/LogIn.jsp";
+			page ="/hyojung/LogIn.jsp";
 			
 		//로그인(mvc pattern2)
 		}else if (action.equals("/Login")) {
@@ -70,16 +70,17 @@ public class UserController extends HttpServlet {
 			
 			if( result ) {
 					session.setAttribute("id",id);
-					page = "/UserForm/Mypage.jsp";
+					page = "/hyojung/Mypage.jsp";
 					System.out.println("session:"+session);
-
+					
 			} else {
-				page = "/UserForm/LogIn.jsp";
+				page = "/hyojung/LogIn.jsp";
 				System.out.println("로그인 실패");
 			}
 			System.out.println("로그인 출력");
 		
 		}
+		
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(page);
 		dispatch.forward(request, response);
