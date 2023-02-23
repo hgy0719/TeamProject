@@ -1,7 +1,6 @@
-package hyojeong;
+package hyojung;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //http://localhost:8080/HumanStudy/user 웹브라우저는 doGet
 @WebServlet("/user/*")
@@ -53,8 +53,11 @@ public class UserController extends HttpServlet {
 			System.out.println("회원리스트 생성 출력");
 			page ="/UserForm/LogIn.jsp";
 			
-			//로그인(mvc pattern2)
+		//로그인(mvc pattern2)
 		}else if (action.equals("/Login")) {
+			HttpSession session = request.getSession();
+			
+			System.out.println(session.getAttribute("id"));
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
 			System.out.println(id + pwd);
@@ -66,24 +69,10 @@ public class UserController extends HttpServlet {
 			System.out.println(id+pwd);
 			
 			if( result ) {
-				
-//				if(action==true) {
-//					String id = request.getParameter("id");
-//					String pwd = request.getParameter("pwd");
-//					String name = request.getParameter("name");
-//					String email = request.getParameter("email");
-//					MypageService mypage = new MypageService(id, pwd, name, email);
-//					mypage.serPage()
-//					
-//				//회원 삭제(Mypage delete)
-//				}else if(action==del)) {
-//					String id = request.getParameter("id");
-//					MypageDAO.delete(id);
-//					request.setAttribute(", action)
-//				}	
-				
-				page = "/UserForm/Mypage.jsp";
-				System.out.println("로그인 성공");
+					session.setAttribute("id",id);
+					page = "/UserForm/Mypage.jsp";
+					System.out.println("session:"+session);
+
 			} else {
 				page = "/UserForm/LogIn.jsp";
 				System.out.println("로그인 실패");
@@ -94,22 +83,7 @@ public class UserController extends HttpServlet {
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(page);
 		dispatch.forward(request, response);
-		
-//		//회원가입 중복확인(service를 거치지 않음)
-//		PrintWriter writer = response.getWriter();
-//		String id = (String) request.getParameter("id");
-//		System.out.println("id = " + id);
-//		UserDAO userDAO = new UserDAO();
-//		boolean overlappedID = userDAO.overlappedID(id);
-//		
-//		//회원가입 중복확인에 대한 결과 메시지 전송
-//			if (overlappedID == true) {
-//				writer.print("not_usable");
-//			} else {
-//				writer.print("usable");
-//			}
-		
-		
+
 		
 	}
 }
