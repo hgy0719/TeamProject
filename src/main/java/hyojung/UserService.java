@@ -5,7 +5,7 @@ import java.util.List;
 public class UserService {
 	
 	//회원가입(mvc pattern2)
-	public void serSigin() {
+	public void serSign() {
 		System.out.println("serSigin이 VO를 다녀왔습니다");
 		UserDAO actSigin = new UserDAO();
 		actSigin.listUser();

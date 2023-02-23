@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:useBean  id="m" class="hyojung.UserVO" />
 <jsp:setProperty name="m" property="*"  />
 <%
@@ -20,6 +21,7 @@
 %> 
 </head>
 <body>
-<jsp:forward  page="/hyojung/UserList.jsp" />
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+<jsp:forward  page="/HumanCinema/hyojung/UserList.jsp" />
 </body>
 </html>

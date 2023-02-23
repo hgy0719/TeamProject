@@ -87,7 +87,7 @@
         background-size: 100%;
     }
     section {display: flex; overflow: hidden;}
-    img{width: 100%;}
+    #mainImage{width: 100%;}
     
     </style>
     <script>
@@ -107,37 +107,15 @@
             };
             setInterval(fnSlide, 3000);
         }
-       
-        function fn_loginMember(){
-
-            var inputId = document.getElementById("inputId").value;
-            var inputPwd = document.getElementById("inputPwd").value;
-            var submit = document.getElementById("submit");
-
-            // login_btn.addEventListener('click',(fn_loginMember))
-            console.log(submit);
-
-            if (inputId.length == 0 || inputId == "") {
-                alert("아이디를 입력하세요.");
-                return false;
-
-            }else if (inputPwd.length == 0 || inputPwd == "") {
-                alert("비밀번호를 입력하세요.");
-                return false;
-
-            }else if (inputId == "admin" && inputPwd == '0000') {
-                alert("로그인 되었습니다.")
-            } else {
-                alert("아이디와 비밀번호를 다시 확인해주세요.")
-            }
-        } 
         
+       String 
+            
     </script>
 </head>
 <body>
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <section class="login">
-    
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
@@ -155,16 +133,15 @@
                 </div>
             </div>
             <div class="right_login">
-                <div class="top_link">
-                <a href="#">Return home</a></div>
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
-                <form method="post" action="/hyojung/user/Login">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+                <form method="post" action="/HumanCinema/user/Login">
                 <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
                 <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>
-                <div class="footer_link"><a href="/hyojung/SiginUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
-                <!-- <img src="경로" alt="" class="btn" onclick="clickBtn(); /> -->
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+                <div class="footer_link"><a href="/hyojung/SignUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
                 </form></div>
             </div>
         </div>

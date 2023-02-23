@@ -32,6 +32,7 @@ public class UserController extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 		String page = "/hyojung/Login.jsp"; 
 		//다음에 내가 가야할 곳으로 보냄
 		String action = request.getPathInfo();
@@ -39,10 +40,11 @@ public class UserController extends HttpServlet {
 		
 		//회원가입
 		if (action==null|| action.equals("/new")) {
-			UserService actSigin = new UserService();
-			actSigin.serSigin();
+			UserService actSign = new UserService();
+			actSign.serSign();
 			System.out.println("회원가입 출력");
-			page = "/hyojung/SiginUp.jsp";
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+			page = "/hyojung/SignUp.jsp";
 			
 		//회원리스트 생성
 		} else if (action.equals("/UserList")) {
@@ -51,9 +53,10 @@ public class UserController extends HttpServlet {
 			List<UserVO> UserList = actList.serList();//회원정보 조회할 때 사용할 수 있음
 			request.setAttribute("UserList", UserList);//조회한 정보를 request에 바인딩
 			System.out.println("회원리스트 생성 출력");
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 			page ="/hyojung/LogIn.jsp";
 			
-		//로그인(mvc pattern2)
+			//로그인
 		}else if (action.equals("/Login")) {
 			HttpSession session = request.getSession();
 			
@@ -70,21 +73,39 @@ public class UserController extends HttpServlet {
 			
 			if( result ) {
 					session.setAttribute("id",id);
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 					page = "/hyojung/Mypage.jsp";
 					System.out.println("session:"+session);
-					
+
 			} else {
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 				page = "/hyojung/LogIn.jsp";
 				System.out.println("로그인 실패");
 			}
 			System.out.println("로그인 출력");
 		
+		//회원탈퇴
+// 		}else if(action) {
 		}
-		
 		
 		RequestDispatcher dispatch = request.getRequestDispatcher(page);
 		dispatch.forward(request, response);
-
+		
+//		//회원가입 중복확인(service를 거치지 않음)
+//		PrintWriter writer = response.getWriter();
+//		String id = (String) request.getParameter("id");
+//		System.out.println("id = " + id);
+//		UserDAO userDAO = new UserDAO();
+//		boolean overlappedID = userDAO.overlappedID(id);
+//		
+//		//회원가입 중복확인에 대한 결과 메시지 전송
+//			if (overlappedID == true) {
+//				writer.print("not_usable");
+//			} else {
+//				writer.print("usable");
+//			}
+		
+		
 		
 	}
 }

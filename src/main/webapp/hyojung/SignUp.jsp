@@ -99,6 +99,7 @@
     }
     section {display: flex; overflow: hidden;}
     img{width: 100%;}
+
     
     </style>
     <script>
@@ -118,40 +119,11 @@
             setInterval(fnSlide, 3000);
         }
         
-         function fn_process(){
-             var _id=$("#inputId").val();
-             if(_id==''){
-            	 return;
-             }
-             $.ajax({
-                type:"post",
-                async:true,  
-                url:"http://localhost:8080/HumanStudy/user",
-                dataType:"text",
-                data: {id:_id},
-                success:function (data,textStatus){
-             	   //alert(data);
-             	   
-                   if(data=='usable'){
-                	   $('#message').text("사용할 수 있는 ID입니다.");
-                	   $('#check').prop("disabled", true);
-                   }else{
-                	   $('#message').text("사용할 수 없는 ID입니다.");
-                   }
-                },
-                error:function(data,textStatus){
-                   alert("에러가 발생했습니다.");ㅣ
-                },
-                complete:function(data,textStatus){
-                   //alert("작업을완료 했습니다");
-                }
-             });  //end ajax	 
-          }	
-
 
     </script>
 </head>
 <body>
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <section class="login">
         <div class="login_box">
@@ -171,14 +143,14 @@
                 </div>
             </div>
             
-            
             <div class="right_login">
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
-                <form method="post" action="/HumanStudy/UserForm/LogIn.jsp">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+                <form method="post" action="/HumanCinema/user/LogIn">
                   <div class="join_login">
                      <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
-                     <button class="check">&#128504;</button></div>
+                     <button class="check">중복체크</button></div>
                      <div id="message"></div>
                      <div class="inputSet"><input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputPwd2" type="password" name="pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
@@ -186,7 +158,8 @@
                      <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일를 입력하세요"></div>
                  </div>
                  <button class="submit" onclick="fn_process()">회원가입</button><br>
-                 <div class="footer_link"><a href="/HumanStudy/UserForm/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+                 <div class="footer_link"><a href="/HumanCinema/Hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
                  </form>
                </div>
             </div>

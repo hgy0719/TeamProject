@@ -121,6 +121,7 @@
 </head>
 <body>
   <form>
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <div id="content-wrap">
       <aside>
@@ -135,7 +136,7 @@
       <section>
         <article class="UserInformation">
           <table><h1>회원정보</h1></table>
-         
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>       
            <form action=".do" method="dohandle" name="frm">
 	        <table>
 	            <tr>
@@ -174,7 +175,8 @@
 	          </table>
 	          </form>
 	          
-	          	<form action="mypage.do">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+	          	<form action="mypage">
 					<br />
 					<table>
 					<tr>

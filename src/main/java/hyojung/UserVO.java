@@ -69,7 +69,7 @@ public class UserVO {
 	public void setPwd2(String pwd2) {
 		this.pwd2 = pwd2;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
