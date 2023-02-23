@@ -159,11 +159,11 @@
                 <a href="#">Return home</a></div>
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
-                <form method="post" action="/HumanStudy/user/Login">
+                <form method="post" action="/hyojung/user/Login">
                 <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
                 <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>
-                <div class="footer_link"><a href="/HumanStudy/UserForm/SiginUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
+                <div class="footer_link"><a href="/hyojung/SiginUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
                 <!-- <img src="경로" alt="" class="btn" onclick="clickBtn(); /> -->
                 </form></div>
             </div>

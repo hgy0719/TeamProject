@@ -8,22 +8,6 @@ public class UserVO {
 	private String pwd;
 	private String pwd1;
 	private String pwd2;
-	public String getPwd1() {
-		return pwd1;
-	}
-
-	public void setPwd1(String pwd1) {
-		this.pwd1 = pwd1;
-	}
-
-	public String getPwd2() {
-		return pwd2;
-	}
-
-	public void setPwd2(String pwd2) {
-		this.pwd2 = pwd2;
-	}
-
 	private String name;
 	private String email;
 	private Date joinDate;
@@ -69,7 +53,23 @@ public class UserVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	
+	public String getPwd1() {
+		return pwd1;
+	}
 
+	public void setPwd1(String pwd1) {
+		this.pwd1 = pwd1;
+	}
+
+	public String getPwd2() {
+		return pwd2;
+	}
+
+	public void setPwd2(String pwd2) {
+		this.pwd2 = pwd2;
+	}
+	
 	public String getName() {
 		return name;
 	}
