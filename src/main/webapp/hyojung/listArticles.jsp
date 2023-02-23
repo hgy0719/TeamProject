@@ -14,7 +14,7 @@
 <body>
 
 
-<a href="/pro17/board01/articleForm.jsp">글쓰기</a>
+<a href="/hyojung/articleForm.jsp">글쓰기</a>
 <table border=1>
 <c:forEach var="vo" items="${ articlesList}">
 <tr>
