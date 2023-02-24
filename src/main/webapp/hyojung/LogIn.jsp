@@ -137,7 +137,7 @@
                 <h2>Human Cinema</h2>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
-                <form method="post" action="/HumanStudy/user/메인페이지">
+                <form method="post" action="/HumanStudy/user/login">
                 <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
                 <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>

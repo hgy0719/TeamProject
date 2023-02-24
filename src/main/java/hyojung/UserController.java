@@ -77,7 +77,7 @@ public class UserController extends HttpServlet {
 			//로그인
 		}else if (action.equals("/login")) {
 			HttpSession session = request.getSession();
-			System.out.println(session.getAttribute("id"));
+			System.out.println("session:" +session.getAttribute("id"));
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
 			System.out.println(id + pwd);
