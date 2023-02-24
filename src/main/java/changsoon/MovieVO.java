@@ -2,11 +2,10 @@ package changsoon;
 
 
 public class MovieVO {
-	
-	
 
 	private String title;
 	private String title_en;
+	
 	private String age;
 	private String opendate;
 	private int like_num;
@@ -33,19 +32,10 @@ public class MovieVO {
 	private int comment_rate;
 	
 	private int level;
-	
-	private String theater_name;
-	
-	public String getTheater_name() {
-		return theater_name;
-	}
-
-	public void setTheater_name(String theater_name) {
-		this.theater_name = theater_name;
-	}
-
 	public String getTitle() {
 		return title;
+		
+		
 	}
 
 	public void setTitle(String title) {
@@ -227,4 +217,7 @@ public class MovieVO {
 	public void setLevel(int level) {
 		this.level = level;
 	}
+
+
+
 }

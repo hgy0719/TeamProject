@@ -14,19 +14,12 @@
 </head>
 
 <style>
-	.title{
 	
-	   padding: 10%;
-	   margin: auto;
-	  
-	}
 	
 	 header {
         width: 100%;
         height: 80px;
         z-index: 2000;
-        position: fixed;/*z-index 값으로 fixed*/
-        background-color: #fff;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05),
                        0 1px 0 rgba(0, 0, 0, 0.05); */
     }
@@ -151,25 +144,38 @@
 		font-size: 20px;
 		font-weight:nomal;
 	}
+	.drinck_main{
+		padding-left: 10%;
+    	padding-right: 10%;
+	}
 	
 	
 </style>
 
 
 <body>
- <header>
-        <nav id="nav">
-        <ul class="nav-items">
-            <li><a href="#">영화</a></li>
-            <li><a href="#">예매</a></li>
-            <li><a href="#">극장</a></li>
-            <a class="logo" href="#home">로고</a>
-            <li id = "store"><a href="/HumanCinema/menu/store.do">스토어</a></li>
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">로그인</a></li>
-        </ul>
-        </nav>
- </header>
+
+   <div id="wrap_all">
+	<div>
+		<form>
+				<div class="wrap">
+				    <header>
+				        <nav id="nav">
+				        <ul class="nav-items">
+				            <li><a href="../movie/movieTab.do">영화</a></li>
+				            <li><a href="#">예매</a></li>
+				            <li><a href="#">극장</a></li>
+				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
+				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
+				            <li><a href ="#">이벤트</a></li>
+				            <li><a href="#">고객센터</a></li>
+				            <li><a href="#">로그인</a></li>
+				        </ul></nav>
+					</header>
+				    
+				    </div>
+			</form>
+
 
  	 <div class = "title">	
 	    <div id = "bar1">
@@ -188,7 +194,7 @@
 		 </div>
 			
 			
-		
+	<div class = "drinck_main">
 		<div>	  
 		<span id = "text1">음료</span>
 		탄산부터 에이드까지, 마시는 즐거움!
@@ -209,8 +215,7 @@
 			 </div>
        	 </c:forEach>
 		
-		
-		  
-	</div>
+	</div>	  
+</div>
 </body>
 </html>

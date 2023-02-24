@@ -207,8 +207,6 @@ window.onload =()=>{
 </head>
 <body>
 	<div id="wrap_all">
-
-
 <!--상단바  -->
 		   <header>
 		       <div class="header_list">
@@ -219,7 +217,7 @@ window.onload =()=>{
 		               <a href="">예매</a>
 		           </div>
 		           <div>
-		               <a href="">극장</a>
+		               <a href="/HumanCinema/cinema/cinema.do">극장</a>
 		           </div>
 		           <div id="logo_human">
 		           		<a href="../movie1/main.do">
@@ -227,7 +225,7 @@ window.onload =()=>{
 		               </a>
 		           </div>
 		           <div>
-		               <a href="">스토어</a>
+		               <a href="/HumanCinema/menu/store.do">스토어</a>
 		           </div>
 		           <div>
 		               <a href="">이벤트</a>
@@ -245,6 +243,7 @@ window.onload =()=>{
 		           </div>
 		       </div>
 		   </header>
+
 
 			
 			<div class="ddd">
