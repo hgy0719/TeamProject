@@ -42,10 +42,29 @@ public class UserController extends HttpServlet {
 		//회원가입
 		if (action==null|| action.equals("/new")) {
 			System.out.println("회원가입 출력");
-			UserService actSign = new UserService();
-//			List<UserVO> UserList = actSign.serSign();
-//			actSign.serSign();
-//			service에서 dao를 불러 선택했으나 현재 필요없음
+			String id = request.getParameter("id");
+			String pwd1 = request.getParameter("pwd1");
+			String pwd2 = request.getParameter("pwd2");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			System.out.println(id+"/"+pwd1+"/"+name+"/"+email);
+			
+			if(pwd1.equals(pwd2)) {
+				UserService actSign = new UserService();
+				UserVO m = new UserVO();
+				m.setId(id);
+				m.setPwd(pwd1);
+				m.setName(name);
+				m.setEmail(email);
+				actSign.serSign(m);
+
+				page ="/hyojung/LogIn.jsp";
+			} else {
+//				request.setAttribute("message:", value);
+				page ="/hyojung/SignUp.jsp";
+				
+			}
+
 			
 		}else if(action.equals("/check")) {
 			//회원 중복확인
@@ -61,12 +80,8 @@ public class UserController extends HttpServlet {
 				} else {
 					writer.print("usable");
 				}
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-//			page = "/hyojung/SignUp.jsp";
-			
 		//회원리스트 생성
 		} else if (action.equals("/userlist")) {
-			
 			UserService actList = new UserService();
 			List<UserVO> UserList = actList.serList();//회원정보 조회할 때 사용할 수 있음
 			request.setAttribute("UserList", UserList);//조회한 정보를 request에 바인딩
@@ -85,7 +100,6 @@ public class UserController extends HttpServlet {
 			UserService servlog = new UserService();
 			boolean result = servlog.servlog(id, pwd);
 			System.out.println("return되어 최종 돌려받은 값:"+result);
-			request.setAttribute(id, pwd);
 			System.out.println(id+pwd);
 			
 			if( result ) {
@@ -106,7 +120,7 @@ public class UserController extends HttpServlet {
 			
 		}
 		
-		if(!action.equals("/new")) {
+		if(!action.equals("/check")) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(page);
 			dispatch.forward(request, response);
 		}

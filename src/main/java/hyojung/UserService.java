@@ -8,7 +8,8 @@ public class UserService {
 	public void serSign(UserVO m) {
 		System.out.println("serSigin이 VO를 다녀왔습니다");
 		UserDAO actSigin = new UserDAO();
-		actSigin.addUser(m);
+		 actSigin.addUser(m);
+
 	}
 	
 	//중복체크
@@ -42,6 +43,6 @@ public class UserService {
 //			MypageDAO actpage= new MypageDAO();
 //			String result = actpage.
 //		}
-	
+
 	
 }

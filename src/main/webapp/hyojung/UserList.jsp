@@ -5,9 +5,28 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
+
+     <c:choose>
+    	<c:when test = '${msg="modified"}'>
+    	<script>
+    	window.onload=function(){
+ 			alert("회원을 수정했습니다");   		
+    	}
+    	</script>
+    	</c:when>
+    	<c:when test = '${msg="deleted"}'>
+    	  <script>
+    	window.onload=function(){
+ 			alert("회원을 삭제했습니다");   		
+    	}
+    	</script>
+    	</c:when>
+    	</c:choose>
+
 </head>
 <body>
 	<table align="center" border=”1” align="center" >
@@ -34,6 +53,8 @@
 	     <td>${user.name}</td>     
 	     <td>${user.email}</td>     
 	     <td>${user.joinDate}</td>     
+	     
+
 	   </tr>
 	   </c:forEach>
 	</c:when>

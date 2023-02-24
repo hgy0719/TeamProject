@@ -97,11 +97,8 @@
     }
     section {display: flex; overflow: hidden;}
      #mainImage{width: 100%;}
-
-    
     </style>
-    <script>
-
+           <script>
     window.onload = function(){
         init();
         bind();
@@ -130,32 +127,38 @@
 	                type:"post",
 	                async:true,  
 	<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	                url:"http://localhost:8080/HumanStudy/user/new",
+	                url:"http://localhost:8080/HumanCinema/user/check",
 	                dataType:"text",
 	                data: {id:_id},
 	                //아이디를 서블릿에 전송한다.
 	                success:function (data,textStatus){
-	             	   alert(data);
+	             	  	 //alert(data);
 	             	   
 	                   if(data=='usable'){
-	                	   $('#message').text("사용할 수 있는 ID입니다.");
-	                	   $('#idcheck').prop("disabled", true);
+	                	   $('#message').text("사용할 수 있는 아이디입니다.");
+	                	   //alert("사용 할 수 있는 아이디입니다.")
+	                	   
+	                	   //$('#idcheck').prop("disabled", true);
+	                	   //사용 할 수 있는 id일 때 버튼 비활성화(여러번 누르는 것을 막음)
 	                   }else{
-	                	   $('#message').text("사용할 수 없는 ID입니다.");
+	                	   $('#message').text("이미 사용 중인 아이디입니다.");
+	                	    //alert("이미 사용 중인 아이디입니다.")
+	                	    
 	                   }
 	                },
 	                error:function(data,textStatus){
-	                   alert("에러가 발생했습니다.");ㅣ
+	                   alert("에러가 발생했습니다.");
 	                },
 	                complete:function(data,textStatus){
-	                   alert("환영합니다.");
 	                }
              });  //end ajax	 
           }	
-
     </script>
+        
+    
 </head>
 <body>
+
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <section class="login">
@@ -181,19 +184,19 @@
                 <h2>Human Cinema</h2>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
-                <form method="post" action="/HumanStudy/user/new">
+                <form method="post" action="/HumanCinema/user/new">
                   <div class="join_login">
                      <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
-                     <button class="check"  id="idcheck" onclick="fn_process()">중복체크</button></div>
+                     <input type="button" class="check"  id="idcheck" onclick="fn_process()" value="아이디 확인"></div>
                      <div id="message"></div>
                      <div class="inputSet"><input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputPwd2" type="password" name="pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputName" type="text" name="name" placeholder="이름을 입력하세요"></div>
                      <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일를 입력하세요"></div>
                  </div>
-                 <input type="button" class="submit"  value="회원가입" ><br>
+                 <input type="submit" class="submit"  value="회원가입" ><br>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                 <div class="footer_link"><a href="/HumanStudy/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
+                 <div class="footer_link"><a href="/HumanCinema/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
                  </form>
                </div>
             </div>
