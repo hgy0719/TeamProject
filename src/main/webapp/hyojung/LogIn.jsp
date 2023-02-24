@@ -137,12 +137,12 @@
                 <h2>Human Cinema</h2>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
-                <form method="post" action="/HumanStudy/user/login">
+                <form method="post" action="/HumanCinema/user/login">
                 <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
                 <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                <div class="footer_link"><a href="/HumanStudy/hyojung/SignUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
+                <div class="footer_link"><a href="/HumanCinemahyojung/SignUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
                 </form></div>
             </div>
         </div>
