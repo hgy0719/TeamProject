@@ -12,8 +12,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-
+	<!-- 로그인이 안되어 있을 경우 로그인 페이지로 이동 -->
+<c:choose>	
+	<c:when test ='${msg == "null_id" }'>
+		<script>
+			window.onload = function(){
+				alert("로그인 후 이용해주세요");
+				window.location.href = "/HumanCinema/user/login";
+			}
+		</script>
+	</c:when>
+	<c:when test = '${msg == "login" }'> 
+		<script>
+			window.onload = function(){
+				alert("메뉴가 장바구니에 담겼습니다. 확인하시겠습니까?");
+			}
+		</script>
+	</c:when>
+</c:choose>
 
 
 <style>
@@ -246,7 +262,7 @@
 			
 	<!-- 메뉴 불러오기 -->
 		<c:forEach var = "info" items = "${info_list }">
-			<form method = "post" action= "/HumanCinema/menu/order.do?menu_id=${info.menu_id}">
+			<form method = "post" action= "/HumanCinema/menu/cart.do?menu_id=${info.menu_id}">
 				<div class = "name">${info.name }</div> 
 					<hr style="border: solid 1px black;">
 			<div class = "info_main">
@@ -313,6 +329,9 @@
 	
 		
 </script>
+
+
+
 
 					<div>
      				     <br>	

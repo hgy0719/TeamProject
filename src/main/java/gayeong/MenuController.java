@@ -1,6 +1,7 @@
 package gayeong;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/menu/*")
@@ -200,13 +202,35 @@ public class MenuController extends HttpServlet {
 			// 장바구니
 		} else if (action.equals("/cart.do")) {
 			
-			String menu_id = request.getParameter("menu_id");
-			System.out.println(menu_id);
-			List<MenuVO> cart_list = (List<MenuVO>) menuDAO.cart_list(menu_id);
+			// 로그인 정보 불러오기
+			HttpSession session = request.getSession();	
+			PrintWriter out =response.getWriter();
 			
-			request.setAttribute("cart_list", cart_list);
+			String user_id = (String) session.getAttribute("id");
+			if(user_id != null && user_id.length() != 0) {
+				
+				out.print("장바구니에 메뉴가 담김");
+				
+				String menu_id = request.getParameter("menu_id");
+				System.out.println(menu_id);
+				List<MenuVO> cart_list = (List<MenuVO>) menuDAO.cart_list(menu_id);
+				
+				request.setAttribute("cart_list", cart_list);
+				
+				nextpage = "/gayeong/store_page/cart.jsp";
+				
+			} else {
+				// id 값이 없으면 로그인 페이지로 이동
+				
+				out.print("로그인 해주셈");
+				
+				request.setAttribute("msg", "null_id");
+				nextpage = "/gayeong/store_page/infoPage.jsp";
+				
+				session.invalidate();
+			}
 			
-			nextpage = "/gayeong/store_page/cart.jsp";
+		
 			
 		}
 		

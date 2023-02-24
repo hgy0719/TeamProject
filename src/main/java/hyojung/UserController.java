@@ -85,8 +85,7 @@ public class UserController extends HttpServlet {
 			UserService servlog = new UserService();
 			boolean result = servlog.servlog(id, pwd);
 			System.out.println("return되어 최종 돌려받은 값:"+result);
-			request.setAttribute(id, pwd);
-			System.out.println(id+pwd);
+
 			
 			if( result ) {
 					session.setAttribute("id",id);
