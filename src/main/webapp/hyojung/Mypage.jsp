@@ -121,22 +121,8 @@
 </head>
 <body>
   <form>
-    <div id="wrap">
-        <header>
-          <nav id="nav">
-            <ul class="nav-items">
-              <li><a href="#home">영화</a></li>
-              <li><a href="#news">예매</a></li>
-              <li><a href="#news">극장</a></li>
-              <a class="logo" href="#home">로고</a>
-              <li><a href="#contact">스토어</a></li>
-              <li><a href="#about">고객센터</a></li>
-              <li><a href="#about">로그인</a></li>
-            </ul>
-            </nav>
-        </header>
-    </div>
-
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+<jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <div id="content-wrap">
       <aside>
         <h1>My Page</h1>
@@ -147,13 +133,11 @@
         </ul>
       </aside>
     </div>
-
       <section>
-<<<<<<< HEAD
         <article class="UserInformation">
           <table><h1>회원정보</h1></table>
-         
-           <form action=".do" method="dohandle" name="frm">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>       
+           <form action="userlist" method="dohandle" name="frm">
 	        <table>
 	            <tr>
 	              <th rowspan="8"><img src="" alt="프로필사진"></td>
@@ -191,6 +175,7 @@
 	          </table>
 	          </form>
 	          
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 	          	<form action="mypage.do">
 					<br />
 					<table>
@@ -207,46 +192,7 @@
 				</form>
         </article>
         </section>
-=======
-        <article class="a-History">
-          <table>
-            <h1>회원정보</h1>
-            <tr>
-              <th rowspan="8"><img src="" alt="프로필사진"></td>
-            </tr>
-            <tr>
-              <td id="inputset1">아이디</td>
-              <td><input id="inputSet2" name="fixedId"> </td>
-            </tr>
-            <tr>
-              <td id="inputset1">비밀번호</td>
-              <td><input id="inputSet2" name="changePwd" typle="password" name=""></td>
-            </tr>
-            <tr>
-              <td id="inputset1">비밀번호 확인</td>
-              <td><input id="inputSet2" name="changePwd2" typle="password" name=""></td>
-            </tr>
-            <tr>
-              <td id="inputset1">이름</td>
-              <td><input id="inputSet2" name="changeName"></td>
-            </tr>
-            <tr>
-              <td id="inputset1">전화번호</td>
-              <td><input id="inputSet2" name="number"></td>
-            </tr>
-            <tr>
-              <td id="inputset1">이메일</td>
-              <td><input id="inputSet2" name="email"></td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <input class="button" type="button" value="수정하기"/>
-                <input class="button" type="reset" value="다시쓰기"/>
-              </td>
-            </tr>
-          </table>
-        </article>
->>>>>>> 3d6966bc0028e0d9943b421064c81327b6c8b836
+    
     </form>
 </body>
 </html>

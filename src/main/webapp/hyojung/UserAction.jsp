@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-     import=" java.util.*,UserPage.*"
+     import=" java.util.*,hyojung.*"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
@@ -10,7 +10,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:useBean  id="m" class="UserPage.UserVO" />
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+<jsp:useBean  id="m" class="hyojung.UserVO" />
 <jsp:setProperty name="m" property="*"  />
 <%
    UserDAO userDAO= new UserDAO();
@@ -20,6 +21,7 @@
 %> 
 </head>
 <body>
-<jsp:forward  page="/HumanStudy/LoginForm/UserList.jsp" />
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+<jsp:forward  page="/HumanCinema/hyojung/UserList.jsp" />
 </body>
 </html>

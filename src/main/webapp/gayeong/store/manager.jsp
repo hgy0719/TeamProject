@@ -10,8 +10,6 @@
    a{
         text-decoration: none;
         color: aqua;
-    } a{
-        
     }
     li{
         list-style: none;

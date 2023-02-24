@@ -12,23 +12,35 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-
+	<!-- 로그인이 안되어 있을 경우 로그인 페이지로 이동 -->
+<c:choose>	
+	<c:when test ='${msg == "null_id" }'>
+		<script>
+			window.onload = function(){
+				alert("로그인 후 이용해주세요");
+				window.location.href = "/HumanCinema/user/login";
+			}
+		</script>
+	</c:when>
+	<c:when test = '${msg == "login" }'> 
+		<script>
+			window.onload = function(){
+				alert("메뉴가 장바구니에 담겼습니다. 확인하시겠습니까?");
+			}
+		</script>
+	</c:when>
+</c:choose>
 
 
 <style>
 	.title{
-	
-	   padding: 10%;
-	   margin: auto;
-	  
+		padding-left: 10%;
+		padding-right: 10%;
 	}
 	
 	 header {
         width: 100%;
         height: 80px;
-        z-index: 2000;
-        position: fixed;/*z-index 값으로 fixed*/
         background-color: #fff;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05),
                        0 1px 0 rgba(0, 0, 0, 0.05); */
@@ -210,19 +222,28 @@
 <body>
 <!-- 메인 상단바-->
 
- <header>
-        <nav id="nav">
-        <ul class="nav-items">
-            <li><a href="#">영화</a></li>
-            <li><a href="#">예매</a></li>
-            <li><a href="#">극장</a></li>
-            <a class="logo" href="#home">로고</a>
-            <li id = "store"><a href="/HumanCinema/menu/store.do">스토어</a></li>
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">로그인</a></li>
-        </ul>
-        </nav>
- </header>
+
+   <div id="wrap_all">
+	<div>
+		<form>
+				<div class="wrap">
+				    <header>
+				        <nav id="nav">
+				        <ul class="nav-items">
+				            <li><a href="../movie/movieTab.do">영화</a></li>
+				            <li><a href="#">예매</a></li>
+				            <li><a href="#">극장</a></li>
+				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
+				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
+				            <li><a href ="#">이벤트</a></li>
+				            <li><a href="#">고객센터</a></li>
+				            <li><a href="#">로그인</a></li>
+				        </ul></nav>
+					</header>
+				    
+				    </div>
+			</form>
+
  <!-- 스토어 상단바 -->
  	 <div class = "title">	
 		    <div id = "bar1">
@@ -241,7 +262,7 @@
 			
 	<!-- 메뉴 불러오기 -->
 		<c:forEach var = "info" items = "${info_list }">
-			<form method = "post" action= "/HumanCinema/menu/order.do?menu_id=${info.menu_id}">
+			<form method = "post" action= "/HumanCinema/menu/cart.do?menu_id=${info.menu_id}">
 				<div class = "name">${info.name }</div> 
 					<hr style="border: solid 1px black;">
 			<div class = "info_main">
@@ -308,6 +329,9 @@
 	
 		
 </script>
+
+
+
 
 					<div>
      				     <br>	

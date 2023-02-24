@@ -1,6 +1,5 @@
-package UserPage;
+package hyojung;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,7 +10,6 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 	
 	public class UserDAO {
@@ -81,12 +79,12 @@ import javax.sql.DataSource;
 			}
 		}
 		//회원가입 정보를 가지고 UserList 생성(UserAction.jsp)
-		public List<UserVO> listUser() {
+		public List<UserVO> listUser( ) {
 			System.out.println("UserDAO의 listUser를 실행함");
 			List<UserVO> list = new ArrayList<UserVO>();
 			try {
 				Connection con = dataFactory.getConnection();
-				String query = "select * from t_user order by joinDate desc ";
+				String query = "select * from t_user order by name desc";
 				System.out.println("prepareStatememt: " + query);
 				pstmt = con.prepareStatement(query);
 				ResultSet rs = pstmt.executeQuery();
@@ -95,13 +93,11 @@ import javax.sql.DataSource;
 					String pwd = rs.getString("pwd");
 					String name = rs.getString("name");
 					String email = rs.getString("email");
-					Date joinDate = rs.getDate("joinDate");
 					UserVO vo = new UserVO();
 					vo.setId(id);
 					vo.setPwd(pwd);
 					vo.setName(name);
 					vo.setEmail(email);
-					vo.setJoinDate(joinDate);
 					list.add(vo);
 				}
 				rs.close();
@@ -112,6 +108,43 @@ import javax.sql.DataSource;
 				e.printStackTrace();
 			}
 			return list;
+		}
+		
+		//회원가입 수정
+		public void update(UserVO userVO) {
+			String id = userVO.getId();
+			String pwd = userVO.getPwd();
+			String name = userVO.getName();
+			String email = userVO.getEmail();
+			try {
+				con = dataFactory.getConnection();
+				String query = "update t_user SET pwd=?, name=?, email=? where id=?";
+				System.out.println("update 결과 값:" + query);
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1,pwd);
+				pstmt.setString(2,name);
+				pstmt.setString(3,email);
+				pstmt.setString(4,id);
+				pstmt.executeUpdate();
+				pstmt.close();
+				con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
+		//회원 삭제
+		public void delete(String id) {
+			try {
+				con = dataFactory.getConnection();
+				String query = "delete from t_user where id=?";
+				System.out.println(query);
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		//회원가입 중복확인
