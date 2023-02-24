@@ -50,7 +50,7 @@ public class MenuController extends HttpServlet {
 			System.out.println(menu_list.size());
 			request.setAttribute("menu_list", menu_list);
 			
-			nextpage = "/store/manager2.jsp";
+			nextpage = "/gayeong/store/manager2.jsp";
 			
 		// 메뉴 등록 
 		} else if ( action.equals("/manager.do")) {
@@ -76,7 +76,7 @@ public class MenuController extends HttpServlet {
 			MenuVO menuInfo = MenuDAO.findMenu(id);
 			
 			request.setAttribute("menuInfo", menuInfo);
-			nextpage = "/store/manager3.jsp";
+			nextpage = "/gayeong/store/manager3.jsp";
 		
 		// 메뉴 수정
 		} else if (action.equals("/modMenu.do")) {
@@ -107,11 +107,7 @@ public class MenuController extends HttpServlet {
 			
 		// 스토어 페이지
 		} else if (action.equals("/store.do")) {
-			
-			
-			
-			
-			
+
 			for (int menu_type = 10; menu_type <= 30; menu_type += 10 ) {
 				
 	
@@ -145,7 +141,7 @@ public class MenuController extends HttpServlet {
 			
 			
 			
-			nextpage = "/store_page/store.jsp";
+			nextpage = "/gayeong/store_page/store.jsp";
 			
 			
 			
@@ -162,7 +158,7 @@ public class MenuController extends HttpServlet {
 			request.setAttribute("snack_list", snack_list );
 			
 			
-			nextpage = "/store_page/snack.jsp";
+			nextpage = "/gayeong/store_page/snack.jsp";
 			
 		 // 스토어 -> 음료창
 		} else if (action.equals("/drink.do")) {
@@ -175,7 +171,7 @@ public class MenuController extends HttpServlet {
 			request.setAttribute("drink_list", drink_list );
 			
 			
-			nextpage = "/store_page/drink.jsp";
+			nextpage = "/gayeong/store_page/drink.jsp";
 		
 			// 스토어 -> 영화관람권창 
 		} else if (action.equals("/card.do")) {
@@ -188,7 +184,7 @@ public class MenuController extends HttpServlet {
 			request.setAttribute("card_list", card_list );
 			
 			
-			nextpage = "/store_page/card.jsp";
+			nextpage = "/gayeong/store_page/card.jsp";
 		
 			// 제품 선택 -> 정보창
 		} else if (action.equals("/info_page.do")) {
@@ -199,7 +195,7 @@ public class MenuController extends HttpServlet {
 			
 			request.setAttribute("info_list", info_list);
 			
-			nextpage = "/store_page/infoPage.jsp";
+			nextpage = "/gayeong/store_page/infoPage.jsp";
 		
 			// 장바구니
 		} else if (action.equals("/cart.do")) {
@@ -210,10 +206,9 @@ public class MenuController extends HttpServlet {
 			
 			request.setAttribute("cart_list", cart_list);
 			
-			nextpage = "/store_page/cart.jsp";
+			nextpage = "/gayeong/store_page/cart.jsp";
 			
 		}
-	
 		
 		
 		

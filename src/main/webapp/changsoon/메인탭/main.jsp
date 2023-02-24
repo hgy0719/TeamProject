@@ -207,12 +207,13 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 				            <li><a href="../movie/movieTab.do">영화</a></li>
 				            <li><a href="#">예매</a></li>
 				            <li><a href="#">극장</a></li>
-				            <a class="logo" href="../movie/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
-				            <li><a href="#">스토어</a></li>
+				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
+				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
+				            <li><a href ="#">이벤트</a></li>
 				            <li><a href="#">고객센터</a></li>
 				            <li><a href="#">로그인</a></li>
 				        </ul></nav>
-				    </header>
+					</header>
 				    
 				    </div>
 			</form>

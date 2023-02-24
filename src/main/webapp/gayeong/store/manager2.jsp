@@ -61,7 +61,7 @@ li{
     <h3>메뉴 목록</h3>
     <hr>
     
-      <a href = "/HumanCinema/store/manager.jsp">
+      <a href = "/HumanCinema/gayeong/store/manager.jsp">
       	<p class = "cls2"><strong>메뉴 등록하기</strong></p>
       </a>
       

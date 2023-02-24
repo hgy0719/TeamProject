@@ -17,44 +17,88 @@
  
 	.title{
 	
-	   padding: 10%;
 	   margin: auto;
 	  
 	}
-	
-	 header {
+	#wrap_all {
+			margin-left : 40px;
+			margin-right : 40px;
+	}
+		
+		/* 상단바 */
+		* {top: 0; margin: 0; box-sizing: border-box;}
+    a { text-decoration: none; }
+    li { list-style: none; }
+    /* h1, h2, h3, h4, h5, h6, p {margin: 10px 5px;} */
+    /* h1 { font-size: 1.8em; } */
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #58666e;
+        background-color: #f0f3f4;
+        -webkit-font-smoothing: antialiased;
+        /* iphone font size 변경 방지 */
+        -webkit-text-size-adjus: 100%;  
+    }
+
+    .wrap {
+        width: 100%; 
+        margin-top: 80px;
+        position:relative;
+        /* background:url() no-repeat center; */
+    }
+    header {
         width: 100%;
         height: 80px;
-        z-index: 2000;
-        position: fixed;/*z-index 값으로 fixed*/
         background-color: #fff;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05),
                        0 1px 0 rgba(0, 0, 0, 0.05); */
     }
-    
     .logo {
       display: inline-block;
       height: 5px;
-      margin: 12px 0 12px 25px;
-    }
-    
-    .logo > img { height: 50px;
-    
-    }
-    
+      margin: 12px 0 12px 25px;}
+    .logo > img { height: 50px;}
     nav {
-    display: flex;
-    justify-content: space-around;
-    
-    }
+    	display: flex;
+        justify-content: space-around;
+        }
     .nav-items {margin-right: 20px;}
-    .nav-items > li {display: inline-block;}
+    .nav-items > li {display: inline-block;
+    	
+    }
     .nav-items > li > a {
       /* for Vertical Centering */
       line-height: 80px;
       padding: 0 30px;
       color: rgb(0, 0, 0);}
     .nav-items > li > a:hover {color: gold;}
+		
+		.a1 {
+			
+			padding-top:30px;
+			padding-bottom : 20px;
+		}
+		
+		#wrap_all {
+			margin-left : 40px;
+			margin-right : 40px;
+		}
+		
+		.btn1 {
+			margin-top : 20px;
+		}
+		
+		.ddd{
+			color:white;
+			text-align:center;
+			padding-top : 50px;
+		}
+		
+		#logologo{
+			width:200px;
+			height:50px;
+		}
 	
     a{
         text-decoration: none;
@@ -65,12 +109,11 @@
     }
 
     #bar1{
-    	background-color:red;
+    	
         text-decoration: none;
         width: 100%;
         height: 50px;
-        position:fixed; 
-        z-index:99;
+ 
     }
     #bar1 ul li{
         float: left;
@@ -132,19 +175,10 @@
   		float : right;
   		text-align:center;
   		margin-top:30%;
-  		
- 
-  		
+  	
   		
     }
-    
-    .name{
-    	
-    }
-    
-    
- 
-    
+   
     .main img{
     	filter: brightness(1);
     }
@@ -153,6 +187,10 @@
     	filter: brightness(0.7);
     }
   
+  .main{
+  	padding-left: 10%;
+  	padding-right: 10%;
+  }
     
 
 	
@@ -162,19 +200,28 @@
 
 
 <body>
-
  <header>
-        <nav id="nav">
-        <ul class="nav-items">
-            <li><a href="#">영화</a></li>
-            <li><a href="#">예매</a></li>
-            <li><a href="#">극장</a></li>
-            <a class="logo" href="#home">로고</a>
-            <li id = "store"><a href="/HumanCinema/menu/store.do">스토어</a></li>
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">로그인</a></li>
-        </ul></nav>
-    </header></div>
+   <div id="wrap_all">
+	<div>
+		<form>
+				<div class="wrap">
+				    <header>
+				        <nav id="nav">
+				        <ul class="nav-items">
+				            <li><a href="../movie/movieTab.do">영화</a></li>
+				            <li><a href="#">예매</a></li>
+				            <li><a href="#">극장</a></li>
+				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
+				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
+				            <li><a href ="#">이벤트</a></li>
+				            <li><a href="#">고객센터</a></li>
+				            <li><a href="#">로그인</a></li>
+				        </ul></nav>
+					</header>
+				    
+				    </div>
+			</form>
+ </header>
 
 
 		  <div class = "title">	
@@ -241,7 +288,7 @@
 			    </c:forEach> 
 		     </div>
 		</div>
-	
-	
+	</div>	
+</div>
 </body>
 </html>
