@@ -8,40 +8,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>휴먼시네마</title>
+
+
 <style>
-body {
-background: rgb(121,9,9);
-background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(10,1,1,1) 70%, rgba(121,9,9,1) 100%);
-
+	body {
+		background: rgb(121,9,9);
+		background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(10,1,1,1) 70%, rgba(121,9,9,1) 100%);
 	}
-
-
-		#header {
-		    height: 150px;
-		    border:1px solid red
-		}
-		.tab{
-		    font-size: 0;    
-		}
-		.tab > div {
-		    display: inline-block;
-		    width: 49.9%;
-		    height: 50px;
-		    font-size: 18px;
-		    margin-top: 20px;
-		    text-align: center;
-		    padding-top: 25px;
-		}
-		.violet{
-		    border: 1px solid #503396;
-		    border-bottom: none;
-		}
-		.violet2{
-		    border-bottom: 1px solid #503396;
-		}
 		
-		.a1, .a2 {
+		.a1{
 			display:flex;
 			justify-content: center;
 			flex-wrap: wrap;
@@ -49,7 +25,7 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 			
 		}
 		
-		.show1, .show2 {
+		.show1{
 			width: 240px;
 		    height: 550px;
 		    margin-left : 20px;
@@ -60,8 +36,7 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 		/* 영화 호버시 보이는 설명 글 */
 		.explain{
 		    position: relative;
-		    top:-230px;
-		    left:40px;
+		    top:-300px;
 		    color: white;
 		    font-size: 15px;
 		    padding: 30px;
@@ -119,58 +94,65 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 		    
 		}
 		
-		/* 상단바 */
-		* {top: 0; margin: 0; box-sizing: border-box;}
-    a { text-decoration: none; }
-    li { list-style: none; }
-    /* h1, h2, h3, h4, h5, h6, p {margin: 10px 5px;} */
-    /* h1 { font-size: 1.8em; } */
-
-    body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #58666e;
-        background-color: #f0f3f4;
-        -webkit-font-smoothing: antialiased;
-        /* iphone font size 변경 방지 */
-        -webkit-text-size-adjus: 100%;  
-    }
-
-    .wrap {
-        width: 100%; 
-        margin-top: 80px;
-        position:relative;
-        /* background:url() no-repeat center; */
-    }
-    header {
-        width: 100%;
-        height: 80px;
-        background-color: #fff;
-        /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05),
-                       0 1px 0 rgba(0, 0, 0, 0.05); */
-    }
-    .logo {
-      display: inline-block;
-      height: 5px;
-      margin: 12px 0 12px 25px;}
-    .logo > img { height: 50px;}
-    nav {
-    	display: flex;
-        justify-content: space-around;
+	/* 상단바 */
+	
+        header{
+            color: white;
+            margin-top: 30px;
         }
-    .nav-items {margin-right: 20px;}
-    .nav-items > li {display: inline-block;
-    	
-    }
-    .nav-items > li > a {
-      /* for Vertical Centering */
-      line-height: 80px;
-      padding: 0 30px;
-      color: rgb(0, 0, 0);}
-    .nav-items > li > a:hover {color: gold;}
-		
+        .header_list {
+            background-color: black;
+            
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            height: 100px;
+        }
+        .header_list >div{
+            width: 100px;
+            line-height: 100px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .header_list a {
+        	text-decoration:none;
+        	color: white;
+        }
+        #logo_human{
+            width: 150px;
+            height: 100px;
+        }
+        #logo_human img{
+            width: 150px;
+            height: 100px;
+        }
+        
+        .login_signup {
+        	
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            color: white;
+                       
+        }
+        .login_signup div{
+            margin-left: 20px;
+            font-weight: 600;
+            
+        }
+        .login_signup a{
+            text-decoration:none;
+            color: white;
+            
+        }
+        
+	
+	
+	
+	/* ----------- */
+	
+	
 		.a1 {
-			
-			padding-top:30px;
 			padding-bottom : 20px;
 		}
 		
@@ -185,8 +167,8 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 		
 		.ddd{
 			color:white;
+			padding-top : 20px;
 			text-align:center;
-			padding-top : 50px;
 		}
 		
 		#logologo{
@@ -194,35 +176,78 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 			height:50px;
 		}
 </style>
-
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script type="text/javascript">
+window.onload =()=>{
+	for (let k = 1; k < 5; k++) {
+    	document.querySelector("#like_btn"+k).addEventListener("click", function(){
+       	 $.ajax({
+    		    url: "../movie1",
+    		    type: "POST",
+    		    dataType: "html",
+    		   	data:{
+    	            command : $('#command').val(),
+    	            articleNO1 : $('#articleNO1'+k).val()
+    	        },
+    		    success:function(data){      					
+    		    	let a = JSON.parse(data).like;
+    		    	console.log(a);
+    		    	 /* 화면에 표시하는 방법  */
+    		    	$("#like_btn"+k).val("좋아요 "+a);
+    		    },   
+    		    error: 
+    		    function (request, status, error){  
+    		    }
+    		  });
+       })
+    }
+	
+}
+</script>
 </head>
 <body>
 	<div id="wrap_all">
-	<div>
-		<form>
-				<div class="wrap">
-				    <header>
-				        <nav id="nav">
-				        <ul class="nav-items">
-				            <li><a href="../movie/movieTab.do">영화</a></li>
-				            <li><a href="#">예매</a></li>
-				            <li><a href="#">극장</a></li>
-				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
-				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
-				            <li><a href ="#">이벤트</a></li>
-				            <li><a href="#">고객센터</a></li>
-				            <li><a href="#">로그인</a></li>
-				        </ul></nav>
-					</header>
-				    
-				    </div>
-			</form>
-			</div>
-			<br>
-			<br>
+<!--상단바  -->
+		   <header>
+		       <div class="header_list">
+		           <div>
+		               <a href="../movie1/movieTab.do">영화</a>
+		           </div>
+		           <div>
+		               <a href="">예매</a>
+		           </div>
+		           <div>
+		               <a href="/HumanCinema/cinema/cinema.do">극장</a>
+		           </div>
+		           <div id="logo_human">
+		           		<a href="../movie1/main.do">
+		               		<img src="../changsoon/image/logo.png">
+		               </a>
+		           </div>
+		           <div>
+		               <a href="/HumanCinema/menu/store.do">스토어</a>
+		           </div>
+		           <div>
+		               <a href="">이벤트</a>
+		           </div>
+		           <div>
+		               <a href="">고객센터</a>
+		           </div>
+		       </div>
+		       <div class="login_signup">
+		           <div>
+		               <a href="">로그인</a>
+		           </div>
+		           <div>
+		               <a href="">회원가입</a>
+		           </div>
+		       </div>
+		   </header>
+
+
 			
 			<div class="ddd">
-			<h1>박스오피스</h1>
+				<h1>무비차트</h1>
 			</div>
 			
 			<div class="a1">
@@ -243,12 +268,20 @@ background: linear-gradient(90deg, rgba(121,9,9,1) 0%, rgba(0,0,0,1) 30%, rgba(1
 					 	</div>
 					 	
 						<div class="btn1">
-						  <form id="like_form">
+						<form id="like_form">
+					  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
+					  	<input id="articleNO1${status.count }" type="hidden" name="articleNO1" value="${movie.articleNO}">
+					  	<input id="command" type="hidden" name="command" value="like_it">
+					  	<input id="like_btn${status.count }" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
+					  	<a href=""><input id="btn2"  type="button" value="예매"></a>
+					  </form>
+						 <%--  <form id="like_form">
 						  	<input id="like_num" type="hidden" name="like_num" value="${movie.like_num}">
 						  	<input id="command" type="hidden" name="command" value="like_it">
 						  	<input id="like_btn" name="like_num2" type="button" value="좋아요 ${movie.like_num }">
-						  	<a href="changsoon/영화탭/예매탭.jsp"><input id="btn2"  type="button" value="예매"></a>
-						  </form>
+						  	<!-- 예매탭만들면 이동 -->
+						  	<a href=""><input id="btn2"  type="button" value="예매"></a>
+						  </form> --%>
 						     <!-- 예매버튼을 눌렀을때 각 영화의 값을 예매탭으로 전달해서 예매탭에서 getparameter할 수 있게만들기 -->
 					    </div>
 					</div>

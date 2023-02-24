@@ -10,7 +10,6 @@
     .login {
         height: 100vh;
         width: 100%;
-        background: radial-gradient(red, black);
         position: relative;
     }
     .login_box {
@@ -22,11 +21,12 @@
         transform: translate(-50%,-50%);/*Horizontal alignment*/
         background: #fff;
         border-radius: 5px;
+        
         box-shadow: 1px 4px 22px -8px rgb(147, 146, 146);
         display: flex;
         overflow: hidden;}
         
-    .login_box .left_img{width: 60%; height: 100%;}
+    .login_box .left_img{width: 600px; height: 900px;}
     .login_box .right_login{width: 65%; height: 100%; padding: 25px 25px;}
 
     .footer_link a{color: black; font-weight: 500;}
@@ -87,10 +87,11 @@
         background-size: 100%;
     }
     section {display: flex; overflow: hidden;}
-    img{width: 100%;}
+    #mainImage{width: 100%;}
     
     </style>
     <script>
+    
         window.onload = function(){
             init();
             bind();
@@ -101,43 +102,20 @@
             function fnSlide() {
                 $(".slider").animate({ "margin-left": "0px" }, 3000, function () {
                     $(".slider").css({ "margin-left": "0px" });
-                    $("img:first-child").insertAfter("img:last-child");
+                    $(".slider img:first-child").insertAfter(".slider img:last-child");
                 });
             };
             setInterval(fnSlide, 3000);
         }
-       
-        function fn_loginMember(){
-
-            var inputId = document.getElementById("inputId").value;
-            var inputPwd = document.getElementById("inputPwd").value;
-            var submit = document.getElementById("submit");
-            // var login_findPw = document.getElementById('login_findPw');
-            // var login_findid = document.getElementById('login_findid');
-
-            // login_btn.addEventListener('click',(fn_loginMember))
-            console.log(submit);
-
-            if (inputId.length == 0 || inputId == "") {
-                alert("아이디를 입력하세요.");
-                return false;
-
-            }else if (inputPwd.length == 0 || inputPwd == "") {
-                alert("비밀번호를 입력하세요.");
-                return false;
-
-            }else if (inputId == "admin" && inputPwd == '0000') {
-                alert("로그인 되었습니다.")
-            } else {
-                alert("아이디와 비밀번호를 다시 확인해주세요.")
-            }
-        } 
+        
+            
     </script>
 </head>
 <body>
-<jsp:include page="/SiginupForm/Header.jsp"></jsp:include>
+
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+<jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <section class="login">
-    
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
@@ -155,16 +133,16 @@
                 </div>
             </div>
             <div class="right_login">
-                <div class="top_link">
-                <a href="#">Return home</a></div>
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
-                <form method="post" action="/HumanStudy/LoginForm/UserAction.jsp">
-                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20">
-                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20">
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
+                <form method="post" action="/HumanStudy/user/login">
+                <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
+                <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>
-                <div class="footer_link"><a href="http://localhost:8080/HomePage/Sign-Up.jsp">회원가입 하고 싶어요&#128155;</a></div>
-                <!-- <img src="경로" alt="" class="btn" onclick="clickBtn(); /> -->
+<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+                <div class="footer_link"><a href="/HumanStudy/hyojung/SignUp.jsp">회원가입 하고 싶어요&#128155;</a></div>
                 </form></div>
             </div>
         </div>

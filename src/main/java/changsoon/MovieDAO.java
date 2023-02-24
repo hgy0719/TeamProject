@@ -78,6 +78,30 @@ public class MovieDAO {
 		return list;
 	}
 	
+	
+//	극장테이블 출력
+	public List<MovieVO> listTheater(){
+		List<MovieVO> list = new ArrayList<MovieVO>();
+		try {
+			con = dataFactory.getConnection();
+			String query = "select * from theater";
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String theater_name = rs.getString("theater_name");
+				MovieVO vo = new MovieVO();
+				vo.setTheater_name(theater_name);
+				list.add(vo);
+			}
+			con.close();
+			rs.close();
+			pstmt.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 //	articleNO별 테이블 출력
 	public List<MovieVO> listMovies2(int articleNO0){
 		List<MovieVO> list = new ArrayList<MovieVO>();
@@ -250,13 +274,13 @@ public class MovieDAO {
 	}
 	
 //	좋아요 눌렀을때 1추가
-	public void update_Like(int like_num){
-		String query = "update practice set like_num=like_num+1 where like_num=?";
+	public void update_Like(int articleNO){
+		String query = "update practice set like_num=like_num+1 where articleNO=?";
 
 		try{
 			con = dataFactory.getConnection();
 			pstmt = con.prepareStatement(query);  // '?'바인드를 사용해서 sql문을 효과 적으로 사용할수있음
-			pstmt.setInt(1,like_num);
+			pstmt.setInt(1,articleNO);
 			pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -264,14 +288,14 @@ public class MovieDAO {
 	}
 	
 //	좋아요 개수 출력
-	public int select_Like(int like_num){
-		String query = "select like_num from practice where like_num=?";
+	public int select_Like(int articleNO){
+		String query = "select like_num from practice where articleNO=?";
 		
 		int like=0;
 		try{
 			con = dataFactory.getConnection();
 			pstmt = con.prepareStatement(query);  // '?'바인드를 사용해서 sql문을 효과 적으로 사용할수있음
-			pstmt.setInt(1,like_num);
+			pstmt.setInt(1,articleNO);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
 				like = rs.getInt("like_num");
@@ -448,19 +472,20 @@ public class MovieDAO {
 	}
 	
 //	댓글 정보 추가
-	public void upComment(String comment_text, String comment_id, String comment_rate) {
+	public void upComment(int articleNO, String comment_text, String comment_id, String comment_rate) {
 		try {
 			con = dataFactory.getConnection();
-        	String query = "INSERT INTO comment_1 (commentNO, parentNO, comment_id, comment_text, comment_rate) VALUES (?, 0, ?, ?, ?)";
+        	String query = "INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text, comment_rate) VALUES (?, ?, 0, ?, ?, ?)";
         	pstmt = con.prepareStatement(query);
         	int commentNO = getNewCommentNO();
         	
         	System.out.println(commentNO);
         	pstmt = con.prepareStatement(query);
-        	pstmt.setInt(1, commentNO);
-        	pstmt.setString(2, comment_id);
-        	pstmt.setString(3, comment_text);
-        	pstmt.setString(4, comment_rate);
+        	pstmt.setInt(1, articleNO);
+        	pstmt.setInt(2, commentNO);
+        	pstmt.setString(3, comment_id);
+        	pstmt.setString(4, comment_text);
+        	pstmt.setString(5, comment_rate);
         	pstmt.executeUpdate();
         	pstmt.close();
 		} catch(Exception e) {
@@ -469,20 +494,21 @@ public class MovieDAO {
 	}
 
 //	대댓글 정보 추가
-	public void upComment2(int commetNO2, String comment_text, String comment_id) {
+	public void upComment2(int articleNO, int commetNO2, String comment_text, String comment_id) {
 		try {
 			con = dataFactory.getConnection();
-        	String query = "INSERT INTO comment_1 (commentNO, parentNO, comment_id, comment_text) VALUES (?, ?, ?, ?)";
+        	String query = "INSERT INTO comment_1 (articleNO, commentNO, parentNO, comment_id, comment_text) VALUES (?, ?, ?, ?, ?)";
         	pstmt = con.prepareStatement(query);
         	int commentNO = getNewCommentNO();
         	
         	System.out.println(commentNO);
         	int parentNO = commetNO2;
         	pstmt = con.prepareStatement(query);
-        	pstmt.setInt(1, commentNO);
-        	pstmt.setInt(2, parentNO);
-        	pstmt.setString(3, comment_id);
-        	pstmt.setString(4, comment_text);
+        	pstmt.setInt(1, articleNO);
+        	pstmt.setInt(2, commentNO);
+        	pstmt.setInt(3, parentNO);
+        	pstmt.setString(4, comment_id);
+        	pstmt.setString(5, comment_text);
         	pstmt.executeUpdate();
         	pstmt.close();
 		} catch(Exception e) {
@@ -491,28 +517,31 @@ public class MovieDAO {
 	}
 	
 //	페이징 메소드 오버라이드
-	public List<MovieVO> listMovies(Map<String, Integer> pagingMap){
+	public List<MovieVO> listMovies(Map<String, Integer> pagingMap, int articleNO1){
 		List<MovieVO> articlesList = new ArrayList<MovieVO>();
 		int section = (Integer) pagingMap.get("section");
 		int pageNum = (Integer) pagingMap.get("pageNum");
 		try {
 			con = dataFactory.getConnection();
 			String query = "SELECT * FROM ("
-					+ "	SELECT rownum AS recnum, lvl, commentNO, parentNO, comment_text, comment_id, comment_rate"
-					+ "	FROM (SELECT LEVEL AS lvl, commentNO, parentNO, comment_text, comment_id, comment_rate "
+					+ "	SELECT rownum AS recnum, lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate"
+					+ "	FROM (SELECT LEVEL AS lvl, articleNO, commentNO, parentNO, comment_text, comment_id, comment_rate "
 					+ "			FROM COMMENT_1"
 					+ "			START WITH parentNO=0"
 					+ "			CONNECT BY PRIOR commentNO = parentNO"
 					+ "			ORDER SIBLINGS BY commentNO DESC))"
-					+ " WHERE recnum BETWEEN (?-1)*100 + (?-1)*10+1 AND (?-1)*100+?*10";
+					+ " WHERE articleNO = ? and recnum BETWEEN (?-1)*100 + (?-1)*10+1 AND (?-1)*100+?*10";
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, section);
-			pstmt.setInt(2, pageNum);
-			pstmt.setInt(3, section);
-			pstmt.setInt(4, pageNum);
+			pstmt.setInt(1, articleNO1);
+			pstmt.setInt(2, section);
+			pstmt.setInt(3, pageNum);
+			pstmt.setInt(4, section);
+			pstmt.setInt(5, pageNum);
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int level = rs.getInt("lvl");
+				int articleNO = rs.getInt("articleNO");
 				int commentNO = rs.getInt("commentNO");
 				int parentNO = rs.getInt("parentNO");
 				String comment_text = rs.getString("comment_text");
@@ -521,6 +550,9 @@ public class MovieDAO {
 				int comment_rate = rs.getInt("comment_rate");
 				
 				MovieVO vo = new MovieVO();
+				
+				vo.setLevel(level);
+				vo.setArticleNO(articleNO);
 				vo.setCommentNO(commentNO);
 				vo.setParentNO(parentNO);
 				vo.setComment_text(comment_text);
