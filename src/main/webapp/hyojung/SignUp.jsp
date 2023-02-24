@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <style>
     .login {
         height: 100vh;
         width: 100%;
-        background: radial-gradient(red, black);
         position: relative;
-    }
+   	 }
     .login_box {
         width: 900px;
         height: 600px;
@@ -27,7 +25,7 @@
         display: flex;
         overflow: hidden;}
         
-    .login_box .left_img{width: 60%; height: 100%;}
+    .login_box .left_img{width: 600px ; height: 900px;}
     .login_box .right_login{width: 65%; height: 100%; padding: 25px 25px;}
 
     .footer_link a{color: black; font-weight: 500;}
@@ -98,27 +96,62 @@
         background-size: 100%;
     }
     section {display: flex; overflow: hidden;}
-    img{width: 100%;}
+     #mainImage{width: 100%;}
 
     
     </style>
     <script>
-        window.onload = function(){
-            init();
-            bind();
-        }   
-            function init(){    }
-            function bind(){
 
-            function fnSlide() {
-                $(".slider").animate({ "margin-left": "0px" }, 3000, function () {
-                    $(".slider").css({ "margin-left": "0px" });
-                    $("img:first-child").insertAfter("img:last-child");
-                });
-            };
-            setInterval(fnSlide, 3000);
-        }
+    window.onload = function(){
+        init();
+        bind();
+    }   
+        function init(){    }
+        function bind(){
+
+        function fnSlide() {
+            $(".slider").animate({ "margin-left": "0px" }, 3000, function () {
+                $(".slider").css({ "margin-left": "0px" });
+                $(".slider img:first-child").insertAfter(".slider img:last-child");
+            });
+        };
+        setInterval(fnSlide, 3000);
+    }
         
+         function fn_process(){
+             var _id=$("#inputId").val();
+             //입력한 아이디 값을 가져와서
+             if(_id==''){
+            	 alert("아이디를 입력하세요.")
+            //입력이 없으면 리턴
+            	 return;
+             }
+             $.ajax({
+	                type:"post",
+	                async:true,  
+	<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+	                url:"http://localhost:8080/HumanStudy/user/new",
+	                dataType:"text",
+	                data: {id:_id},
+	                //아이디를 서블릿에 전송한다.
+	                success:function (data,textStatus){
+	             	   alert(data);
+	             	   
+	                   if(data=='usable'){
+	                	   $('#message').text("사용할 수 있는 ID입니다.");
+	                	   $('#idcheck').prop("disabled", true);
+	                   }else{
+	                	   $('#message').text("사용할 수 없는 ID입니다.");
+	                   }
+	                },
+	                error:function(data,textStatus){
+	                   alert("에러가 발생했습니다.");ㅣ
+	                },
+	                complete:function(data,textStatus){
+	                   alert("환영합니다.");
+	                }
+             });  //end ajax	 
+          }	
 
     </script>
 </head>
@@ -147,19 +180,20 @@
                 <div class="sign-in">
                 <h2>Human Cinema</h2>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                <form method="post" action="/HumanCinema/user/LogIn">
+							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
+                <form method="post" action="/HumanStudy/user/new">
                   <div class="join_login">
                      <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
-                     <button class="check">중복체크</button></div>
+                     <button class="check"  id="idcheck" onclick="fn_process()">중복체크</button></div>
                      <div id="message"></div>
                      <div class="inputSet"><input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputPwd2" type="password" name="pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputName" type="text" name="name" placeholder="이름을 입력하세요"></div>
                      <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일를 입력하세요"></div>
                  </div>
-                 <button class="submit" onclick="fn_process()">회원가입</button><br>
+                 <input type="button" class="submit"  value="회원가입" ><br>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                 <div class="footer_link"><a href="/HumanCinema/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
+                 <div class="footer_link"><a href="/HumanStudy/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
                  </form>
                </div>
             </div>

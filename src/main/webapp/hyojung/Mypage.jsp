@@ -137,7 +137,7 @@
         <article class="UserInformation">
           <table><h1>회원정보</h1></table>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>       
-           <form action=".do" method="dohandle" name="frm">
+           <form action="userlist" method="dohandle" name="frm">
 	        <table>
 	            <tr>
 	              <th rowspan="8"><img src="" alt="프로필사진"></td>
@@ -176,7 +176,7 @@
 	          </form>
 	          
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	          	<form action="mypage">
+	          	<form action="mypage.do">
 					<br />
 					<table>
 					<tr>

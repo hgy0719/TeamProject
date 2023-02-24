@@ -49,7 +49,6 @@ import javax.sql.DataSource;
                con.close();
                rs.close();
             } catch (SQLException e) {
-            	System.out.println("UserDAO의 로그인이 안되는데?");
                e.printStackTrace();
             }
             return result;
@@ -60,7 +59,7 @@ import javax.sql.DataSource;
 			try {
 				Connection con = dataFactory.getConnection();
 				String id = m.getId();
-				String pwd = m.getPwd1();
+				String pwd = m.getPwd();
 				String name = m.getName();
 				String email = m.getEmail();
 				String query = "insert into t_user";
@@ -111,6 +110,7 @@ import javax.sql.DataSource;
 			return list;
 		}
 		
+		//회원가입 수정
 		public void update(UserVO userVO) {
 			String id = userVO.getId();
 			String pwd = userVO.getPwd();
@@ -148,25 +148,25 @@ import javax.sql.DataSource;
 		}
 		
 		//회원가입 중복확인
-//		public boolean overlappedID(String id){
-//			boolean result = false;
-//			try {
-//				con = dataFactory.getConnection();
-//				String query = "select decode(count(*),1,'true','false') as result from t_user";
-//				query += " where id=?";
-//				System.out.println("prepareStatememt: " + query);
-//				pstmt = con.prepareStatement(query);
-//				pstmt.setString(1, id);
-//				ResultSet rs = pstmt.executeQuery();
-//				rs.next();
-//				result = Boolean.parseBoolean(rs.getString("result"));
-//				pstmt.close();
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			
-//			return result;
-//		}
+		public boolean overlappedID(String id){
+			boolean result = false;
+			try {
+				con = dataFactory.getConnection();
+				String query = "select decode(count(*),1,'true','false') as result from t_user";
+				query += " where id=?";
+				System.out.println("prepareStatememt: " + query);
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, id);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				result = Boolean.parseBoolean(rs.getString("result"));
+				pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
 
 
 

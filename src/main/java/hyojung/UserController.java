@@ -1,6 +1,7 @@
 package hyojung;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,14 +41,31 @@ public class UserController extends HttpServlet {
 		
 		//회원가입
 		if (action==null|| action.equals("/new")) {
-			UserService actSign = new UserService();
-			actSign.serSign();
 			System.out.println("회원가입 출력");
+			UserService actSign = new UserService();
+//			List<UserVO> UserList = actSign.serSign();
+//			actSign.serSign();
+//			service에서 dao를 불러 선택했으나 현재 필요없음
+			
+		}else if(action.equals("/check")) {
+			//회원 중복확인
+			String id = (String) request.getParameter("id");
+			System.out.println("id = " + id);
+			UserService nameCheck = new UserService();
+			boolean overlappedID = nameCheck.setCheck(id);
+			
+			//회원 중복확인에 대한 결과 메시지 전송
+			PrintWriter writer = response.getWriter();
+				if (overlappedID == true) {
+					writer.print("not_usable");
+				} else {
+					writer.print("usable");
+				}
 //<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-			page = "/hyojung/SignUp.jsp";
+//			page = "/hyojung/SignUp.jsp";
 			
 		//회원리스트 생성
-		} else if (action.equals("/UserList")) {
+		} else if (action.equals("/userlist")) {
 			
 			UserService actList = new UserService();
 			List<UserVO> UserList = actList.serList();//회원정보 조회할 때 사용할 수 있음
@@ -57,9 +75,8 @@ public class UserController extends HttpServlet {
 			page ="/hyojung/LogIn.jsp";
 			
 			//로그인
-		}else if (action.equals("/Login")) {
+		}else if (action.equals("/login")) {
 			HttpSession session = request.getSession();
-			
 			System.out.println(session.getAttribute("id"));
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -86,24 +103,16 @@ public class UserController extends HttpServlet {
 		
 		//회원탈퇴
 // 		}else if(action) {
+			
 		}
 		
-		RequestDispatcher dispatch = request.getRequestDispatcher(page);
-		dispatch.forward(request, response);
+		if(!action.equals("/new")) {
+			RequestDispatcher dispatch = request.getRequestDispatcher(page);
+			dispatch.forward(request, response);
+		}
 		
-//		//회원가입 중복확인(service를 거치지 않음)
-//		PrintWriter writer = response.getWriter();
-//		String id = (String) request.getParameter("id");
-//		System.out.println("id = " + id);
-//		UserDAO userDAO = new UserDAO();
-//		boolean overlappedID = userDAO.overlappedID(id);
-//		
-//		//회원가입 중복확인에 대한 결과 메시지 전송
-//			if (overlappedID == true) {
-//				writer.print("not_usable");
-//			} else {
-//				writer.print("usable");
-//			}
+
+
 		
 		
 		

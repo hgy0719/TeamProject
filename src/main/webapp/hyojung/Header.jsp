@@ -13,6 +13,7 @@
             /* font-family: 'East Sea Dokdo', cursive; */
             font-family: 'Poor Story', cursive;
             margin-top: 30px;
+
         }
         .header_list {
             padding: 0 10px 0 10px;
@@ -90,7 +91,7 @@
             <div id="d2"><span style="cursor: pointer">예매</span></div>
             <div id="d3"><span style="cursor: pointer">극장</span></div>
  <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-            <div id="logo_human"><img src="../hyojung/logoCI.png"/></div>
+            <div id="logo_human"><img src="../img/logoCI.png"/></div>
             <div id="d4"><span style="cursor: pointer">스토어</span></div>
             <div id="d5"><span style="cursor: pointer">이벤트</span></div>
             <div id="d6"><span style="cursor: pointer">고객센터</span></div>
