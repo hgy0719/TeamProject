@@ -145,7 +145,7 @@ public class UserController extends HttpServlet {
 			String email = request.getParameter("email");
 			System.out.println("update getParam:"+id+"/"+pwd1+"/"+"/"+name+"/"+email);
 			
-			String pwd2 = null;
+			String pwd2 = request.getParameter("pwd2");
 			if(pwd1.equals(pwd2)) {
 				UserVO vo = new UserVO();
 				vo.setId(id);

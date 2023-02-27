@@ -10,7 +10,10 @@
 <title>마이페이지(회원정보)</title>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <style>
-	#mypage(margin: 35px 0 50px 20px; }
+	#mypage{
+	margin-left: 15%;
+	margin-bottom: 30px;
+	}
 	
 	body {
 	    background: #f5f5f5
@@ -26,7 +29,7 @@
 	  box-shadow: 0 2px 5px rgba(0,0,0,.25);
 	  margin-left: auto;
 	  margin-right: auto;
-	  width: 850px;
+	  width: 75%;
 	  border-collapse: collapse;
 	  border-radius: 5px;
 	  overflow: hidden;
@@ -39,19 +42,14 @@
 	    opacity: 0.85;/* 투명도 */
 	    color: white;
 	}
-	#inputset1{
-	    outline: none;
-	}
-	input{
-	    border: none;
-	}
+	#inputset1{outline: none;}
+	input{	border: none;}
 	
 	 td, th {
 	    padding: 15px 50px;
 	    vertical-align: middle;
 	}
 	td {border-bottom: 1px solid rgba(0,0,0,.1);  background: #fff;}
-	
 	
 	#btn input {
 	width: 100%;
@@ -68,7 +66,6 @@
 </style>
 </head>
 <body>
-  <form>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 <jsp:include page="/hyojung/Header.jsp"></jsp:include>
     <div id="content-wrap">
@@ -76,26 +73,26 @@
             </div>
               <section>
                 <article class="UserInformation">
-                   <form method="post" action="  ${contextPath}/user/update?id=${result.id}" >
+                   <form method="post"  action="${contextPath}/user/update?id=${result.id}" >
                         <table>
-                            <th colspan="3">회원정보</th>
+                            <th colspan="3">회원정보2</th>
                             <tr>
                                 <td id="inputset1">아이디</td>
-                                <td><input id="inputset2" name="changeId" value='${result.id}' disabled></td>
+                                <td><input id="inputset2" name="id" value='${result.id}' disabled></td>
                                 <td id="btn"><input class="btnSlide" type="submit" value="수정하기" ></td> 
                             </tr>
                             <tr>
                                 <td id="inputset1">비밀번호</td>
-                                <td><input id="inputSet2" name="changePwd" type="password" size="40" value='${result.pwd1}' placeholder="비밀번호를 입력하세요"></td>
+                                <td><input id="inputSet2" name="pwd1" type="password" size="40" value='${result.pwd1}' placeholder="비밀번호를 입력하세요"></td>
                                 <td id="btn"><input class="btnSlide" type="reset" value="다시입력" ></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">비밀번호 확인</td>
-                                <td colspan="2"><input id="inputSet2" name="changePwd2" type="password" size="40" value='${result.pwd2}'placeholder="다시 한번 입력하세요"></td>
+                                <td colspan="2"><input id="inputSet2" name="pwd2" type="password" size="40" value='${result.pwd2}'placeholder="다시 한번 입력하세요"></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">이름</td>
-                                <td colspan="2"><input id="inputSet2" name="changeName" value='${result.name}'></td>
+                                <td colspan="2"><input id="inputSet2" name="name" value='${result.name}'></td>
                             </tr>
                             <tr>
                                 <td id="inputset1">이메일</td>
@@ -103,8 +100,9 @@
                             </tr>
                       </table>
                     </form>
+                    <br/>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	         		<form action="/HumanCinema/user/del">
+	         		<form action="mypage.do">
                         <table>
                         <th colspan="2">회원탈퇴</th>
                         <tr>
@@ -115,9 +113,5 @@
                     </form>
                 </article>
               </section>
-            </form>
-        </article>
-        </section>
-    </form>
 </body>
 </html>
