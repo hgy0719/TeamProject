@@ -50,7 +50,7 @@ public class UserController extends HttpServlet {
 			String email = request.getParameter("email");
 			System.out.println(id+"/"+pwd1+"/"+name+"/"+email);
 			
-				if(pwd1.equals(pwd2)) {
+				if(pwd1 != null && pwd1.equals(pwd2)) {
 					UserService actSign = new UserService();
 					UserVO m = new UserVO();
 					m.setId(id);
@@ -61,8 +61,8 @@ public class UserController extends HttpServlet {
 	
 					page ="/hyojung/LogIn.jsp";
 				} else {
-	//				request.setAttribute("message:", value);
 					page ="/hyojung/SignUp.jsp";
+	//				request.setAttribute("message:", value);
 				}
 
 		//회원 중복확인
