@@ -73,7 +73,7 @@
     <header>
  <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
         <div class="header_list">
-            <div id="h1"><a href="../movie1/movieTab.do">
+            <div id="h1"><a href="/HumanCinema/movie1/movieTab.do">
             	<span style="cursor: pointer">영화</span></a></div>
             
             <div id="h2"><a href="">
@@ -82,22 +82,22 @@
             <div id="h3"><a href="/HumanCinema/cinema/cinema.do">
             	<span style="cursor: pointer">극장</span></a></div>
             	
-            <div id="logo_human"><a href="../movie1/main.do">
+            <div id="logo_human"><a href="/HumanCinema/movie1/main.do">
         		<img src="../img/logoCI.png"/></a></div>
         		
 			<div id="h4"><a href="/HumanCinema/menu/store.do">
             	<span style="cursor: pointer">스토어</span></a></div>
             
-            <div id="h5">
-            	<span style="cursor: pointer">이벤트</span></div>
+            <div id="h5"><a href="/HumanCinema/event1/event1.do">
+            	<span style="cursor: pointer">이벤트</span></a></div>
             
-            <div id="h6">
-            	<span style="cursor: pointer">고객센터</span></div>
+            <div id="h6"><a href="/HumanCinema/board/listArticles.do">
+            	<span style="cursor: pointer">고객센터</span></a></div>
         </div>
         <div class="login_signup">
-            <div id="h7"><a href="/HumanStudy/hyojung/LogIn.jsp">
+            <div id="h7"><a href="/HumanCinema/user/login">
            		<span style="cursor: pointer">로그인</span></a></div>
-            <div id="h8"><a href="/HumanStudy/hyojung/SignUp.jsp">
+            <div id="h8"><a href="/HumanCinema/user/new">
             	<span style="cursor: pointer">회원가입</span></a></div>
         </div>
     </header>

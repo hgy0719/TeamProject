@@ -106,7 +106,7 @@ public class UserController extends HttpServlet {
 						session.setAttribute("id",id);
 	//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 						//창순씨 메인페이지 주소로 이동해야함.
-						page = "/hyojung/Mypage.jsp";
+						page = "/HumanCinema/movie1/main.do";
 						//
 						System.out.println("session:"+session);
 	
