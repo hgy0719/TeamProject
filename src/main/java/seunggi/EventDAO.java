@@ -207,7 +207,7 @@ public class EventDAO {
 		List<EventVO> articlesList = new ArrayList();
 		try {
 			con = dataFactory.getConnection();
-			String query = "SELECT LEVEL, articleNO, parentNO, title, content, id, writeDate"
+			String query = "SELECT LEVEL, articleNO, parentNO, title, content, id"
 					+ " from e_board"
 					+ " START WITH parentNO=0"
 					+ "CONNECT BY PRIOR articleNO=parentNO"
@@ -220,19 +220,19 @@ public class EventDAO {
 				int level = rs.getInt("level");
 				int articleNO = rs.getInt("articleNO");
 				int parentNO = rs.getInt("parentNO");
-				String replytitle = rs.getString("replytitle");
+				String title = rs.getString("title");
 				String content = rs.getString("content");
-				String replyid = rs.getString("replyid");
-				Date writeDate = rs.getDate("writeDate");
+				String id = rs.getString("id");
+//				Date writeDate = rs.getDate("writeDate");
 				
 				EventVO article = new EventVO();
 				article.setLevel(level);
 				article.setArticleNO(articleNO);
 				article.setParentNO(parentNO);
-				article.setReplytitle(replytitle);
+				article.setTitle(title);
 				article.setContent(content);
-				article.setReplyid(replyid);
-				article.setWriteDate(writeDate);
+				article.setId(id);
+//				article.setWriteDate(writeDate);
 				articlesList.add(article);
 			}
 			rs.close();
