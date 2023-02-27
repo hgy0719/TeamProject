@@ -1,7 +1,6 @@
 package hyojung;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,8 +77,9 @@ import javax.sql.DataSource;
 				e.printStackTrace();
 			}
 		}
+		
 		//회원가입 정보를 가지고 UserList 생성(UserAction.jsp)
-		public List<UserVO> listUser( ) {
+		public List<UserVO> listUser() {
 			System.out.println("UserDAO의 listUser를 실행함");
 			List<UserVO> list = new ArrayList<UserVO>();
 			try {
@@ -110,7 +110,34 @@ import javax.sql.DataSource;
 			return list;
 		}
 		
-		//회원가입 수정
+		//마이페이지 내정보출력
+		public UserVO mypage(String id) {
+			UserVO mypage = null;
+			try {
+				Connection con = dataFactory.getConnection();
+				String query = "select * from t_user where id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1,id);
+				System.out.println("mypage(select): " + query);
+				ResultSet rs = pstmt.executeQuery(); //쿼리실행
+				rs.next();
+				String getId = rs.getString("id");
+				String getPwd = rs.getString("pwd");
+				String getName = rs.getString("name");
+				String getEmail = rs.getString("email");
+				mypage = new UserVO(getId, getPwd, getName, getEmail);
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch (Exception e) {
+				System.out.println("UserDAO mypage 오류");
+				e.printStackTrace();
+			}
+			return mypage;
+		}
+		
+				
+		//마이페이지 회원정보 업데이트
 		public void update(UserVO userVO) {
 			String id = userVO.getId();
 			String pwd = userVO.getPwd();

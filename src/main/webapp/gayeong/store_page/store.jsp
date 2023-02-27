@@ -200,28 +200,7 @@
 
 
 <body>
- <header>
-   <div id="wrap_all">
-	<div>
-		<form>
-				<div class="wrap">
-				    <header>
-				        <nav id="nav">
-				        <ul class="nav-items">
-				            <li><a href="../movie/movieTab.do">영화</a></li>
-				            <li><a href="#">예매</a></li>
-				            <li><a href="#">극장</a></li>
-				            <a class="logo" href="../movie1/main.do"><img id="logologo" src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201702/09/htm_20170209151440812443.png" /></a>
-				            <li><a href="/HumanCinema/menu/store.do">스토어</a></li>
-				            <li><a href ="#">이벤트</a></li>
-				            <li><a href="#">고객센터</a></li>
-				            <li><a href="#">로그인</a></li>
-				        </ul></nav>
-					</header>
-				    
-				    </div>
-			</form>
- </header>
+<jsp:include page="/hyojung/Header.jsp"></jsp:include>
 
 
 		  <div class = "title">	
@@ -235,7 +214,8 @@
 			        
 				    <div id = "bar2"> 
 				    	<ul>
-							<li><a href= "/HumanCinema/menu/cart.do">장바구니</a></li>				      	</ul>
+							<!-- <li><a href= "/HumanCinema/menu/cart.do">장바구니</a></li>	 -->
+							</ul>
 				    </div>
 				</div>
 			

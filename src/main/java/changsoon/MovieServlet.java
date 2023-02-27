@@ -51,7 +51,8 @@ public class MovieServlet extends HttpServlet {
 			if(id != null && id.length() != 0) {
 				System.out.println("로그인성공");
 			} else {
-				session.invalidate();
+				// 로그인하면 여기서 로그아웃 시킴... 그래서 주석처리 함
+				//session.invalidate();
 			}
 		}
 		
