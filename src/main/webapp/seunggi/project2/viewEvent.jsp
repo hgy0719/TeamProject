@@ -33,6 +33,7 @@
 <body>
 
 	<div class="secondimg"> <img src ="${vo.secondimage }">
+	<a href="/HumanCinema/seunggi/project1/articleForm.jsp">이벤트 참여 댓글쓰기</a>
 	</div>
 	
 <!-- 	<div class="reply"> -->
