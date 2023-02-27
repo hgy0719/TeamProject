@@ -158,10 +158,14 @@ public class UserController extends HttpServlet {
 				
 		//회원탈퇴
  		}else if(action.equals("/delete")){
- 				String delid = request.getParameter("id");
-				//delid.serDel();
-				page="/hyojung/Mypage.jsp";
-			
+ 			String id = request.getParameter("id");
+				String pwd = request.getParameter("pwd");
+				if(pwd!=null) {
+					UserService actdel = new UserService();
+					actdel.serDel(id);
+					
+					page="/HumanCinema/movie1/main.do";
+				}
  		}
 	
 		
@@ -169,32 +173,6 @@ public class UserController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(page);
 			dispatch.forward(request, response);
 		}
-		
-
-//창순씨 로그인 구현
-////	로그인 세션
-//	HttpSession session = request.getSession();
-////	request.getParameter("")에 id 전달하는 name값
-//	String id = request.getParameter("");
-////	request.getParameter("")에 pwd 전달하는 name값
-//	String pwd = request.getParameter("");
-//	
-//	if(session.isNew()) {
-//		if(id != null) {
-//			session.setAttribute("id", pwd);
-//		} else {
-//			session.invalidate();
-//		}
-//	} else {
-//		id = (String) session.getAttribute("");
-//		if(id != null && id.length() != 0) {
-//			System.out.println("로그인성공");
-//		} else {
-//			session.invalidate();
-//		}
-//	}
-
-		
 		
 		
 	}
