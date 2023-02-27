@@ -121,24 +121,24 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/HumanStudy/img/poster1.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster2.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster3.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster4.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster5.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster6.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster7.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster8.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster9.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster10.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster1.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster2.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster3.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster4.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster5.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster6.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster7.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster8.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster9.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster10.jpg">
                 </div>
             </div>
             <div class="right_login">
                 <div class="sign-in">
-                <img id="humanimg" src="/HumanStudy/img/human.png">
+                <img id="humanimg" src="/HumanCinema/img/human.png">
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
-                <form method="post" action="/HumanStudy/user/login">
+                <form method="post" action="/HumanCinema/user/login">
                 <input id="inputId" type="text" placeholder="아이디를 입력하세요" maxlength="20" name="id">
                 <input id="inputPwd" type="password" placeholder="비밀번호를 입력하세요" maxlength="20" name="pwd">
                 <button class="submit">로그인</button><br>

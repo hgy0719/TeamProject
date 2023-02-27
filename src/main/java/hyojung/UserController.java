@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//http://localhost:8080/HumanStudy/user 웹브라우저는 doGet
+//http://localhost:8080/HumanCinema/user 웹브라우저는 doGet
 @WebServlet("/user/*")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

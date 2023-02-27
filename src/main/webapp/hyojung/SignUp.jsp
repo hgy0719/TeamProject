@@ -133,7 +133,7 @@
 	                type:"post",
 	                async:true,  
 	<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	                url:"http://localhost:8080/HumanStudy/user/check",
+	                url:"http://localhost:8080/HumanCinema/user/check",
 	                dataType:"text",
 	                data: {id:_id},
 	                //아이디를 서블릿에 전송한다.
@@ -172,25 +172,25 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainimg" src="/HumanStudy/img/poster1.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster2.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster3.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster4.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster5.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster6.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster7.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster8.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster9.jpg">
-                    <img id="mainimg" src="/HumanStudy/img/poster10.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster1.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster2.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster3.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster4.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster5.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster6.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster7.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster8.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster9.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster10.jpg">
                 </div>
             </div>
             
             <div class="right_login">
                 <div class="sign-in">
-                <img id="humanimg" src="/HumanStudy/img/human.png">
+                <img id="humanimg" src="/HumanCinema/img/human.png">
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
-                <form method="post" action="/HumanStudy/user/new">
+                <form method="post" action="/HumanCinema/user/new">
                   <div class="join_login">
                      <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
                      <input type="button" class="check"  id="idcheck" onclick="fn_process()" value="확인&#128504;"></div>

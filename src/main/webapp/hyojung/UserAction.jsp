@@ -22,6 +22,6 @@
 </head>
 <body>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-<jsp:forward  page="/HumanStudy/hyojung/UserList.jsp" />
+<jsp:forward  page="/HumanCinema/hyojung/UserList.jsp" />
 </body>
 </html>

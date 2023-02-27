@@ -104,7 +104,7 @@
                       </table>
                     </form>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	         		<form action="mypage.do">
+	         		<form action="/HumanCinema/user/del">
                         <table>
                         <th colspan="2">회원탈퇴</th>
                         <tr>
