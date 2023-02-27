@@ -14,7 +14,7 @@
 <body>
 
 
-<a href="/pro17/board01/articleForm.jsp">글쓰기</a>
+<a href="/HumanCinema/hyojung/articleForm.jsp">글쓰기</a>
 <table border=1>
 <c:forEach var="vo" items="${ articlesList}">
 <tr>
@@ -52,23 +52,23 @@
 
 <c:if test="<%= firstSec != 1 %>">
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	[<a href="/pro17/page?pageNum=<%= firstSec-1 %>">이전</a>] 
+	[<a href="/HumanCinema/user/page?pageNum=<%= firstSec-1 %>">이전</a>] 
 </c:if>
 
 <c:forEach var="i" begin="<%= firstSec %>" end="<%= lastSec %>" >
 	<c:if test="${ i == pageNum2 }">
 	<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-		[<a href="/pro17/page?pageNum=${i }"><strong>${i}</strong></a>] 
+		[<a href="/HumanCinema/user/page?pageNum=${i }"><strong>${i}</strong></a>] 
 	</c:if>
 	<c:if test="${ i != pageNum2 }">
 	<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-		[<a href="/pro17/page?pageNum=${i }">${i}</a>] 
+		[<a href="/HumanCinema/user/page?pageNum=${i }">${i}</a>] 
 	</c:if>
 </c:forEach>
 
 <c:if test="<%= lastSec != lastPage %>">
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-	[<a href="/pro17/page?pageNum=<%= lastSec+1 %>">다음</a>]
+	[<a href="/HumanCinema/user/page?pageNum=<%= lastSec+1 %>">다음</a>]
 </c:if>
 
 </div>

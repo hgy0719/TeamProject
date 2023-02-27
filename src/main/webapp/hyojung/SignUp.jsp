@@ -16,7 +16,7 @@
         width: 900px;
         height: 600px;
         position: absolute;
-        top: 45%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%,-50%);/*Horizontal alignment*/
         background: #fff;
@@ -41,10 +41,6 @@
         flex-direction: column;
         margin: auto;
     }
-    .right_login h2{
-        text-align: center; 
-        margin-bottom: 50px;
-    }
      .right_login input {
         border: none;
         outline: none;
@@ -53,7 +49,7 @@
         font-size: 15px;
         font-weight: 500;
         align-items: center;
-        margin: 10px 0px;
+        margin: 15px 0px;
         padding: 10px;
         padding-left: 20px;
         border: 1px solid lightgray;
@@ -62,10 +58,11 @@
     }
     .check{
         font-size: 12px;
-        border-radius: 50%;
+        border-radius: 20px;
         border: none;
         color: #fff;
         background: darkred;
+
     }
 
     .right{background: linear-gradient(-45deg, #dcd7e0, #fff);}
@@ -73,10 +70,11 @@
     .submit {
         margin: auto;
         margin-top: 30px;
+        margin-bottom: 40px;
         padding: 15px 120px;
         width: 100%;
         border: none;
-        border-radius: 15px;
+        border-radius: 20px;
         display: block;
         font-weight: 600;
         font-size: 17px;
@@ -93,10 +91,18 @@
         background-color: black;
         color: #fff;
         position: relative;
-        background-size: 100%;
+        background-size: width 600px height 500px;
     }
     section {display: flex; overflow: hidden;}
-     #mainImage{width: 100%;}
+    #mainimg{
+    	width: 430px; 
+        height: 600px;
+    }
+    #humanimg{
+        width: 300px; 
+        height: 120px;
+    }
+     
     </style>
            <script>
     window.onload = function(){
@@ -153,6 +159,7 @@
 	                }
              });  //end ajax	 
           }	
+         
     </script>
         
     
@@ -165,38 +172,37 @@
         <div class="login_box">
             <div class="left_img">
                 <div class="slider">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86799/86799_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86756/86756_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86072/86072_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86796/86796_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86829/86829_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86701/86701_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86800/86800_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86748/86748_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86793/86793_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86797/86797_1000.jpg">
-                    <img id="mainImage" src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86341/86341_1000.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster1.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster2.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster3.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster4.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster5.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster6.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster7.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster8.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster9.jpg">
+                    <img id="mainimg" src="/HumanCinema/img/poster10.jpg">
                 </div>
             </div>
             
             <div class="right_login">
                 <div class="sign-in">
-                <h2>Human Cinema</h2>
+                <img id="humanimg" src="/HumanCinema/img/human.png">
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
 							<%-- if문이 작동하도록 nextpage 주소를 입력한다. --%>
                 <form method="post" action="/HumanCinema/user/new">
                   <div class="join_login">
                      <div class="inputSet"><input id="inputId" type="text" name="id" placeholder="아이디를 입력하세요" maxlength="20" >
-                     <input type="button" class="check"  id="idcheck" onclick="fn_process()" value="아이디 확인"></div>
+                     <input type="button" class="check"  id="idcheck" onclick="fn_process()" value="확인&#128504;"></div>
                      <div id="message"></div>
                      <div class="inputSet"><input id="inputPwd1" type="password" name="pwd1" placeholder="비밀번호를 입력하세요" maxlength="20" ></div>
                      <div class="inputSet"><input id="inputPwd2" type="password" name="pwd2" placeholder="한번 더 입력하세요" maxlength="20" ></div>
+                     <h1></h1>
                      <div class="inputSet"><input id="inputName" type="text" name="name" placeholder="이름을 입력하세요"></div>
-                     <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일를 입력하세요"></div>
+                     <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일을 입력하세요"></div>
                  </div>
                  <input type="submit" class="submit"  value="회원가입" ><br>
 <%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-                 <div class="footer_link"><a href="/HumanCinema/hyojung/LogIn.jsp">바로 로그인 하기 &#128153;</a></div>
                  </form>
                </div>
             </div>
