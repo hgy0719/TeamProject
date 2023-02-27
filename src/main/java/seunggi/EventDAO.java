@@ -1,6 +1,7 @@
 package seunggi;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import seunggi.LoggableStatement;
+import seunggi.EventVO;
 
 
 
@@ -200,8 +202,75 @@ public class EventDAO {
 		
 		return vo;
 	}
-}
+//댓글
+	public List<EventVO> selectAllArticles() {
+		List<EventVO> articlesList = new ArrayList();
+		try {
+			con = dataFactory.getConnection();
+			String query = "SELECT LEVEL, articleNO, parentNO, title, content, id, writeDate"
+					+ " from e_board"
+					+ " START WITH parentNO=0"
+					+ "CONNECT BY PRIOR articleNO=parentNO"
+					+ " ORDER SIBLINGS BY articleNO DESC";
+			
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int level = rs.getInt("level");
+				int articleNO = rs.getInt("articleNO");
+				int parentNO = rs.getInt("parentNO");
+				String replytitle = rs.getString("replytitle");
+				String content = rs.getString("content");
+				String replyid = rs.getString("replyid");
+				Date writeDate = rs.getDate("writeDate");
+				
+				EventVO article = new EventVO();
+				article.setLevel(level);
+				article.setArticleNO(articleNO);
+				article.setParentNO(parentNO);
+				article.setReplytitle(replytitle);
+				article.setContent(content);
+				article.setReplyid(replyid);
+				article.setWriteDate(writeDate);
+				articlesList.add(article);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch( Exception e) {
+			e.printStackTrace();
+		}
 	
+	 return articlesList;
+}
+	//댓글
+public void insertNewArticle(EventVO article){
+		
+		try {
+			
+			String query = "";
+			query += " insert into e_board (articleno, parentno, title, content, id)";
+			query += " values(e_board_seq.nextval, ?, ?, ?, ?)";
 
+			con = dataFactory.getConnection();
+			pstmt = new LoggableStatement(con, query);
+			pstmt.setInt(1, article.getParentNO());
+			pstmt.setString(2, article.getTitle());
+			pstmt.setString(3, article.getContent());
+			pstmt.setString(4, article.getId());
+			System.out.println(  ((LoggableStatement)pstmt).getQueryString()  );
+			
+			int result = pstmt.executeUpdate();
+			System.out.println("insertNewArticle : insert 결과 : "+ result);
+			
+			pstmt.close();
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
 
-//db연결

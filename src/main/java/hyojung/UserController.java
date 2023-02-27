@@ -120,30 +120,6 @@ public class UserController extends HttpServlet {
 		//마이페이지 내 정보 출력
 		} else if (action.equals("/mypage")){
 			HttpSession session = request.getSession();
-<<<<<<< HEAD
-			System.out.println("session:" +session.getAttribute("id"));
-			String id = request.getParameter("id");
-			String pwd = request.getParameter("pwd");
-			System.out.println(id + pwd);
-			
-			UserService servlog = new UserService();
-			boolean result = servlog.servlog(id, pwd);
-			System.out.println("return되어 최종 돌려받은 값:"+result);
-			System.out.println(id+pwd);
-			
-			if( result ) {
-					session.setAttribute("id",id);
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-					page = "/movie1/main.do";
-					System.out.println("session:2:"+session.getAttribute("id"));
-
-			} else {
-//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-				page = "/hyojung/LogIn.jsp";
-				System.out.println("로그인 실패");
-			}
-			System.out.println("로그인 출력");
-=======
 			String id = (String)session.getAttribute("id");
 			System.out.println("session id값:" +id);
 					if(id!=null) {
@@ -157,7 +133,6 @@ public class UserController extends HttpServlet {
 						System.out.println("session id값이 없습니다.");
 						page="/hyojung/LogIn.jsp";
 					}
->>>>>>> eb27725dd0dd36bff0207d1a1ceba2cdf4bbf467
 		
 		//마이페이지 내 정보 수정
 		} else if (action.equals("/update")) {
@@ -166,11 +141,11 @@ public class UserController extends HttpServlet {
 			UserService actupdate = new UserService();
 			String id = request.getParameter("id");
 			String pwd1 = request.getParameter("pwd1");
+			String pwd2 = request.getParameter("pwd2");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			System.out.println("update getParam:"+id+"/"+pwd1+"/"+"/"+name+"/"+email);
 			
-			String pwd2 = request.getParameter("pwd2");
 			if(pwd1.equals(pwd2)) {
 				UserVO vo = new UserVO();
 				vo.setId(id);
@@ -183,10 +158,14 @@ public class UserController extends HttpServlet {
 				
 		//회원탈퇴
  		}else if(action.equals("/delete")){
- 				String delid = request.getParameter("id");
-				//delid.serDel();
-				page="/hyojung/Mypage.jsp";
-			
+ 			String id = request.getParameter("id");
+				String pwd = request.getParameter("pwd");
+				if(pwd!=null) {
+					UserService actdel = new UserService();
+					actdel.serDel(id);
+					
+					page="/HumanCinema/movie1/main.do";
+				}
  		}
 	
 		
@@ -194,32 +173,6 @@ public class UserController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(page);
 			dispatch.forward(request, response);
 		}
-		
-
-//창순씨 로그인 구현
-////	로그인 세션
-//	HttpSession session = request.getSession();
-////	request.getParameter("")에 id 전달하는 name값
-//	String id = request.getParameter("");
-////	request.getParameter("")에 pwd 전달하는 name값
-//	String pwd = request.getParameter("");
-//	
-//	if(session.isNew()) {
-//		if(id != null) {
-//			session.setAttribute("id", pwd);
-//		} else {
-//			session.invalidate();
-//		}
-//	} else {
-//		id = (String) session.getAttribute("");
-//		if(id != null && id.length() != 0) {
-//			System.out.println("로그인성공");
-//		} else {
-//			session.invalidate();
-//		}
-//	}
-
-		
 		
 		
 	}

@@ -1,4 +1,4 @@
-package project2;
+package seunggi.project2;
 
 import java.io.IOException;
 import java.io.PrintWriter;

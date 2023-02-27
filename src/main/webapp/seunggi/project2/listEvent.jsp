@@ -143,6 +143,7 @@ nav {
 /* } */
 .event_top{
 	width:30%;
+	margin:150px;
 }
 
 .cls1{
@@ -161,15 +162,16 @@ nav {
 		<div id="wrap">
 			<header>
 				<nav id="nav">
-					<ul class="nav-items">
-						<li><a href="#home">영화</a></li>
-						<li><a href="#news">예매</a></li>
-						<li><a href="#news">극장</a></li>
-						<a class="logo" href="#home">로고</a>
-						<li><a href="#contact">스토어</a></li>
-						<li><a href="#about">고객센터</a></li>
-						<li><a href="#about">로그인</a></li>
-					</ul>
+				<jsp:include page="/hyojung/Header.jsp"></jsp:include>
+<!-- 					<ul class="nav-items"> -->
+<!-- 						<li><a href="#home">영화</a></li> -->
+<!-- 						<li><a href="#news">예매</a></li> -->
+<!-- 						<li><a href="#news">극장</a></li> -->
+<!-- 						<a class="logo" href="#home">로고</a> -->
+<!-- 						<li><a href="#contact">스토어</a></li> -->
+<!-- 						<li><a href="#about">고객센터</a></li> -->
+<!-- 						<li><a href="#about">로그인</a></li> -->
+<!-- 					</ul> -->
 				</nav>
 			</header>
 		</div>
