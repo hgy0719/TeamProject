@@ -393,58 +393,88 @@ public class MenuDAO {
 				  return info_list;	
 			}
 			
-
+			// 장바구니에 추가
+			public void addCart(String user_id,String menu_id, String name, int total) {
+				MenuVO menuvo = new MenuVO();
 			
-			
-			
-			
-			
-			
-			// 장바구니
-	public static List<MenuVO> cart_list (String menu_id) {
+			try {
 				
-				List<MenuVO> cart_list = new ArrayList<MenuVO>();
 				
-				try {
-					conn = dataFactory.getConnection();
-					String query = "SELECT NAME , price, IMAGE  from store2 where MENU_ID = ?";
-					System.out.println(query);
-					
-					pstmt = conn.prepareStatement(query);
-					pstmt.setString(1, menu_id);
-					ResultSet rs = pstmt.executeQuery();
-					
-					while(rs.next()) {
-						String name = rs.getString("name");
-						int price = rs.getInt("price");
-						String image = rs.getString("image");
+				conn = dataFactory.getConnection();
 				
-						cart_list.add(new MenuVO(name,price,image,menu_id));
-						
-					}
+			
+				String query = "insert into store2(menu_id,name,price,image,menu_type)";
+					query += " values(?,?,?,?,?)"; 
+				System.out.println(query);
+				pstmt = conn.prepareStatement(query);
 				
-					rs.close();
-					pstmt.close();
-					conn.close();
-					
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
+				pstmt.setString(1, menu_id);
+				System.out.println("** :"+ menu_id);
 				
-				  return cart_list;	
+				pstmt.setString(2, name);
+				pstmt.setInt(3, price);
+				pstmt.setString(4, image);
+				pstmt.setInt(5, menu_type);
+				
+				int result = pstmt.executeUpdate();
+				System.out.println("수정 결과 : " + result);
+				
+			
+				pstmt.close();
+				conn.close();
+				
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
 			}
+			
+		}
+		
+			
+			
+			
+			
+			
+			
+//			// 장바구니 목록
+//	public static List<MenuVO> cart_list (String user_id ) {
+//				
+//				List<MenuVO> cart_list = new ArrayList<MenuVO>();
+//				
+//				try {
+//					conn = dataFactory.getConnection();
+//					String query = "SELECT NAME , price, IMAGE  from store2, cart"
+//							+ " where user_id = ?" 
+//							+ "	and store2.menu_id = cart.menu_id";
+//					System.out.println(query);
+//					
+//					pstmt = conn.prepareStatement(query);
+//					pstmt.setString(1, menu_id);
+//					ResultSet rs = pstmt.executeQuery();
+//					
+//					while(rs.next()) {
+//						String name = rs.getString("name");
+//						int price = rs.getInt("price");
+//						String image = rs.getString("image");
+//				
+//						cart_list.add(new MenuVO(name,price,image,menu_id));
+//						
+//					}
+//				
+//					rs.close();
+//					pstmt.close();
+//					conn.close();
+//					
+//				} catch (SQLException e) {
+//					
+//					e.printStackTrace();
+//				}
+//				
+//				  return cart_list;	
+//			}
 	
-	// 스토어창
-//	public static List<MenuVO> store_list() {
-//	
-//		List<MenuVO> store_list = new ArrayList<MenuVO>();
-//		
-//		
-//		return store_list;
-//		
-//		
-//	}
+
 	
 	
 	

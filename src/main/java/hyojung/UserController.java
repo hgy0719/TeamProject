@@ -105,8 +105,8 @@ public class UserController extends HttpServlet {
 			if( result ) {
 					session.setAttribute("id",id);
 //<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
-					page = "/hyojung/Mypage.jsp";
-					System.out.println("session:"+session);
+					page = "/movie1/main.do";
+					System.out.println("session:2:"+session.getAttribute("id"));
 
 			} else {
 //<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
