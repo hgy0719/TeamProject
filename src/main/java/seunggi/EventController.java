@@ -205,9 +205,8 @@ public class EventController extends HttpServlet {
 
 			int aNo = Integer.parseInt(articleNO);
 			
-			EventService eventService = new EventService();
-			EventService eventSevice;
-			EventVO vo = eventSevice.viewArticle(aNo);
+			
+			List<EventVO> vo = eventService.viewArticle();
 			request.setAttribute("vo", vo);
 			
 			nextPage = "/seunggi/project1/viewArticle.jsp";
