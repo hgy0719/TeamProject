@@ -121,7 +121,7 @@
 </script>
 
 <body>
-
+<jsp:include page="/hyojung/Header.jsp"></jsp:include>
 		
 	<!-- 지역 선택 상단바  cinema_area -->
 		<c:forEach 	var = "cinema" items = "${cinema_list }" varStatus = "v">
