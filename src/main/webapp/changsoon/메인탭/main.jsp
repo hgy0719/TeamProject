@@ -208,42 +208,7 @@ window.onload =()=>{
 <body>
 	<div id="wrap_all">
 <!--상단바  -->
-		   <header>
-		       <div class="header_list">
-		           <div>
-		               <a href="../movie1/movieTab.do">영화</a>
-		           </div>
-		           <div>
-		               <a href="">예매</a>
-		           </div>
-		           <div>
-		               <a href="/HumanCinema/cinema/cinema.do">극장</a>
-		           </div>
-		           <div id="logo_human">
-		           		<a href="../movie1/main.do">
-		               		<img src="../changsoon/image/logo.png">
-		               </a>
-		           </div>
-		           <div>
-		               <a href="/HumanCinema/menu/store.do">스토어</a>
-		           </div>
-		           <div>
-		               <a href="">이벤트</a>
-		           </div>
-		           <div>
-		               <a href="">고객센터</a>
-		           </div>
-		       </div>
-		       <div class="login_signup">
-		           <div>
-		               <a href="">로그인</a>
-		           </div>
-		           <div>
-		               <a href="">회원가입</a>
-		           </div>
-		       </div>
-		   </header>
-
+		   <jsp:include page="/hyojung/Header.jsp"></jsp:include>
 
 			
 			<div class="ddd">
