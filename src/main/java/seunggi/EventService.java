@@ -15,6 +15,11 @@ public class EventService {
 		return list;
 		
 	}
+	
+	public List<EventVO> listArticles() {
+		 List<EventVO> articlesList = eventDAO.selectAllArticles();
+		 return articlesList;
+	}
 
 	public void addEvent(EventVO vo) {
 		System.out.println("addEvent 실행");
@@ -27,5 +32,12 @@ public class EventService {
 		
 	}
 	
+	public void addArticle(EventVO vo) {
+		eventDAO.insertNewArticle(vo);
+	}
 	
+	public void  viewArticle(EventVO vo) {
+		eventDAO.selectAllArticles();
+		
+	}
 }

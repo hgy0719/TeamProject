@@ -162,13 +162,24 @@ nav {
 			<header>
 				<nav id="nav">
 					<ul class="nav-items">
-						<li><a href="#home">영화</a></li>
-						<li><a href="#news">예매</a></li>
-						<li><a href="#news">극장</a></li>
-						<a class="logo" href="#home">로고</a>
-						<li><a href="#contact">스토어</a></li>
-						<li><a href="#about">고객센터</a></li>
-						<li><a href="#about">로그인</a></li>
+<!-- 						<li><a href="#home">영화</a></li> -->
+<!-- 						<li><a href="#news">예매</a></li> -->
+<!-- 						<li><a href="#news">극장</a></li> -->
+<!-- 						<a class="logo" href="#home">로고</a> -->
+<!-- 						<li><a href="#contact">스토어</a></li> -->
+<!-- 						<li><a href="#about">고객센터</a></li> -->
+<!-- 						<li><a href="#about">로그인</a></li> -->
+
+					
+								<li>영화 <a href="/HumanCinema/movie1/movieTab.do"></li>
+								예매 ?
+								<li>극장 <a href="/HumanCinema/cinema/cinema.do"></li>
+								<li>메인 <a href="/HumanCinema/movie1/main.do"></li>
+								<li>스토어 <a href="/HumanCinema/menu/store.do"></li>
+								<li>이벤트 <a href="/HumanCinema/event1/event1.do"></li>
+								<li>고객센터<a href="/HumanCinema/board/listArticles.do"></li>
+								<li>로그인 <a href="/HumanCinema/user/login"></li>
+								<li>회원가입 <a href="/HumanCinema/user/new"></li>
 					</ul>
 				</nav>
 			</header>
