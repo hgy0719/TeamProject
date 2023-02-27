@@ -2,6 +2,7 @@ package gayeong;
 
 public class MenuVO {
 
+	// 스토어 기본 정보
 	private String menu_id;
 	private String name;
 	private int price;
@@ -10,6 +11,7 @@ public class MenuVO {
 	private int amount;
 	private int total;
 	
+	// 장바구니 
 	
 	
 	public MenuVO() {

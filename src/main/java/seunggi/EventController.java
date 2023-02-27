@@ -1,6 +1,7 @@
 package seunggi;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import seunggi.EventVO;
 
 
 @WebServlet("/event1/*")
@@ -46,6 +45,7 @@ public class EventController extends HttpServlet {
 		System.out.println("action : " + action);
 	
 	try {	
+		List<EventVO> articlesList = new ArrayList<EventVO>();
 		if("/event1.do".equals(action)) {
 			EventService eventService = new EventService();
 			List list =eventService.listEvents();
@@ -53,7 +53,19 @@ public class EventController extends HttpServlet {
 			request.setAttribute("eventsList", list);
 			nextPage = "/seunggi/project2/listEvent.jsp";	
 			
-			 
+//댓글			 
+		}	else if (action == null) {
+			articlesList = eventService.listArticles();
+			request.setAttribute("articlesList", articlesList);
+			nextPage = "/seunggi/project1/listArticles.jsp";
+			
+		} else if (action.equals("/listArticles.do")) {
+			articlesList = eventService.listEvents();
+			request.setAttribute("articlesList", articlesList);
+			System.out.println("listArticles 호출");
+			nextPage = "/seunggi/project1/listArticles.jsp";
+			//끝
+			
 		} else if ("/addEvent.do".equals(action)) {
 			
 			String id = request.getParameter("id");
@@ -96,31 +108,31 @@ public class EventController extends HttpServlet {
 		
 		nextPage = "/seunggi/project2/viewEvent.jsp";
 		
-	} else if ("/addReply.do".equals(action)) {
-		
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String firstimage = request.getParameter("firstimage");
-		String firstimagead = request.getParameter("firstimagead");
-		String secondimage = request.getParameter("secondimage");
-		String eventday = request.getParameter("eventday");
-	
-		
-		System.out.println("id : "+ id);
-		System.out.println("title : "+ title);
-	
-		EventVO vo = new EventVO();
-		vo.setId(id);
-		vo.setTitle(title);
-		vo.setFirstimage(firstimage);
-		vo.setFirstimagead(firstimagead);
-		vo.setSecondimage(secondimage);
-		vo.setEventday(eventday);
-
-		
-		eventService.addEvent(vo);
-		
-		nextPage = "/seunggi/project2/replyForm.jsp";
+//	} else if ("/addReply.do".equals(action)) {
+//		
+//		String id = request.getParameter("id");
+//		String title = request.getParameter("title");
+//		String firstimage = request.getParameter("firstimage");
+//		String firstimagead = request.getParameter("firstimagead");
+//		String secondimage = request.getParameter("secondimage");
+//		String eventday = request.getParameter("eventday");
+//	
+//		
+//		System.out.println("id : "+ id);
+//		System.out.println("title : "+ title);
+//	
+//		EventVO vo = new EventVO();
+//		vo.setId(id);
+//		vo.setTitle(title);
+//		vo.setFirstimage(firstimage);
+//		vo.setFirstimagead(firstimagead);
+//		vo.setSecondimage(secondimage);
+//		vo.setEventday(eventday);
+//
+//		
+//		eventService.addEvent(vo);
+//		
+//		nextPage = "/seunggi/project2/replyForm.jsp";
 		
 	} else if(action.equals("/modEventForm.do")) {
 		String id = request.getParameter("id");
@@ -156,6 +168,73 @@ public class EventController extends HttpServlet {
 		
 		nextPage= "/seunggi/project2/eventForm.jsp";
 	}
+		
+    //보드 컨트롤러
+//		
+//	else if("/listArticles.do".equals(action)) {
+//		BoardService boardService = new BoardService();
+//			List list = boardService.listArticles();
+//			request.setAttribute("articlesList", list);
+//			nextPage = "/seunggi/project1/listArticles.jsp";
+//			
+		 else if ("/addArticle.do".equals(action)) {
+			
+			String id = request.getParameter("id");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			System.out.println("id : "+ id);
+			System.out.println("title : "+ title);
+			System.out.println("content : "+ content);
+			
+			EventVO vo = new EventVO();
+			vo.setId(id);
+			vo.setTitle(title);
+			vo.setContent(content);
+			EventService eventService = new EventService();
+			eventService.addArticle(vo);
+			
+			nextPage = "/event1/listArticles.do";
+		}
+//댓글
+		
+		 else if ("/viewArticle.do".equals(action)) {
+			
+			String articleNO = request.getParameter("articleNO");
+			System.out.println("articleNO : "+ articleNO);
+
+			int aNo = Integer.parseInt(articleNO);
+			
+			
+			List<EventVO> vo = eventService.viewArticle();
+			request.setAttribute("vo", vo);
+			
+			nextPage = "/seunggi/project1/viewArticle.jsp";
+			
+		} else if ("/addReply.do".equals(action)) {
+			
+			String id = request.getParameter("id");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			String parentNO = request.getParameter("parentNO");
+			
+			System.out.println("id : "+ id);
+			System.out.println("title : "+ title);
+			System.out.println("content : "+ content);
+			System.out.println("parentNO : "+ parentNO);
+			
+			EventVO vo = new EventVO();
+			vo.setId(id);
+			vo.setTitle(title);
+			vo.setContent(content);
+			vo.setParentNO( Integer.parseInt(parentNO) );
+			
+			eventService.addArticle(vo);
+			
+			nextPage = "/event1/listArticles.do";
+			
+		}
+			
 	
 	else {
 		EventDAO eventDAO = new EventDAO();
@@ -173,8 +252,10 @@ public class EventController extends HttpServlet {
 	}catch (Exception e) {
 		e.printStackTrace();
 	}
-	}
+	
 }
+}
+
 
 
 //		if(action==null || action.equals("/event.do")) {

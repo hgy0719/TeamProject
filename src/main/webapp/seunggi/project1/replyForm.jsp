@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>답글쓰기</h1>
-<form method="post" action="/pro17/board/addReply.do">
+<form method="post" action="/HumanCinema/seunggi/event1/addReply.do">
 	글쓴이 ID : <input type="text" name="id"><br>
 	제목: <input type="text" name="title"><br>
 	내용

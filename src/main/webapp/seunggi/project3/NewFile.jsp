@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.*"%>
 <%@ page import="java.io.*"%>
-<%@ page import="seunggi.movieDAO"%>
-<%@ page import="seunggi.movieVO"%>
+<%@ page import="seunggi.project2.movieDAO"%>
+<%@ page import="seunggi.project2.movieVO"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -5,8 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.io.*"%>
-<%@ page import="project2.movieDAO"%>
-<%@ page import="project2.movieVO"%>
+<%@ page import="seunggi.project3.movieDAO"%>
+<%@ page import="project3.movieVO"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -120,6 +120,30 @@ public class UserController extends HttpServlet {
 		//마이페이지 내 정보 출력
 		} else if (action.equals("/mypage")){
 			HttpSession session = request.getSession();
+<<<<<<< HEAD
+			System.out.println("session:" +session.getAttribute("id"));
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+			System.out.println(id + pwd);
+			
+			UserService servlog = new UserService();
+			boolean result = servlog.servlog(id, pwd);
+			System.out.println("return되어 최종 돌려받은 값:"+result);
+			System.out.println(id+pwd);
+			
+			if( result ) {
+					session.setAttribute("id",id);
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+					page = "/movie1/main.do";
+					System.out.println("session:2:"+session.getAttribute("id"));
+
+			} else {
+//<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
+				page = "/hyojung/LogIn.jsp";
+				System.out.println("로그인 실패");
+			}
+			System.out.println("로그인 출력");
+=======
 			String id = (String)session.getAttribute("id");
 			System.out.println("session id값:" +id);
 					if(id!=null) {
@@ -133,6 +157,7 @@ public class UserController extends HttpServlet {
 						System.out.println("session id값이 없습니다.");
 						page="/hyojung/LogIn.jsp";
 					}
+>>>>>>> eb27725dd0dd36bff0207d1a1ceba2cdf4bbf467
 		
 		//마이페이지 내 정보 수정
 		} else if (action.equals("/update")) {
