@@ -36,8 +36,9 @@ public class EventService {
 		eventDAO.insertNewArticle(vo);
 	}
 	
-	public void  viewArticle(EventVO vo) {
-		eventDAO.selectAllArticles();
-		
-	}
+//	public list<EventVO>  viewArticle() {
+//		list<EventVO> v
+//		eventDAO.selectAllArticles();
+//		
+//	}
 }
