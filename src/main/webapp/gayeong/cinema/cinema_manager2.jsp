@@ -13,8 +13,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 
+<body>
+<%-- <c:when test='${msg=="deleted" }'>
+		<script>
+			window.onload = function(){
+				alert("극장 정보를 삭제했습니다");
+			}
+		</script>
+</c:when> --%>
     <h3>극장 목록</h3>
     <hr>
     

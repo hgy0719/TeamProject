@@ -80,7 +80,19 @@ public class CinemaController extends HttpServlet {
 				
 				// 극장 페이지 (극장 정보 부분)
 				
-			} else if (action.equals("/cinema.do")) {
+			} /*
+				 * else if(action.equals("/delCinema.do")) {
+				 * 
+				 * String id = request.getParameter("id"); System.out.println(id);
+				 * 
+				 * cinemaDAO.delCinema(id);
+				 * 
+				 * request.setAttribute("msg", "deleted"); nextpage =
+				 * "/cinema/cinema_manager2.do";
+				 * 
+				 * 
+				 * }
+				 */ else if (action.equals("/cinema.do")) {
 				
 				
 				List<CinemaVO> cinema_list = cinemaDAO.cinema_list();

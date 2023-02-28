@@ -91,7 +91,7 @@ public class CinemaDAO {
 			conn = dataFactory.getConnection();
 			
 		
-			String query = "insert into store2(cinema_id,cinema_name,cinema_area,cinema_image,cinema_area_type)";
+			String query = "insert into cinema_test(cinema_id,cinema_name,cinema_area,cinema_image,cinema_area_type)";
 				query += " values(?,?,?,?,?)"; 
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
@@ -118,6 +118,22 @@ public class CinemaDAO {
 		}
 		
 	}
+		
+		// 메뉴 삭제
+		/*
+		 * public void delCinema(String cinema_id) {
+		 * 
+		 * try { conn = dataFactory.getConnection(); String query =
+		 * "delete from cinema_test where cinema_id = ?"; System.out.println(query);
+		 * 
+		 * pstmt = conn.prepareStatement(query); pstmt.setString(1, cinema_id);
+		 * pstmt.executeUpdate(); } catch (SQLException e) {
+		 * 
+		 * e.printStackTrace(); }
+		 * 
+		 * }
+		 */
+		
 		// 극장 페이지 (극장 정보 부분)
 		
 	public List<CinemaVO> cinema_list () {
