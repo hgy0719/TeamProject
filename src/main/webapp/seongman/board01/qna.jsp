@@ -7,8 +7,6 @@
 <html>
 <head>
 <style>
-
-
 * {
     margin: 0;
     padding: 0;
@@ -185,8 +183,7 @@ table{
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body> 
-
+<body>
 
 <div class="board_wrap">
 <a>고객센터</a><br>
@@ -212,7 +209,7 @@ table{
              
 
 <table border=1 >
-<c:forEach var="vo" items="${ articlesList}">
+<c:forEach var="vo" items="${ articlesList1}">
 <tr>
 	
 	<td class="t" >
@@ -236,7 +233,8 @@ table{
 
 <div class="bt_wrap">
 	<a href="/team/board" class="on">목록</a>
-	<a href="/team/board01/articleForm.jsp ">등록</a>
+	<a href="/team/board01/articleForm.jsp?n=2">등록</a>
+	
 </div>
 	
 

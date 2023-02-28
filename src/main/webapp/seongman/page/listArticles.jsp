@@ -167,7 +167,7 @@ a {
 
 </div>
 <div class="bt_wrap">
-	<a href="/team/board" class="on">목록</a>
+	<a href="/HumanCinema/board" class="on">목록</a>
 	<a href="/team/board01/articleForm.jsp ">등록</a>
 </body>
 </html>

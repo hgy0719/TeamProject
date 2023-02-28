@@ -394,43 +394,43 @@ public class MenuDAO {
 			}
 			
 			// 장바구니에 추가
-			public void addCart(String user_id,String menu_id, String name, int total) {
-				MenuVO menuvo = new MenuVO();
-			
-			try {
-				
-				
-				conn = dataFactory.getConnection();
-				
-			
-				String query = "insert into store2(menu_id,name,price,image,menu_type)";
-					query += " values(?,?,?,?,?)"; 
-				System.out.println(query);
-				pstmt = conn.prepareStatement(query);
-				
-				pstmt.setString(1, menu_id);
-				System.out.println("** :"+ menu_id);
-				
-				pstmt.setString(2, name);
-				pstmt.setInt(3, price);
-				pstmt.setString(4, image);
-				pstmt.setInt(5, menu_type);
-				
-				int result = pstmt.executeUpdate();
-				System.out.println("수정 결과 : " + result);
-				
-			
-				pstmt.close();
-				conn.close();
-				
-				
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-			
-		}
-		
+//			public void addCart(String user_id,String menu_id, String name, int total) {
+//				MenuVO menuvo = new MenuVO();
+//			
+//			try {
+//				
+//				
+//				conn = dataFactory.getConnection();
+//				
+//			
+//				String query = "insert into store2(menu_id,name,price,image,menu_type)";
+//					query += " values(?,?,?,?,?)"; 
+//				System.out.println(query);
+//				pstmt = conn.prepareStatement(query);
+//				
+//				pstmt.setString(1, menu_id);
+//				System.out.println("** :"+ menu_id);
+//				
+//				pstmt.setString(2, name);
+//				pstmt.setInt(3, price);
+//				pstmt.setString(4, image);
+//				pstmt.setInt(5, menu_type);
+//				
+//				int result = pstmt.executeUpdate();
+//				System.out.println("수정 결과 : " + result);
+//				
+//			
+//				pstmt.close();
+//				conn.close();
+//				
+//				
+//			} catch (SQLException e) {
+//				
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		
 			
 			
 			

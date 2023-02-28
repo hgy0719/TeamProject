@@ -166,30 +166,32 @@ a {
 <a href="#">고객센터</a><br>
 <div class="board_title">
 	<div class="top1">
-	<div class="QnA"><a href="/team/board">QnA</a></div>
+	<div class="QnA"><a href="/team/board/qna.do">QnA</a></div>
 	<div class="공지사항"><a href="/team/board">공지사항</a></div>
 	
 </div>
 
 <!--  글쓰기 화면 구현 jsp -->
-<form method="post" action="/team/board/addArticle.do?n=${param.n }">
+<form method="post" action="/team/board/update.do">
 <div class="board_write_wrap">
 <div class="board_write">
 <div class="title">
+<input type="hidden" name="articleNO" value="${param.articleNO}">
 
 <div class="info">
 <dl>
 <dt>WriterID</dt> 
-<dd><input type="text" name="id" placeholder="ID 입력" ></dd>
+<dd><input type="text" name="id" placeholder="ID 입력" value="${param.id}"></dd>
 </dl>
+
 <dl>
 <dt>Title</dt>
-<dd><input type="text" name="title" placeholder="제목입력" ><dd>
+<dd><input type="text" name="title" placeholder="제목입력" value="${param.title}"><dd>
 </dl>
 </div>
 <div class="cont">
 	<dt>Contents</dt>
-	<textarea name="content"></textarea>
+	<textarea name="content">${param.content}</textarea>
 	<br>
 	</div>
 	</div>
@@ -197,7 +199,8 @@ a {
 </div>
 <div class="bt_wrap">
 	<a href="/team/board" class="on">목록</a>
-	<input type="submit" value="등록">
+	<input type="submit" value="수정" >
+	
 	
 </div>
 
