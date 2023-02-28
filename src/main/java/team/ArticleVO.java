@@ -7,6 +7,7 @@ public class ArticleVO {
 	private int level;
 	private int articleNO;
 	private int parentNO = 0;
+	private int n;
 	private String title;
 	private String content;
 	private String imageFileName;
@@ -108,6 +109,20 @@ public class ArticleVO {
 	 */
 	public void setWriteDate(Date writeDate) {
 		this.writeDate = writeDate;
+	}
+	public int getN() {
+		return n;
+	}
+	public void setN(int n) {
+		this.n = n;
+	}
+	public void setWriteDate(String writeDate1) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void getWriteDate(String writeDate1) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

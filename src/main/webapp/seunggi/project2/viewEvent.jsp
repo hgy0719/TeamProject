@@ -25,14 +25,18 @@
 	display: center;
 	
 	 margin-top: 20px;
- 
+ text-align:center;
 }
  
  </style>   
 </head>
 <body>
 
-	<div class="secondimg"> <img src ="${vo.secondimage }">
+	<div class="secondimg"> 
+		<h1>
+			<a href="/HumanCinema/seunggi/project1/articleForm.jsp">이벤트 참여 댓글쓰기</a>
+		</h1>
+		<img src ="${vo.secondimage }">
 	</div>
 	
 <!-- 	<div class="reply"> -->

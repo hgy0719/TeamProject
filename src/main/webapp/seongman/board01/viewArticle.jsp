@@ -150,35 +150,10 @@ a {
 }
 
 
-.bt_wrap input{
-	display: inline-block;
-    min-width: 80px;
-    margin-left: 10px;
-    padding: 10px;
-    border: 1px solid rgb(122, 115, 115);
-    border-radius: 2px;
-    font-size: 1.4rem;
-    cursor:pointer;
-    background:white;
-    position: relative;
-	top:30px;
-}
+
 
 </style>
-<script type="text/javascript">
-	function fn_enable(obj)
-	 document.getElementById("i_title").disabled = false;
-	 document.getElementById("i_content").disabled = false;
-	 document.getElementById("tr_btn_modify").style.display = "block";
-	 document.getElementById("tr_btn").style.display = "none";
-	 
-	 function fn_modify_article(obj){
-		 obj.action ="${contextPath}/board/modArticle.do";
-		 obj.submit();
-		 
-	 }
 
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -189,7 +164,7 @@ a {
 <a href="#">고객센터</a><br>
 <div class="board_title">
 	<div class="top1">
-	<div class="QnA"><a href="/team/board">QnA</a></div>
+	<div class="QnA"><a href="/team/board/qna.do">QnA</a></div>
 	<div class="공지사항"><a href="/team/board">공지사항</a></div>
 	
 </div>
@@ -213,40 +188,16 @@ a {
 </div>
 <div class="content">${ vo.content } </div> 
 
-
-
-
-<form name="frmArticle" method="post" action="${contextPath }" enctype="multipart/form-data">
 <div class="bt_wrap">
 	<a href="/team/board" class="on">목록</a>
 	<a href="/team/board01/replyForm.jsp?parentNO=${ vo.articleNO }"> 답글달기 </a>
-
-	<input type="text" value="${article.articleNO }" disabled/>
-	<input type="hidden" name="articleNO" value="${article.articleNO }"/>
+	<a href="/team/board01/update.jsp?articleNO=${ vo.articleNO }&id=${vo.id}&parentNO=${vo.parentNO }&title=${vo.title}&content=${vo.content}">수정</a>
+	<a href="/team/board/delMember.do?articleNO=${ vo.articleNO }">삭제</a>
 	
-<tr id="tr_btn_modify">	
-	<td colspan="2" align="center">
-	<input type="button" value="수정반영하기" onClick="fn_modify_article(frmArticle)">
-	<input type="button" value="취소" onClick="backToList(frmArticle)">
-</td>
-</tr>
-<tr id="tr_btn">
-	<td colspan=2 align=center>
-	<input type="button" value="수정" onClick="fn_enable(this.form)">
-	<input type="button" value="삭제" onClick="fn_remove_article(
-	'${contextPath }/board/removeArticle.do',${article.articleNO })">
-	</td>
-	</tr>
-		
-</form>
 </div>
 </div>	
 </div>
 </div>
-</div>
-
-
-
 
 </body>
 </html>

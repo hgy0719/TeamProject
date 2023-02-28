@@ -177,6 +177,8 @@ public class EventController extends HttpServlet {
 //			request.setAttribute("articlesList", list);
 //			nextPage = "/seunggi/project1/listArticles.jsp";
 //			
+		
+		//articleForm에서 넘어옴
 		 else if ("/addArticle.do".equals(action)) {
 			
 			String id = request.getParameter("id");
@@ -200,14 +202,26 @@ public class EventController extends HttpServlet {
 		
 		 else if ("/viewArticle.do".equals(action)) {
 			
+			String id = request.getParameter("id");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 			String articleNO = request.getParameter("articleNO");
-			System.out.println("articleNO : "+ articleNO);
-
-			int aNo = Integer.parseInt(articleNO);
+			System.out.println("id : "+ id);
+			System.out.println("title : "+ title);
+			System.out.println("content : "+ content);
+//db에 insert하기
+//			int aNo = Integer.parseInt(articleNO);
 			
+			EventVO vo = new EventVO();
+			vo.setId(id);
+			vo.setTitle(title);
+			vo.setContent(content);
+//			vo.setArticleNO(articleNO);
+//			vo.setArticleNO( Integer.parseInt(articleNO) );
 			
-			List<EventVO> vo = eventService.viewArticle();
-			request.setAttribute("vo", vo);
+			eventService.addArticle(vo);
+			List<EventVO> list = eventService.viewArticle();
+			request.setAttribute("list", list);
 			
 			nextPage = "/seunggi/project1/viewArticle.jsp";
 			

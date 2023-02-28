@@ -3,6 +3,10 @@ package team;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -27,10 +31,7 @@ public class BoardController extends HttpServlet {
 		boardService = new BoardService();
 	}
 	
-	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
@@ -48,9 +49,19 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8;");
 		
+		BoardDAO dao = new BoardDAO();
+		
+//		String command = request.getParameter("command");
+//		System.out.println("command : "+command);
+		
+		
 		String nextPage = "/board/listArticles.do";
 		String action = request.getPathInfo();
 		System.out.println("action : "+ action);
+		
+		
+		
+		
 		
 		try {
 			
@@ -58,37 +69,83 @@ public class BoardController extends HttpServlet {
 				
 				List list = boardService.listArticles();
 				request.setAttribute("articlesList", list);
-				nextPage = "/board01/listArticles.jsp";
+				nextPage = "/seongman/board01/listArticles.jsp";
 			
 				
+				// QnA 화면으로 갈수 있게
+			} else if("/qna.do".equals(action)) {
+				
+				List list = boardService.listArticles1();
+				request.setAttribute("articlesList1", list);
+				nextPage = "/seongman/board01/qna.jsp";
+				
+				
+				// 삭제기능
+			} else if(action != null && action.equals("/delMember.do")) {
+				
+				int articleNO = Integer.parseInt(request.getParameter("articleNO"));
+				System.out.println("delMember : articleNO = "+articleNO);
+				
+				dao.delMember(articleNO);
+				
 				// 글 수정하기
-			} else if ("/modArticle.do".equals(action)) {
-				Map<String, String> articleMap = upload(request, response);
-				int articleNO = Integer.parseInt(articleMap.get("articleNO"));
+			} else if("/update.do".equals(action)) {
 				
-				articleVO.setArticleNO(articleNO);
+				// 전달 받음
+				int _articleNO = Integer.parseInt(request.getParameter("articleNO"));
+				String _title = request.getParameter("title");
+				String _content = request.getParameter("content");
+				String _id = request.getParameter("id");
+				System.out.println("articleNO : "+_articleNO);
+				System.out.println("title : "+_title);
+				System.out.println("content : "+_content);
+				System.out.println("id : "+_id);
 				
-				String title = articleMap.get("title");
-				String content = articleMap.get("content");
-				String id = articleMap.get("id");
+				// vo 클래스에 저장
+				ArticleVO vo = new ArticleVO();
+				vo.setArticleNO(_articleNO);
+				vo.setTitle(_title);
+				vo.setContent(_content);
+				vo.setId(_id);
 				
-				articleVO.setParentNO(0);
-				articleVO.setId(id);
-				articleVO.setTitle(title);
-				articleVO.setContent(content);
+				// 수정 메소드 실행
+				dao.update(vo);
 				
-				// 전송된 글 정보를 이용해 글을 수정
-				boardService.modArticle(articleVO);
+				nextPage = "/seongman/board/listArticles.do";
 				
-				// 글 수정 후 location 객체의 href 속성을 이용해 글 상세 화면을 나타낸다
-				PrintWriter pw = response.getWriter();
-				
-				pw.print("<script>"+
-				" alert('글을 수정했습니다.');"+" location.href='"
-						+ request.getContextPath()
-						+ "/board/viewArticle.do?articleNO="
-						+ articleNO + "';" + "</script>");
-				return;
+//			} else if ("/modArticle.do".equals(action)) {
+//				// 수정할건데  
+//				// 내용이을 수정한다
+//				// 원래 글을 
+//				// 새로운 내용으로
+//				// 수정한다
+//				int articleNO = Integer.parseInt("articleNO");
+//				
+////				articleVO.setArticleNO(articleNO);
+//				
+//				String id = request.getParameter("id");
+//				String title = request.getParameter("title");
+//				String content = request.getParameter("content");
+//				
+//				
+//				articleVO.setParentNO(0);
+//				articleVO.setId(id);
+//				articleVO.setTitle(title);
+//				articleVO.setContent(content);
+////				articleVO.setArticleNO(articleNO);
+//				
+//				// 전송된 글 정보를 이용해 글을 수정
+//				boardService.modArticle(articleVO);
+//				
+//				// 글 수정 후 location 객체의 href 속성을 이용해 글 상세 화면을 나타낸다
+////				PrintWriter pw = response.getWriter();
+//				
+////				pw.print("<script>"+
+////				" alert('글을 수정했습니다.');"+" location.href='"
+////						+ request.getContextPath()
+////						+ "/board/viewArticle.do?articleNO="
+////						+ articleNO + "';" + "</script>");
+//				return ;
 				
 				
 				
@@ -99,22 +156,32 @@ public class BoardController extends HttpServlet {
 				String id = request.getParameter("id");
 				String title = request.getParameter("title");
 				String content = request.getParameter("content");
+				String writeDate = request.getParameter("writeDate");
 				
+				// 날짜 기능
 				
+				int n = Integer.parseInt(request.getParameter("n"));
+				
+				System.out.println("n : "+n);
 				System.out.println("id : "+id);
 				System.out.println("title : "+title);
 				System.out.println("content : "+content);
+				System.out.println("writeDate : "+writeDate);
 				
 				
 				ArticleVO vo = new ArticleVO();
 				vo.setId(id);
 				vo.setTitle(title);
 				vo.setContent(content);
+				vo.setN(n);
+				vo.setWriteDate(writeDate);
 				
 				
 				boardService.addArticle(vo);
 				
-				nextPage = "/board/listArticles.do";
+				nextPage = "/seongman/board/listArticles.do";
+				
+				
 				
 			} else if ("/viewArticle.do".equals(action)) {
 				
@@ -125,7 +192,7 @@ public class BoardController extends HttpServlet {
 				ArticleVO vo = boardService.viewArticle(aNO);
 				request.setAttribute("vo",vo);
 				
-				nextPage = "/board01/viewArticle.jsp";
+				nextPage = "/seongman/board01/viewArticle.jsp";
 				
 			} else if ("/addReply.do".equals(action)) {
 				
@@ -147,16 +214,17 @@ public class BoardController extends HttpServlet {
 				
 				boardService.addArticle(vo);
 				
-				nextPage = "/board/listArticles.do";
+				nextPage = "/seongman/board/listArticles.do";
 			
 				
 			} else {
-				nextPage = "/board/listArticles.do";
+				nextPage = "/seongman/board/listArticles.do";
 			}
 			System.out.println("nextPage : "+nextPage);
 						
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

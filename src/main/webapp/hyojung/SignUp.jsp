@@ -202,7 +202,6 @@
                      <div class="inputSet"><input id="inputEmail" type="text" name="email" placeholder="이메일을 입력하세요"></div>
                  </div>
                  <input type="submit" class="submit"  value="회원가입" ><br>
-<%-- !!!!!!!!!!!!!!파일 이동 시 변경해야 하는 주소!!!!!!!!!!!!!!!--%>
                  </form>
                </div>
             </div>
